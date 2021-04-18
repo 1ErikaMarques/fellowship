@@ -9,7 +9,7 @@
 .header__left {
     display: flex;
     align-items: center;
-    margin-left: 10rem;
+    margin-left: 13.5rem;
     font-weight: normal;
 
 }
@@ -31,14 +31,14 @@
 
 .header__center input {
     margin-left: 10rem;
-    height: 30px;
-    width: 215px;
+    height: 1.875rem;
+    width:  15rem;
     text-align: center;
-    border-radius: 4px;
-    margin-top: 19px;
+    border-radius: 0.25rem;
+    margin-top: 1.2rem;
     border: 1px solid #e2e2e2;
     background-color: #fafafa;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 100;
 }
 
@@ -53,19 +53,27 @@
 
 }
 
+.icone_perfil img{
+    max-height: 3.0rem;
+    max-width: 3.0rem;
+    border-radius: 30px;
+    margin-right: 12rem;
+    margin-top: 0.6rem;
+    border: 1px solid #e2e2e2;
+    float: right;
+}
+
 /* Menu nav que fica na postagem do post*/
 nav ul {
     margin-top: 5rem;
     display: flex;
     justify-content: space-evenly;
     margin-right: 38px;
-    height: 20px;
-
 }
 
 nav ul li a {
     color: #363636;
     letter-spacing: .1em;
-    font-size: 14px;
+    font-size:  1rem;
     margin-right: 10px;
 }

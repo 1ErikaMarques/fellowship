@@ -2,7 +2,14 @@
 @import "src/components/login/login.css";
 @import "src/components/header/header.css";
 @import "src/components/feed/feed.css";
+ /*
+ font size 14px = 0.875rem
+line-height: 150% de texto
 
+
+
+
+ */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -12,8 +19,9 @@ body {
 
 p {
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+
 }
 
 .container {

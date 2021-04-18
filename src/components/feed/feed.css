@@ -1,6 +1,5 @@
 /* Publicação do Post */
 .share-box-entry {
-    border-color: #363636;
     height: 120px;
     background-color: #ffffff;
     align-items: center;
@@ -41,8 +40,7 @@
 /*Publicações*/
 
 .post{
-    border-color: #363636;
-    height: 825px;
+    height: auto;
     background-color: #ffffff;
     align-items: center;
     border-radius: 10px;
@@ -52,7 +50,7 @@
 
 .img_post {
     max-height: 3.0rem;
-    max-width: 3.0rem;
+    max-width: 100%;
     border-radius: 30px;
     margin-left: 30px;
     margin-top: 20px;
@@ -65,30 +63,27 @@
 }
 
 .usuario_post h3{
-    font-size: 16px;
+    font-size: 1.0rem;
     letter-spacing: 0.03em;
     font-weight: bold;
-    text-align: right;
     margin-top: 35px;
-    height: 20px;
     margin-left: 10px;
     color: #363636
 
 }
-.post p {
-    font-size: 14px;
+.texto_publicacao  {
+    font-size: 0.875rem;
     color: #363636;
-    max-width: 100%;
-    margin-left: 30px;
-    margin-right: 30px;
-    line-height: 20px;
-
+    max-width: 92%;
+    margin-left: 38px;
+    line-height: 150%;
 
 }
 
 .publicacao{
-    width: 100%;
+    width: 682px;
     height: 500px;
+
 }
 
 /*Comentarios post*/
@@ -107,13 +102,21 @@
     height: 30px;
     align-items: center;
     border: 1px solid #e2e2e2;
-    border-radius: 15px;
-    margin-top: 28px;
+    border-radius: 0.938rem;
+    margin-top: 1.75rem;
     float: right;
-    margin-right: 42px;
+    margin-right: 2.625rem;
 }
 
 .area_comentarios input:focus {
     outline: none;
     text-align: left;
+}
+
+.carregar_comentarios {
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 80%;
+    cursor: pointer;
+    color: #666666;
 }

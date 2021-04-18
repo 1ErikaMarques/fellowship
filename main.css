@@ -1,0 +1,22 @@
+@import "clean.css";
+@import "src/components/login/login.css";
+@import "src/components/header/header.css";
+@import "src/components/feed/feed.css";
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FAFAFA;
+
+}
+
+p {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.container {
+    width: min(90vw, 680px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
+    margin: auto;
+}

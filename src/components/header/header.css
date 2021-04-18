@@ -1,0 +1,71 @@
+.header {
+    display: flex;
+    z-index: 100;
+    box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+    background-color: #fff;
+
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+    margin-left: 10rem;
+    font-weight: normal;
+
+}
+/*campo pesquisa*/
+.header__center {
+    display: flex;
+    flex: 1;
+    justify-content: left;
+    margin-left: 10rem;
+
+}
+
+.header__center h3 {
+    padding: 5px;
+    font-weight: normal;
+    color: #363636;
+
+}
+
+.header__center input {
+    margin-left: 10rem;
+    height: 30px;
+    width: 215px;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 19px;
+    border: 1px solid #e2e2e2;
+    background-color: #fafafa;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.header__center input:active {
+    text-align: left;
+    border: 1px solid #e2e2e2;
+}
+
+.header__center input:focus {
+    outline: none;
+    text-align: left;
+
+}
+
+/* Menu nav que fica na postagem do post*/
+nav ul {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 38px;
+    height: 20px;
+
+}
+
+nav ul li a {
+    color: #363636;
+    letter-spacing: .1em;
+    font-size: 14px;
+    margin-right: 10px;
+}

@@ -44,6 +44,7 @@ async function loadMainComponents() {
         if(value){
             console.log('user is loggedIn ' + value)
             loadHeader();
+            loadFeed();
         }
         else {
             console.log('user is NOT loggedIn ' + value)

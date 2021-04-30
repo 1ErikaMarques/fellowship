@@ -7,7 +7,7 @@
     border: 1px solid #e2e2e2;
 }
 
-.share-box-entry input {
+.share-box-entry button {
     width: 542px;
     height: 40px;
     align-items: center;
@@ -16,14 +16,20 @@
     margin-top: 24px;
     float: right;
     margin-right: 42px;
+    user-select : none;
+    -moz-user-select : none;
+    -webkit-user-select : none;
+    cursor: pointer;
+    background-color: #FAFAFA;
+    text-align: left;
 }
 
-.share-box-entry input:active {
+.share-box-entry button:active {
     text-align: left;
     border: 1px solid #e2e2e2;
 }
 
-.share-box-entry input:focus {
+.share-box-entry button:focus {
     outline: none;
     text-align: left;
 }
@@ -113,10 +119,73 @@
     text-align: left;
 }
 
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 24%;
+    margin: 10rem auto auto;
+    height: auto;
+}
+.entry-input {
+    width: 100%;
+    margin-top: 24px;
+    margin-right: 42px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    background-color: #FAFAFA;
+    text-align: left;
+}
+
+.entry-input:focus {
+    outline: none;
+    text-align: left;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .carregar_comentarios {
     font-size: 0.75rem;
     font-weight: bold;
     margin-left: 80%;
     cursor: pointer;
     color: #666666;
+}
+
+/* Solid border */
+hr.solid {
+    border-top: 1px solid #bbb;
 }

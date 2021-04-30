@@ -1,49 +1,73 @@
-<section class="share-box-entry container">
+<section class="share-box-entry container" id="share-box-entry">
     <div>
         <img src="assets/images/jovem-estudante.png" alt="Ana Carolina Yamamoto">
-        <label>
-            <input type="text" placeholder=" ">
-        </label>
+        <button onclick="showShareEntry()">Comecar publicação</button>
+    </div>
+    <div id="shareEntryModal" class="modal">
+
+        <div class="modal-content">
+            <div id="share-box-entry-toolbar">
+                <span class="close" onclick="closeShareEntry()">&times;</span>
+                <span>Criar publicação</span>
+            </div>
+            <hr class="solid">
+            <div class="usuario_post">
+                <img src="assets/images/jovem-estudante.png" alt="Ana Carolina Yamamoto" class="img_post">
+
+                <h3>Ana Carolina Yamamoto</h3></div>
+            <div contentEditable="true" class="entry-input" id="entry-input">
+                <img src=""/>
+            </div>
+            <hr class="solid">
+            <div id="share-box-entry-toolbar-secondary">
+                <p>Add Imagem</p>
+            </div>
+            <div>
+                <p onclick="sharePost()">Publicar</p>
+            </div>
+        </div>
     </div>
 </section>
-<section class="post container" id="post-area">
-    <div class="usuario_post">
-        <img src="assets/images/aposentada.png" alt="Maria Francisca Da Silva Soares" class="img_post">
-        <h3>Maria Francisca Da Silva Soares</h3>
+<section id="post-area">
+    <div class="post container">
+        <div class="usuario_post">
+            <img src="assets/images/aposentada.png" alt="Maria Francisca Da Silva Soares" class="img_post">
+            <h3>Maria Francisca Da Silva Soares</h3>
+        </div>
+
+        <p class="texto_publicacao">É simplesmente um texto fictício da indústria de impressão e composição. Lorem Ipsum tem
+            sido o texto fictício
+            padrão da indústria desde os anos 1500, quando um impressor desconhecido pegou uma galé do tipo e embaralhou
+            para fazer um livro de amostra de tipos. Ele sobreviveu não apenas cinco séculos, mas também ao salto para a
+            composição eletrônica, permanecendo essencialmente inalterado. Ele foi popularizado na década de 1960 com o
+            lançamento de folhas de Letraset contendo passagens de Lorem Ipsum e, mais recentemente, com software de
+            editoração eletrônica como Aldus PageMaker incluindo versões de Lorem Ipsum.
+        </p>
+
+        <img src="assets/images/casas/apartamento-alugar.png" alt="apartamento para alugar" class="publicacao">
+
+        <div class="area_comentarios">
+            <img src="assets/images/jovem-estudante.png" alt="" class="img_comentario">
+            <label>
+                <input type="text" placeholder=" Escreva um comentário ">
+            </label>
+        </div>
+
+        <div class="area_comentarios">
+            <img src="assets/images/servidor-publico.png" alt="" class="img_comentario">
+            <label>
+                <input type="text" placeholder="  ">
+            </label>
+        </div>
+
+        <div class="area_comentarios">
+            <img src="assets/images/professora.png" alt="" class="img_comentario">
+            <label>
+                <input type="text" placeholder="  ">
+            </label>
+        </div>
+
+        <p class="carregar_comentarios">Mais comentários</p>
+
     </div>
-
-    <p class="texto_publicacao">É simplesmente um texto fictício da indústria de impressão e composição. Lorem Ipsum tem
-        sido o texto fictício
-        padrão da indústria desde os anos 1500, quando um impressor desconhecido pegou uma galé do tipo e embaralhou
-        para fazer um livro de amostra de tipos. Ele sobreviveu não apenas cinco séculos, mas também ao salto para a
-        composição eletrônica, permanecendo essencialmente inalterado. Ele foi popularizado na década de 1960 com o
-        lançamento de folhas de Letraset contendo passagens de Lorem Ipsum e, mais recentemente, com software de
-        editoração eletrônica como Aldus PageMaker incluindo versões de Lorem Ipsum.
-    </p>
-
-    <img src="assets/images/casas/apartamento-alugar.png" alt="apartamento para alugar" class="publicacao">
-
-    <div class="area_comentarios">
-        <img src="assets/images/jovem-estudante.png" alt="" class="img_comentario">
-        <label>
-            <input type="text" placeholder=" Escreva um comentário ">
-        </label>
-    </div>
-
-    <div class="area_comentarios">
-        <img src="assets/images/servidor-publico.png" alt="" class="img_comentario">
-        <label>
-            <input type="text" placeholder="  ">
-        </label>
-    </div>
-
-    <div class="area_comentarios">
-        <img src="assets/images/professora.png" alt="" class="img_comentario">
-        <label>
-            <input type="text" placeholder="  ">
-        </label>
-    </div>
-
-    <p class="carregar_comentarios">Mais comentários</p>
-
 </section>

@@ -83,6 +83,7 @@
     max-width: 92%;
     margin-left: 38px;
     line-height: 150%;
+    word-break: break-all;
 
 }
 

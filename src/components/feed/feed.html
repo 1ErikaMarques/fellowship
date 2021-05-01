@@ -1,21 +1,21 @@
 <section class="share-box-entry container" id="share-box-entry">
     <div>
-        <img src="assets/images/jovem-estudante.png" alt="Ana Carolina Yamamoto">
-        <button onclick="showShareEntry()">Comecar publicação</button>
+        <img src="assets/images/usuarios/jovem-estudante.png" alt="Ana Carolina Yamamoto">
+        <button onclick="exibirModal()">Começar publicação</button>
     </div>
     <div id="shareEntryModal" class="modal">
 
         <div class="modal-content">
             <div id="share-box-entry-toolbar">
-                <span class="close" onclick="closeShareEntry()">&times;</span>
+                <span class="close" onclick="fecharModal()">&times;</span>
                 <span>Criar publicação</span>
             </div>
             <hr class="solid">
             <div class="usuario_post">
-                <img src="assets/images/jovem-estudante.png" alt="Ana Carolina Yamamoto" class="img_post">
+                <img src="assets/images/usuarios/jovem-estudante.png" alt="Ana Carolina Yamamoto" class="img_post">
 
                 <h3>Ana Carolina Yamamoto</h3></div>
-            <div contentEditable="true" class="entry-input" id="entry-input">
+            <div contentEditable="true" class="entry-input" id="entrada-de-dados">
                 <img src=""/>
             </div>
             <hr class="solid">
@@ -23,15 +23,15 @@
                 <p>Add Imagem</p>
             </div>
             <div>
-                <p onclick="sharePost()">Publicar</p>
+                <button onclick="publicarPost()">Começar publicação</button>
             </div>
         </div>
     </div>
 </section>
-<section id="post-area">
+<section id="sessao-de-post">
     <div class="post container">
         <div class="usuario_post">
-            <img src="assets/images/aposentada.png" alt="Maria Francisca Da Silva Soares" class="img_post">
+            <img src="assets/images/usuarios/aposentada.png" alt="Maria Francisca Da Silva Soares" class="img_post">
             <h3>Maria Francisca Da Silva Soares</h3>
         </div>
 
@@ -47,21 +47,21 @@
         <img src="assets/images/casas/apartamento-alugar.png" alt="apartamento para alugar" class="publicacao">
 
         <div class="area_comentarios">
-            <img src="assets/images/jovem-estudante.png" alt="" class="img_comentario">
+            <img src="assets/images/usuarios/jovem-estudante.png" alt="" class="img_comentario">
             <label>
                 <input type="text" placeholder=" Escreva um comentário ">
             </label>
         </div>
 
         <div class="area_comentarios">
-            <img src="assets/images/servidor-publico.png" alt="" class="img_comentario">
+            <img src="assets/images/usuarios/servidor-publico.png" alt="" class="img_comentario">
             <label>
                 <input type="text" placeholder="  ">
             </label>
         </div>
 
         <div class="area_comentarios">
-            <img src="assets/images/professora.png" alt="" class="img_comentario">
+            <img src="assets/images/usuarios/professora.png" alt="" class="img_comentario">
             <label>
                 <input type="text" placeholder="  ">
             </label>

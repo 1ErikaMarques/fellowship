@@ -1,40 +1,4 @@
 /* Feed */
-function sharePost() {
-
-    const shareInput = document.getElementById('share-entry').value;
-
-    const postArea = document.getElementById('post-area');
-
-    let para = document.createElement("p");
-    para.id = uuid();
-    para.className = 'post';
-    let node = document.createTextNode(shareInput);
-    para.appendChild(node);
-
-    postArea.prepend(para);
-
-    window.localStorage.setItem('Feed', JSON.stringify(postArea));
-    window.stor
-
-    console.log(postArea)
-}
-
-
-/*Login / Cadastro*/
-/**
- * Usuario objeto
- * @param username o nome de usuario
- * @param email o email do usuario
- * @param password a senha do usuario
- * @returns {{password, email, username}}
- */
-function addUser(username, email, password) {
-    return {
-        "username": username,
-        "email": email,
-        "password": password
-    };
-}
 
 /**
  * Valida detalhes de usuario inserido
@@ -46,15 +10,23 @@ function checkLogin(form) {
         return;
     }
 
-    const userDetails = JSON.parse(window.localStorage.getItem('userDetails'))
+    const users = JSON.parse(localStorage.getItem('users'))
 
-    if (userDetails !== null) {
-        let username = userDetails.username;
-        let password = userDetails.password;
+    if (users !== null) {
+        let username;
+        let password;
+
+        for (let user of users) {
+            if (user.email === form.username.value) {
+                username = user.email
+                password = user.password
+                break;
+            }
+        }
 
         if (form.username.value === username && form.password.value === password) {
-            window.localStorage.setItem('loggedIn', form.username.value)
-            window.location.reload();
+            localStorage.setItem('loggedIn', form.username.value)
+            location.reload();
         } else {
             alert('Please check your username/password')
         }
@@ -63,15 +35,46 @@ function checkLogin(form) {
     }
 }
 
+/*Login / Cadastro*/
+/**
+ * Usuario objeto
+ * @param id id do usuario
+ * @param username o nome de usuario
+ * @param email o email do usuario
+ * @param password a senha do usuario
+ * @returns {{password, email, username}}
+ */
+function addUser(id, username, email, password) {
+    return {
+        "id": id,
+        "username": username,
+        "email": email,
+        "password": password
+    };
+}
+
+
 /**
  * Cadastra usuario e ativa sessao.
  * @param form formulario de cadastro
  */
 function register(form) {
-    const user = addUser(form.username.value, form.email.value, form.password.value);
 
-    window.localStorage.setItem('userDetails', JSON.stringify(user));
-    window.localStorage.setItem('loggedIn', 'yes');
+    const newUser = addUser(uuid(), form.username.value, form.email.value, form.password.value);
+
+    if (localStorage.getItem('users')) {
+        let storedUsers = JSON.parse(localStorage.getItem('users'));
+
+        storedUsers.push(newUser)
+
+        localStorage.setItem('users', JSON.stringify(storedUsers));
+    } else {
+        let users = [];
+        users.push(newUser)
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    localStorage.setItem('loggedIn', 'yes');
 }
 
 

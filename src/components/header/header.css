@@ -1,79 +1,75 @@
 .header {
-    display: flex;
-    z-index: 100;
-    box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
-    background-color: #fff;
-
+  display: flex;
+  z-index: 100;
+  box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+  background-color: #fff;
 }
 
 .header__left {
-    display: flex;
-    align-items: center;
-    margin-left: 13.5rem;
-    font-weight: normal;
-
+  display: flex;
+  align-items: center;
+  margin-left: 13.5rem;
+  font-weight: normal;
 }
+
 /*campo pesquisa*/
 .header__center {
-    display: flex;
-    flex: 1;
-    justify-content: left;
-    margin-left: 10rem;
-
+  display: flex;
+  flex: 1;
+  justify-content: left;
+  margin-left: 10rem;
 }
 
 .header__center h3 {
-    padding: 5px;
-    font-weight: normal;
-    color: #363636;
-
+  padding: 5px;
+  font-weight: normal;
+  color: #363636;
 }
 
 .header__center input {
-    margin-left: 10rem;
-    height: 1.875rem;
-    width:  15rem;
-    text-align: center;
-    border-radius: 0.25rem;
-    margin-top: 1.2rem;
-    border: 1px solid #e2e2e2;
-    background-color: #fafafa;
-    font-size: 0.875rem;
-    font-weight: 100;
+  margin-left: 10rem;
+  height: 1.875rem;
+  width: 15rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  margin-top: 1.2rem;
+  border: 1px solid #e2e2e2;
+  background-color: #fafafa;
+  font-size: 0.875rem;
+  font-weight: 100;
 }
 
 .header__center input:active {
-    text-align: left;
-    border: 1px solid #e2e2e2;
+  text-align: left;
+  border: 1px solid #e2e2e2;
 }
 
 .header__center input:focus {
-    outline: none;
-    text-align: left;
-
+  outline: none;
+  text-align: left;
 }
 
-.icone_perfil img{
-    max-height: 3.0rem;
-    max-width: 3.0rem;
-    border-radius: 30px;
-    margin-right: 12rem;
-    margin-top: 0.6rem;
-    border: 1px solid #e2e2e2;
-    float: right;
+.icone_perfil img {
+  max-height: 3rem;
+  max-width: 3rem;
+  border-radius: 30px;
+  margin-right: 12rem;
+  margin-top: 0.6rem;
+  border: 1px solid #e2e2e2;
+  float: right;
 }
 
 /* Menu nav que fica na postagem do post*/
 nav ul {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: space-evenly;
-    margin-right: 38px;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 38px;
 }
 
 nav ul li a {
-    color: #363636;
-    letter-spacing: .1em;
-    font-size:  1rem;
-    margin-right: 10px;
+  color: #363636;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  margin-right: 10px;
 }

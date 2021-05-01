@@ -24,6 +24,10 @@
     text-align: left;
 }
 
+p {
+    word-break: break-all;
+}
+
 .share-box-entry button:active {
     text-align: left;
     border: 1px solid #e2e2e2;

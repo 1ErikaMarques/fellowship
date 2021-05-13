@@ -1,35 +1,31 @@
-<html lang="pt-br">
-<head>
-    <title>
-        Login page
-    </title>
-</head>
-<body>
-<input type='checkbox' id='form-switch'>
-<form id='login-form' action="" method='post'>
-    <label>
-        <input type="text" placeholder="Username" required name="username">
-    </label>
-    <label>
-        <input class="login" type="password" placeholder="Password" required name="password">
-    </label>
-    <button class="login" type='submit' onclick="checkLogin(this.form)" value="Login">Login</button>
-    <label for='form-switch'><span>Register</span></label>
-</form>
-<form id='register-form' action="" method='post'>
-    <label>
-        <input type="text" placeholder="Username" required name="username">
-    </label>
-    <label>
-        <input type="email" placeholder="Email" required name="email">
-    </label>
-    <label>
-        <input type="password" placeholder="Password" required name="password">
-    </label>
-    <label>
-        <input type="password" placeholder="Re Password" required>
-    </label>
-    <button type='submit' onclick="register(this.form)">Register</button>
-    <label for='form-switch'>Already Member ? Sign In Now..</label>
-</form>
-</body>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="assets/images/ilustracao-login.svg" alt="...">
+      </div>
+
+     
+     <div class="col-md-8"> 
+      <div class="card" style="width: 18rem;">
+        <img src="assets/images/logo-login.svg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Senha</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      
+      </div>
+    </div>
+    </div>
+</div>
+   
+
+   
+
+  

@@ -1,28 +1,14 @@
-.login form {
-    margin:0 auto;
-    width:300px
+.body {
+    background-color: #FAFCFF!important;
 }
-.login input {
-    margin-bottom:3px;
-    padding:10px;
-    width: 100%;
-    border:1px solid #CCC
+
+
+/*ILustracao*/
+.img-login {
+    max-width:572px;
+    max-height:431px;
+    margin-top:265px;
+    margin-left: 148px;
 }
-.login button {
-    padding:10px
-}
-.login label {
-    cursor:pointer
-}
-#form-switch {
-    display:none
-}
-#register-form {
-    display:none
-}
-#form-switch:checked~#register-form {
-    display:block
-}
-#form-switch:checked~#login-form {
-    display:none
-}
+
+

@@ -41,7 +41,7 @@ async function loadMainComponents() {
 
     await isUserLoggedIn().then(value => {
 
-        if(value){
+        if (value) {
             console.log('user is loggedIn ' + value)
             loadHeader();
             loadFeed();
@@ -57,6 +57,6 @@ async function loadMainComponents() {
  *
  * @returns {Promise<boolean>} returns true if user is logged false otherwise
  */
-async function isUserLoggedIn(){
-    return window.localStorage.getItem('loggedIn') != null
+async function isUserLoggedIn() {
+    return sessionStorage.getItem('loggedUser') != null
 }

@@ -16,12 +16,12 @@
 
                 <h3>Ana Carolina Yamamoto</h3></div>
             <div contentEditable="true" class="entry-input" id="entrada-de-dados">
-                <img src=""/>
+               
             </div>
+            <section id="img-modal-post">
+             </section>
             <hr class="solid">
-            <div id="share-box-entry-toolbar-secondary">
-                <p>Add Imagem</p>
-            </div>
+            <input id="share-box-entry-toolbar-secondary" type="file" multiple onchange="addImgToPost(this)"/>
             <div>
                 <button onclick="publicarPost()">Começar publicação</button>
             </div>
@@ -61,14 +61,4 @@
             </label>
         </div>
 
-        <div class="area_comentarios">
-            <img src="assets/images/usuarios/professora.png" alt="" class="img_comentario">
-            <label>
-                <input type="text" placeholder="  ">
-            </label>
-        </div>
-
-        <p class="carregar_comentarios">Mais comentários</p>
-
-    </div>
 </section>

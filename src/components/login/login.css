@@ -1,14 +1,204 @@
 .body {
-    background-color: #FAFCFF!important;
+    background-color: #fafcff!important;
 }
 
 
-/*ILustracao*/
-.img-login {
-    max-width:572px;
-    max-height:431px;
-    margin-top:265px;
-    margin-left: 148px;
+
+.wrapper {
+  display: flex;  
+  text-align: center;
+  margin-top: 8rem;
+  justify-content: center;
+  
+  
 }
 
+
+
+.child-items {
+    flex-direction: row;
+    
+}
+/*ilustracao*/
+.img-login{
+    margin-top: 2rem;
+    margin-right: 70px;
+    max-width: 100%;
+    height: 90%;
+    
+    
+}
+/*Container login*/
+.form-login {
+    height: auto;
+    background-color: #fefefe;
+    align-items: center;
+    border-radius: 4px;    
+    margin-top: 1rem;       
+    max-width: 100%;   
+    padding: 2%; 
+}
+
+/*Logo*/
+.logo-login {
+    margin-top: 31px;
+    height: 52.25822067260742px;        
+    
+}
+/*campos email/senha*/
+.form-login input {    
+    height: 36px;
+    width: 280px;
+    left: 845px;
+    top: 384px;        
+    border-radius: 6px;    
+    margin-top: 1.3rem;  
+    
+
+}
+.form-login input:focus{
+   outline: none;  
+   padding: 2px;   
+   background-color: var(--ice);
+   border: 2px solid var(--blue);
+   box-shadow:  0px 0px 1px  var(--blue);
+}
+
+::placeholder {    
+    padding: 10px;   
+    color: #c4c4c4;   
+    
+}
+
+.aparador-login {
+    width: 282px;       
+    border-top: 1px solid #e9e9e9;
+    
+    
+}
+
+/*call cadastre-se*/
+.call-login {
+    display:flex;
+    justify-content: center;
+    align-items: baseline; 
+    margin-bottom: 60px; 
+}
+.call-login p {    
+    font-weight:bold;           
+    color: #7e7e7e;
+    margin-left: 14px;        
+}
+
+.call-login h4{
+    font-size:16px;    
+    font-weight: bold;     
+    margin-right: 14px;
+    cursor: pointer;
+    margin-left: 5px;
+    color: var(--blue);   
+}
+
+.call-login h4:hover{
+    text-decoration: underline;    
+}
+
+/*Formulario Cadastro*/
+.modal-form-cadastro {
+    display: flex;
+    justify-content: center;
+}
+.form-cadastro {  
+      
+    background-color: #fefefe;
+    align-items: center;
+    border-radius: 6px;    
+    margin-top: 1rem;    
+    width: 350px;     
+    height: auto;     
+}
+
+.logo-cadastro {
+    margin-top: 31px;
+    height: 52.25822067260742px;
+    margin-left: 42px;    
+}
+
+.form-cadastro input {
+    background-color: #fafafa;
+}
+
+/*modal*/
+.modal-cadastro {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */       
+    background-color: rgba(129, 129, 129, 0.1); /* Black w/ opacity */
+  
+}
+input[type="date" i]{
+    color: #c4c4c4;    
+    text-indent: 4px;    
+}
+
+.close-modal-cadastro {    
+    float: right;
+    margin-right: 30px;
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;    
+    cursor: pointer;
+    color: #b5b5b5;
+}
+
+
+
+/*Mobile*/
+@media only screen and (max-width: 480px) {
+    .img-login {
+        display: none
+    }
+    .wrapper {
+        justify-content: center;      
+    }
+
+    .form-login{
+        padding: 3%;
+    }
+}
+/*Tablet*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+   .wrapper {
+       justify-content: center;      
+   }
+    .img-login {
+       display: none;
+   }
+   .form-login{
+    padding: 3%;
+    margin-right: 20px;
+    margin-left: 30px;    
+}
+  
+   
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    
+    .form-login{
+        padding: 3%;
+        margin-right: 20px;
+        
+    }
+    .img-login{
+       height: 90%;
+       
+    }
+   
+}
 

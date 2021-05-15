@@ -216,3 +216,16 @@ function uuid() {
         return v.toString(16);
     });
 }
+
+/*Modal Cadastro*/
+
+function modalCadastro() {
+    const modal = document.getElementById("modalCadastro")
+    modal.style.display='block';
+
+}
+
+function fecharModalCadastro(){
+    const modal = document.getElementById("modalCadastro")
+    modal.style.display='none';
+}

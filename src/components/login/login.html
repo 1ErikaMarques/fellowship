@@ -1,31 +1,54 @@
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="assets/images/ilustracao-login.svg" alt="...">
-      </div>
+<div class="wrapper">
+  <div class="child-item">
+    <img class="img-login" src="assets/images/ilustracao-login.svg" alt="...">
+  </div>
 
-     
-     <div class="col-md-8"> 
-      <div class="card" style="width: 18rem;">
-        <img src="assets/images/logo-login.svg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Senha</label>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      
-      </div>
+  <div class="child-item form-login border">
+    <img src="assets/images/logo-login.svg" class="logo-login" alt="Fellowship">
+    <div>
+      <input  class="border form-control" type="email"  id="floatingInput" placeholder="Email">
     </div>
+    <div>
+      <input class="border form-control" type="password"  id="floatingPassword" placeholder="Senha">
     </div>
-</div>
-   
+    <button type="submit" class="btn">Entrar</button>
+    <hr class="aparador-login">
 
-   
-
+  <div class="call-login">
+    <p>Ainda não tem conta?</p> 
+    <h4 onclick="modalCadastro()">Cadastre-se</h4>
   
+</div>
+  <!--Cadastro-->
+  <div class="modal-cadastro" id="modalCadastro">
+    <div class="modal-form-cadastro">
+  <form class="form-cadastro border">
+    <span class="close-modal-cadastro" onclick="fecharModalCadastro()">&times;</span>
+   <div>     
+    <img src="assets/images/logo-login.svg" class="logo-cadastro" alt="Fellowship">
+    
+  </div>    
+    <div>
+      <input class="border" type="text" id="nomeInput" placeholder="Nome Completo">
+    </div>
+    <div>
+      <input  class="border" type="email"  id="emailInput" placeholder="Email">
+    </div>
+    <div>
+      <input class="border" type="password"  id="passwordInput" placeholder="Senha">
+    </div>
+    <div>      
+      <input  class="border" type="date"  id="dataDeNascimentoInput" placeholder="dd/mm/yyyy">
+    </div>
+    <div>
+      <input  class="border" type="text"  id="cepInput" placeholder="Cep">
+    </div>
+    <div>
+      <input class="border" type="text" id="bairroInput" placeholder="Bairro">
+    </div>
+    <button type="submit" class="btn">Cadastre-se</button>
+   </form>
+  </div>
+  </div>
+</div>
+

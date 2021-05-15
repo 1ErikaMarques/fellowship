@@ -2,13 +2,11 @@
 @import "src/components/login/login.css";
 @import "src/components/header/header.css";
 @import "src/components/feed/feed.css";
+@import "src/components/menu-nav/menu-nav.css";
  /*
  font size 14px = 0.875rem
 line-height: 150% de texto
-
  */
-
- 
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -18,8 +16,8 @@ body {
 
 :root{
     --blue: #4285F4;
-    --light-blue: #5394fd;    
-   
+    --light-blue: #5394fd;
+
 
 }
 
@@ -30,9 +28,11 @@ p {
 
 }
 
-.container {
-    width: min(90vw, 680px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
-    margin: auto;
+@media (max-width: 600px){
+    .container {
+        width: min(90vw, 680px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
+        margin: auto;
+    }
 }
 
 .border {
@@ -43,25 +43,25 @@ p {
     margin-top: 2rem;
     width: 126px;
     height: 40px;
-    margin-bottom: 40px;   
+    margin-bottom: 40px;
     background:var(--blue);
     color: #fefefe;
     font-weight: bold;
     font-size: 14px;
-    border-radius: 4px; 
-    border: none;      
+    border-radius: 4px;
+    border: none;
     transition: all .4s ease;
     cursor: pointer;
 }
 
 .btn:hover {
     background-color: var(--light-blue);
-    color: #fefefe;    
-} 
+    color: #fefefe;
+}
 
-.btn-edit {    
+.btn-edit {
     width: 126px;
-    height: 33px;    
+    height: 33px;
     font-size: 14px;
     font-weight: bold;
     border-radius: 4px;
@@ -78,3 +78,15 @@ p {
 }
 
 
+
+
+@media (min-width: 600px){
+    .container {
+        width: min(90vw, 680px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
+        margin: auto;
+    }
+}
+
+.dropdown-divider {
+    border-top: 1px solid #E9E9E9 !important;
+}

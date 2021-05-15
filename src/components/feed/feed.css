@@ -5,20 +5,24 @@
     align-items: center;
     border-radius: 10px;
     border: 1px solid #e2e2e2;
+    display: flex;
 }
 
-.share-box-entry button {
-    width: 542px;
+.share-box-entry-div {
+    flex-direction: row;
+}
+
+.share-box-entry-div button {
+    width: 575px;
     height: 40px;
-    align-items: center;
+    margin-left: 15px;
     border: 1px solid #e2e2e2;
     border-radius: 15px;
-    margin-top: 24px;
     float: right;
     margin-right: 42px;
-    user-select : none;
-    -moz-user-select : none;
-    -webkit-user-select : none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     cursor: pointer;
     background-color: #FAFAFA;
     text-align: left;
@@ -43,19 +47,18 @@ p {
     max-width: 3.0rem;
     border-radius: 30px;
     margin-left: 30px;
-    margin-top: 20px;
     border: 1px solid #e2e2e2;
 }
 
 /*Publicações*/
 
-.post{
+.post {
     height: auto;
     background-color: #ffffff;
     align-items: center;
     border-radius: 10px;
     border: 1px solid #e2e2e2;
-    margin-top: 20px!important;
+    margin-top: 20px !important;
 }
 
 .img_post {
@@ -67,12 +70,12 @@ p {
     border: 1px solid #e2e2e2;
 }
 
-.usuario_post{
+.usuario_post {
     max-width: 400px;
     display: flex;
 }
 
-.usuario_post h3{
+.usuario_post h3 {
     font-size: 1.0rem;
     letter-spacing: 0.03em;
     font-weight: bold;
@@ -81,7 +84,8 @@ p {
     color: #363636
 
 }
-.texto_publicacao  {
+
+.texto_publicacao {
     font-size: 0.875rem;
     color: #363636;
     max-width: 92%;
@@ -91,15 +95,14 @@ p {
 
 }
 
-.publicacao{
-    width: 682px;
-    height: 500px;
-
+.publicacao {
+    width: min(90vw, 680px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
+    margin: auto;
 }
 
 /*Comentarios post*/
 
-.img_comentario{
+.img_comentario {
     max-height: 3.0rem;
     max-width: 3.0rem;
     border-radius: 30px;
@@ -108,7 +111,15 @@ p {
     border: 1px solid #e2e2e2;
 }
 
-.area_comentarios input{
+.area_comentarios {
+    display: flex;
+}
+
+.area_comentarios_flex {
+    flex-direction: row;
+}
+
+.area_comentarios input {
     width: 542px;
     height: 30px;
     align-items: center;
@@ -135,7 +146,7 @@ p {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */   
+    overflow: auto; /* Enable scroll if needed */
     background-color: rgba(129, 129, 129, 0.1); /* Black w/ opacity */
 }
 
@@ -148,6 +159,7 @@ p {
     margin: 10rem auto auto;
     height: auto;
 }
+
 .entry-input {
     width: 100%;
     margin-top: 24px;
@@ -192,4 +204,64 @@ p {
 /* Solid border */
 hr.solid {
     border-top: 1px solid #bbb;
+}
+
+
+/*Mobile*/
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+
+    .share-box-entry-div button {
+        width: 19em;
+        margin-left: 15px;
+    }
+
+    .area_comentarios input {
+        width: 19em;
+        margin-left: 15px;
+    }
+
+    .share-box-entry {
+        justify-content: space-evenly;
+    }
+
+    .area_comentarios_flex {
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+
+    .share-box-entry-div button {
+        width: 20em;
+        margin-left: 15px;
+    }
+
+    .area_comentarios input {
+        width: 20em;
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+    .share-box-entry-div button {
+        width: 34em;
+    }
+
+    .area_comentarios input {
+        width: 34em;
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+
+    .share-box-entry-div button {
+        width: 34em;
+    }
+
+    .area_comentarios input {
+        width: 34em;
+        margin-left: 15px;
+    }
 }

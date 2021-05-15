@@ -3,24 +3,44 @@ async function loadLogin() {
     contentDiv.innerHTML = await fetchHtmlAsText("./src/components/login/login.html");
 }
 
+async function loadProfile() {
+    const contentDiv = document.getElementById("content");
+    contentDiv.innerHTML = await fetchHtmlAsText("./src/components/profile/profile.html");
+}
+
 async function loadHeader() {
     const contentDiv = document.getElementById("header");
     contentDiv.innerHTML = await fetchHtmlAsText("./src/components/header/header.html");
 }
 
-async function loadFeed() {
+async function loadMenuNav() {
+    const contentDiv = document.getElementById("menu_nav");
+    contentDiv.innerHTML = await fetchHtmlAsText("./src/components/menu-nav/menu-nav.html");
+}
+
+async function loadFeed(element) {
     const contentDiv = document.getElementById("content");
-    contentDiv.innerHTML = await fetchHtmlAsText("./src/components/feed/feed.html");
 
+    if (element !== undefined) {
+        const activeClassName = 'active_menu_nav';
 
-    if (window.localStorage.getItem('Feed') !== null) {
-        let postArea = document.getElementById('post-area');
+        element.classList.toggle(activeClassName);
 
-        const cachedPost = window.localStorage.getItem('Feed');
-        let nodeArray1 = [].slice.call(cachedPost);
-        console.log(nodeArray1)
+        const menuNavUl = document.getElementById("menu-nav-ul");
+
+        for (let i = 0; i < menuNavUl.children.length; i++) {
+            const menuNavLi = menuNavUl.children[i];
+
+            for (let i = 0; i < menuNavLi.children.length; i++) {
+                const menuNavLiChild = menuNavLi.children[i];
+
+                if (element !== menuNavLiChild && menuNavLiChild.classList.contains(activeClassName)) {
+                    menuNavLiChild.classList.remove(activeClassName)
+                }
+            }
+        }
     }
-
+    contentDiv.innerHTML = await fetchHtmlAsText("./src/components/feed/feed.html");
 }
 
 /**
@@ -44,9 +64,9 @@ async function loadMainComponents() {
         if (value) {
             console.log('user is loggedIn ' + value)
             loadHeader();
+            loadMenuNav();
             loadFeed();
-        }
-        else {
+        } else {
             console.log('user is NOT loggedIn ' + value)
             loadLogin();
         }

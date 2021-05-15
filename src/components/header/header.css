@@ -1,75 +1,96 @@
-.header {
-  display: flex;
-  z-index: 100;
-  box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
-  background-color: #fff;
+/*Flexbox container*/
+.header_nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-content: baseline;
+    height: 5rem;
+    background: #FEFEFE;
+    border: 1px solid #E9E9E9;
 }
 
-.header__left {
-  display: flex;
-  align-items: center;
-  margin-left: 13.5rem;
-  font-weight: normal;
+.header_nav_items {
+    flex-direction: row;
+    margin-top: 2rem;
 }
 
-/*campo pesquisa*/
-.header__center {
-  display: flex;
-  flex: 1;
-  justify-content: left;
-  margin-left: 10rem;
+/*Logo*/
+.header_logo {
+    left: 8.89%;
+    right: 83.14%;
+    top: 7%;
+    bottom: 89%;
 }
 
-.header__center h3 {
-  padding: 5px;
-  font-weight: normal;
-  color: #363636;
+/*Nome do bairro*/
+.bairro {
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #2D2D2D;
 }
 
-.header__center input {
-  margin-left: 10rem;
-  height: 1.875rem;
-  width: 15rem;
-  text-align: center;
-  border-radius: 0.25rem;
-  margin-top: 1.2rem;
-  border: 1px solid #e2e2e2;
-  background-color: #fafafa;
-  font-size: 0.875rem;
-  font-weight: 100;
+/*Botao pesquisar*/
+.search {
+    width: 231px;
+    height: 32px;
+    left: 637px;
+    top: 34px;
+    background: #FAFAFA;
+    border: 1px solid #EAEAEA;
+    border-radius: 4px;
 }
 
-.header__center input:active {
-  text-align: left;
-  border: 1px solid #e2e2e2;
+.search:focus {
+    outline: none;
 }
 
-.header__center input:focus {
-  outline: none;
-  text-align: left;
+.search::placeholder {
+    text-align: left;
+    padding: 10px;
+    font-family:FontAwesome;
+    position: relative;
+    left: -5px;
 }
 
-.icone_perfil img {
-  max-height: 3rem;
-  max-width: 3rem;
-  border-radius: 30px;
-  margin-right: 12rem;
-  margin-top: 0.6rem;
-  border: 1px solid #e2e2e2;
-  float: right;
+.search[type="text" i] {
+    padding: 1px 20px;
 }
 
-/* Menu nav que fica na postagem do post*/
-nav ul {
-  margin-top: 5rem;
-  display: flex;
-  justify-content: space-evenly;
-  margin-right: 38px;
+/*Botoes do lado direito*/
+.header_nav_items ul {
+    display: flex;
+    margin-top: 5px;
 }
 
-nav ul li a {
-  color: #363636;
-  letter-spacing: 0.1em;
-  font-size: 1rem;
-  margin-right: 10px;
+.header_nav_items li {
+    cursor: pointer;
+    align-items: baseline;
+    margin-right: .5rem;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .header_nav_items span {
+        display: none
+    }
+
+    .search {
+        width: 10rem;
+    }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 917px) {
+
+    .header_nav_items span {
+        display: none;
+    }
+
+    .search {
+        display: none
+    }
 }

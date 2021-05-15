@@ -1,8 +1,7 @@
 /* Feed */
-
-const novoUsuario = 1;
-const usuarioCadastrado = 2;
-
+/**
+ *
+ */
 function exibirModal() {
     let modal = document.getElementById("shareEntryModal")
     modal.style.display = "block"
@@ -11,12 +10,18 @@ function exibirModal() {
     entradaDeDados.focus()
 }
 
+/**
+ *
+ */
 function fecharModal() {
     let modal = document.getElementById("shareEntryModal")
     modal.style.display = "none"
     document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
 }
 
+/**
+ *
+ */
 function publicarPost() {
     const elementoPost = document.getElementById("entrada-de-dados") //estou colocando a div "entrada-de-dados" do html dentro da const elemento Post
     const conteudoPost = elementoPost.innerText // acessando o texto da div do modal post
@@ -74,9 +79,6 @@ function publicarPost() {
     const comentarioUsuario = document.createElement("input");
     comentarioUsuario.type = "text";
     comentarioUsuario.placeholder = "Escreva um comentário";
-
-
-
 
     //associando pais e filhos    
     divInformacaoDoUsuario.appendChild(fotoDoUsuario);
@@ -169,6 +171,11 @@ function register(form) {
     userSession(newUser, novoUsuario);
 }
 
+/**
+ *
+ * @param userParam
+ * @param tipoUsuario
+ */
 function userSession(userParam, tipoUsuario) {
 
     if (tipoUsuario === novoUsuario) {
@@ -184,7 +191,10 @@ function userSession(userParam, tipoUsuario) {
     }
 }
 
-
+/**
+ *
+ * @param inputElement elemento input
+ */
 function addImgToPost(inputElement) {
 
     // Buscando sessao das imagens
@@ -209,6 +219,70 @@ function addImgToPost(inputElement) {
 }
 
 /* Utils */
+
+const novoUsuario = 1;
+const usuarioCadastrado = 2;
+
+function buscarBairros(elem) {
+    let selector = document.getElementById("header_search");
+   /* // Check if input is empty
+    if (elem.value.trim() !== "") {
+        elem.classList.add("dropdown"); // Add dropdown class (for the CSS border-radius)
+        // If the selector div element does not exist, create it
+        if (selector == null) {
+            selector = document.createElement("div");
+            selector.id = "selector";
+            elem.parentNode.appendChild(selector);
+            // Position it below the input element
+            selector.style.left = elem.getBoundingClientRect().left + "px";
+            selector.style.top = elem.getBoundingClientRect().bottom + "px";
+            selector.style.width = elem.getBoundingClientRect().width + "px";
+        }
+        // Clear everything before new search
+        selector.innerHTML = "";
+        // Variable if result is empty
+        let empty = true;
+        for (let item in db) {
+            // Join the db elements in one string
+            let str = [item.toLowerCase(), db[item][0].toLowerCase(), db[item][1].toLowerCase()].join();
+            // If exists, create an item (button)
+            if (str.indexOf(elem.value) !== -1) {
+                let opt = document.createElement("button");
+                opt.setAttribute("onclick","insertValue(this);")
+                opt.innerHTML = db[item][0];
+                selector.appendChild(opt);
+                empty = false;
+            }
+        }
+        // If result is empty, display a disabled button with text
+        if (empty === true) {
+            let opt = document.createElement("button");
+            opt.disabled = true;
+            opt.innerHTML = "No results";
+            selector.appendChild(opt);
+        }
+    }
+    // Remove selector element if input is empty
+    else {
+        if (selector !== null) {
+            selector.parentNode.removeChild(selector);
+            elem.classList.remove("dropdown");
+        }
+    }*/
+}
+
+function insertValue(elem) {
+    window.search.classList.remove("dropdown");
+    window.search.value = elem.innerHTML;
+    elem.parentNode.parentNode.removeChild(elem.parentNode);
+}
+
+const db = {
+    "03067":["Bake Rolls 100g","snack"],
+    "04089":["Potato Chips 70g","snack"],
+    "05612":["Ice Coffee 100ml","drink"],
+    "07740":["Sparkling Water 1.5l","drink"]
+}
 
 function uuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

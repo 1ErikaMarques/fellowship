@@ -1,28 +1,34 @@
-<header class="header">
-  <div class="header__left">
-    <h2>FellowShip</h2>
-  </div>
-  <div class="header__center">
-    <h3>Moema</h3>
-    <label>
-      <input type="search" placeholder="Pesquisar" />
-    </label>
-  </div>
-  <div class="icone_perfil">
-    <img src="assets/images/jovem-estudante.png" alt="" />
-  </div>
-</header>
+<div class="header_nav" id="header-nav">
 
-<section class="menu_nav container">
-  <nav>
-    <ul>
-      <li><a onclick="loadFeed()">Noticias</a></li>
-      <li><a onclick="loadFeed()">Estabelecimentos</a></li>
-      <li><a onclick="loadFeed()">Segurança</a></li>
-      <li><a onclick="loadFeed()">Casas</a></li>
-      <li><a onclick="loadFeed()">Eventos</a></li>
-      <li><a onclick="loadFeed()">Doações</a></li>
-      <li><a onclick="loadFeed()">Desaparecidos</a></li>
-    </ul>
-  </nav>
-</section>
+    <div class="header_nav_items">
+        <img class="header_logo" src="assets/logo.svg"/>
+    </div>
+    <div class="header_nav_items">
+        <span class="bairro" id="bairro">Moema</span>
+    </div>
+    <div class="header_nav_items">
+        <div>
+        <input type="text" class="search" placeholder="&#xf002; Pesquisar" id="header_search" maxlength="28"
+               autocomplete="false" onkeyup="buscarBairros(this)">
+        </div>
+    </div>
+    <div class="header_nav_items">
+        <ul>
+            <li>
+                <a tabindex="-1">
+                    <img src="assets/header/home.svg" alt="home"/>
+                </a>
+            </li>
+            <li>
+                <a tabindex="-1">
+                    <img src="assets/header/notification.svg" alt="notificao"/>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <img src="assets/header/perfil.svg" alt="profile"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

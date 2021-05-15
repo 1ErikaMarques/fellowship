@@ -1,0 +1,112 @@
+.menu_nav {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.menu_nav ul {
+    display: flex;
+    padding-inline-start: 60px;
+}
+
+.menu_nav ul li {
+    margin-right: 1rem;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #2D2D2D;
+}
+.active_menu_nav {
+    text-decoration: underline;
+    text-decoration-color: #4285F4;
+    color: #4285F4;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.menu_nav {
+    display: flex;
+    z-index: 100;
+    box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+    background: #FEFEFE;
+    border: 1px solid #E9E9E9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 2rem;
+}
+
+@media all and (min-width: 960px) {
+    .menu_nav {
+        display: flex;
+        z-index: 100;
+        box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+        background: #FEFEFE;
+        border: 1px solid #E9E9E9;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin-top: 2rem;
+    }
+
+    .menu_nav ul {
+        display: flex;
+    }
+
+    .menu_nav ul li {
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .menu_nav {
+        display: grid;
+        z-index: 100;
+        box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+        background: #FEFEFE;
+        border: 1px solid #E9E9E9;
+        box-sizing: border-box;
+        border-radius: 4px;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .menu_nav ul {
+        display: flex;
+        flex-flow:wrap;
+        align-content:space-between;
+    }
+
+    .menu_nav ul li {
+        margin-right: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .menu_nav {
+        display: flex;
+        z-index: 100;
+        box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+        background: #FEFEFE;
+        border: 1px solid #E9E9E9;
+        box-sizing: border-box;
+        border-radius: 4px;
+        margin-top: 2rem;
+    }
+
+    .menu_nav ul {
+        display: flex;
+        flex-flow:wrap;
+        justify-content: space-evenly;
+    }
+
+    .menu_nav ul li {
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+}

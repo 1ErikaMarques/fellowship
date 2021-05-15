@@ -1,6 +1,8 @@
 <section class="share-box-entry container" id="share-box-entry">
-    <div>
+    <div class="share-box-entry-div">
         <img src="assets/images/usuarios/jovem-estudante.png" alt="Ana Carolina Yamamoto">
+    </div>
+    <div class="share-box-entry-div">
         <button onclick="exibirModal()">Começar publicação</button>
     </div>
     <div id="shareEntryModal" class="modal">
@@ -16,10 +18,10 @@
 
                 <h3>Ana Carolina Yamamoto</h3></div>
             <div contentEditable="true" class="entry-input" id="entrada-de-dados">
-               
+
             </div>
             <section id="img-modal-post">
-             </section>
+            </section>
             <hr class="solid">
             <input id="share-box-entry-toolbar-secondary" type="file" multiple onchange="addImgToPost(this)"/>
             <div>
@@ -36,29 +38,41 @@
         </div>
 
         <div>
-        <p class="texto_publicacao">É simplesmente um texto fictício da indústria de impressão e composição. Lorem Ipsum tem
-            sido o texto fictício
-            padrão da indústria desde os anos 1500, quando um impressor desconhecido pegou uma galé do tipo e embaralhou
-            para fazer um livro de amostra de tipos. Ele sobreviveu não apenas cinco séculos, mas também ao salto para a
-            composição eletrônica, permanecendo essencialmente inalterado. Ele foi popularizado na década de 1960 com o
-            lançamento de folhas de Letraset contendo passagens de Lorem Ipsum e, mais recentemente, com software de
-            editoração eletrônica como Aldus PageMaker incluindo versões de Lorem Ipsum.
-        </p>
+            <p class="texto_publicacao">É simplesmente um texto fictício da indústria de impressão e composição. Lorem
+                Ipsum tem
+                sido o texto fictício
+                padrão da indústria desde os anos 1500, quando um impressor desconhecido pegou uma galé do tipo e
+                embaralhou
+                para fazer um livro de amostra de tipos. Ele sobreviveu não apenas cinco séculos, mas também ao salto
+                para a
+                composição eletrônica, permanecendo essencialmente inalterado. Ele foi popularizado na década de 1960
+                com o
+                lançamento de folhas de Letraset contendo passagens de Lorem Ipsum e, mais recentemente, com software de
+                editoração eletrônica como Aldus PageMaker incluindo versões de Lorem Ipsum.
+            </p>
 
-        <img src="assets/images/casas/apartamento-alugar.png" alt="apartamento para alugar" class="publicacao">
+            <img src="assets/images/casas/apartamento-alugar.png" alt="apartamento para alugar" class="publicacao">
 
-        <div class="area_comentarios">
-            <img src="assets/images/usuarios/jovem-estudante.png" alt="" class="img_comentario">
-            <label>
-                <input type="text" placeholder=" Escreva um comentário ">
-            </label>
+            <div class="area_comentarios">
+                <div class="area_comentarios_flex">
+                    <img src="assets/images/usuarios/jovem-estudante.png" alt="" class="img_comentario">
+                </div>
+                <div class="area_comentarios_flex">
+                    <label>
+
+                        <input type="text" placeholder=" Escreva um comentário ">
+                    </label>
+                </div>
+            </div>
+
+            <div class="area_comentarios">
+                <div class="area_comentarios_flex">
+                    <img src="assets/images/usuarios/servidor-publico.png" alt="" class="img_comentario">
+                </div>
+                <div class="area_comentarios_flex">
+                    <input type="text" placeholder="">
+                </div>
+            </div>
         </div>
-
-        <div class="area_comentarios">
-            <img src="assets/images/usuarios/servidor-publico.png" alt="" class="img_comentario">
-            <label>
-                <input type="text" placeholder="  ">
-            </label>
-        </div>
-
+    </div>
 </section>

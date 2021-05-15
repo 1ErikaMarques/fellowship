@@ -1,0 +1,80 @@
+/* Primeira section do profile */
+.profile-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9rem;
+}
+
+.header-profile {
+  margin-left: 1rem;
+}
+
+.img-user {
+  max-height: 3rem;
+  border-radius: 30px;
+}
+
+.header-profile .profile-name {
+  margin-inline-end: 7rem;
+  font-weight: 600;
+  font-size: 18px;
+  color: #2d2d2d;
+}
+
+.header-profile button {
+  margin-inline-end: 13px;
+}
+
+/* Segunda section do profile */
+.header-profile-bottom ul {
+  display: table;
+  border-spacing: 10px;
+  border-collapse: separate;
+}
+
+.header-profile-bottom ul li {
+  vertical-align: middle;
+  display: table-row;
+}
+
+.header-profile-bottom ul li span {
+  margin-inline-start: 1rem;
+  display: table-cell;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3a3a;
+}
+
+.header-profile-bottom ul li img {
+  margin-inline-end: 0.5rem;
+}
+
+/* Terceira section do profile */
+.header-profile-about-title {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  word-wrap: break-word;
+  font-weight: 600;
+  font-size: 14px;
+  color: #b5b5b5;
+}
+.header-profile-about-conteudo {
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 12px;
+  line-height: 18px;
+  color: #2e2e2e;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  .header-profile .profile-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+}

@@ -99,26 +99,28 @@ function publicarPost() {
  */
 function checkLogin(form) {
 
-    if (form.username.value === '' || form.password.value === '') {
+    console.log(form)
+
+    if (form.email.value === '' || form.password.value === '') {
         return;
     }
 
     const users = JSON.parse(localStorage.getItem('users'))
 
     if (users !== null) {
-        let username;
+        let email;
         let password;
 
         for (let user of users) {
-            if (user.email === form.username.value) {
-                username = user.email
+            if (user.email === form.email.value) {
+                email = user.email
                 password = user.password
                 break;
             }
         }
 
-        if (form.username.value === username && form.password.value === password) {
-            userSession(form.username.value, usuarioCadastrado);
+        if (form.email.value === email && form.password.value === password) {
+            userSession(form.email.value, usuarioCadastrado);
             location.reload();
         } else {
             alert('Please check your username/password')
@@ -136,12 +138,15 @@ function checkLogin(form) {
  * @param password a senha do usuario
  * @returns {{password, email, username}}
  */
-function addUser(id, username, email, password) {
+function addUser(id, username, email, password, birthday, postalCode , neighborhood) {
     return {
         "id": id,
         "username": username,
         "email": email,
-        "password": password
+        "password": password,
+        "birthday": birthday,
+        "postalCode":postalCode,
+        "neighborhood":neighborhood
     };
 }
 
@@ -156,7 +161,7 @@ function register(form) {
         return;
     }
 
-    const newUser = addUser(uuid(), form.username.value, form.email.value, form.password.value);
+    const newUser = addUser(uuid(), form.username.value, form.email.value, form.password.value , form.birthday.value, form.postalCode.value , form.neighborhood.value);
 
     if (localStorage.getItem('users')) {
         let storedUsers = JSON.parse(localStorage.getItem('users'));

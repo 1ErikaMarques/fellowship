@@ -1,33 +1,27 @@
-.body {
-    background-color: #fafcff!important;
+body {
+    background-color: #fafcff!important;/*#fafcff*/
 }
-
-
 
 .wrapper {
   display: flex;  
   text-align: center;
   margin-top: 8rem;
-  justify-content: center;
-  
+  justify-content: center; 
   
 }
-
-
 
 .child-items {
     flex-direction: row;
     
 }
+
 /*ilustracao*/
 .img-login{
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-right: 70px;
-    max-width: 100%;
-    height: 90%;
-    
-    
+    max-width: 100%;   
 }
+
 /*Container login*/
 .form-login {
     height: auto;
@@ -36,7 +30,7 @@
     border-radius: 4px;    
     margin-top: 1rem;       
     max-width: 100%;   
-    padding: 2%; 
+    padding: 2rem; 
 }
 
 /*Logo*/
@@ -53,16 +47,24 @@
     top: 384px;        
     border-radius: 6px;    
     margin-top: 1.3rem;  
+    background-color: #fafafa
     
 
 }
 .form-login input:focus{
-   outline: none;  
-   padding: 2px;   
-   background-color: var(--ice);
-   border: 2px solid var(--blue);
-   box-shadow:  0px 0px 1px  var(--blue);
+   background-color: white;
+   outline: none;      
+   border: 1px solid var(--blue);
+   box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
 }
+
+.form-login input:hover{
+    background-color: white;
+    outline: none;      
+    box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
+    
+ }
+ 
 
 ::placeholder {    
     padding: 10px;   
@@ -108,8 +110,7 @@
     display: flex;
     justify-content: center;
 }
-.form-cadastro {  
-      
+.form-cadastro {        
     background-color: #fefefe;
     align-items: center;
     border-radius: 6px;    
@@ -138,7 +139,7 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */       
-    background-color: rgba(129, 129, 129, 0.1); /* Black w/ opacity */
+    background-color: rgba(129, 129, 129, 0.4); /* Black w/ opacity */
   
 }
 input[type="date" i]{
@@ -146,15 +147,6 @@ input[type="date" i]{
     text-indent: 4px;    
 }
 
-.close-modal-cadastro {    
-    float: right;
-    margin-right: 30px;
-    margin-top: 15px;
-    font-size: 25px;
-    font-weight: bold;    
-    cursor: pointer;
-    color: #b5b5b5;
-}
 
 
 
@@ -167,9 +159,7 @@ input[type="date" i]{
         justify-content: center;      
     }
 
-    .form-login{
-        padding: 3%;
-    }
+    
 }
 /*Tablet*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -180,24 +170,21 @@ input[type="date" i]{
        display: none;
    }
    .form-login{
-    padding: 3%;
-    margin-right: 20px;
-    margin-left: 30px;    
+    padding: 1.5rem;      
 }
   
    
 }
-
+/*notebook*/
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     
-    .form-login{
-        padding: 3%;
-        margin-right: 20px;
+    .form-login{        
+        margin-right: 50px;
         
     }
     .img-login{
-       height: 90%;
-       
+       height: 70%;
+       max-width: 90%;
     }
    
 }

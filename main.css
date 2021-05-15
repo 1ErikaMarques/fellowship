@@ -77,7 +77,15 @@ p {
     color: #fefefe;
 }
 
-
+.close-modal {    
+    float: right;
+    margin-right: 30px;
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: bold;    
+    cursor: pointer;
+    color: #b5b5b5;
+}
 
 
 @media (min-width: 600px){

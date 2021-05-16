@@ -2,26 +2,6 @@
 /**
  *
  */
-function exibirModal() {
-    let modal = document.getElementById("shareEntryModal")
-    modal.style.display = "block"
-    document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
-    const entradaDeDados = document.getElementById("entrada-de-dados")
-    entradaDeDados.focus()
-}
-
-/**
- *
- */
-function fecharModal() {
-    let modal = document.getElementById("shareEntryModal")
-    modal.style.display = "none"
-    document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
-}
-
-/**
- *
- */
 function publicarPost() {
     const elementoPost = document.getElementById("entrada-de-dados") //estou colocando a div "entrada-de-dados" do html dentro da const elemento Post
     const conteudoPost = elementoPost.innerText // acessando o texto da div do modal post
@@ -229,7 +209,7 @@ const novoUsuario = 1;
 const usuarioCadastrado = 2;
 
 function buscarBairros(elem) {
-   console.log(elem);
+    console.log(elem);
     /* // Check if input is empty
      if (elem.value.trim() !== "") {
          elem.classList.add("dropdown"); // Add dropdown class (for the CSS border-radius)
@@ -301,10 +281,69 @@ function uuid() {
 function modalCadastro() {
     const modal = document.getElementById("modalCadastro")
     modal.style.display = 'block';
-
 }
 
 function fecharModalCadastro() {
     const modal = document.getElementById("modalCadastro")
     modal.style.display = 'none';
+}
+
+/**
+ * Exibir modal para cada topico
+ * @param {*} page referencia da modal que devemos carregar
+ */
+function exibirModal() {
+
+    const tipoDeMenuNavAtivo = procurarMenuNavAtivo();
+
+    if (tipoDeMenuNavAtivo !== undefined) {
+        switch (tipoDeMenuNavAtivo) {
+            case 'generico':
+                modalGenerica();
+                break;
+            case 'casa':
+                modalCasa();
+                break;
+            case 'doacoes':
+                modalDoacoes();
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+/**
+ * Procura qual menu nav esta ativo
+ * @returns retorna o tipo do nav que esta ativo (exemplo generico,casa,doacoes)
+ */
+function procurarMenuNavAtivo() {
+
+    const activeClassName = 'active_menu_nav';
+
+    const menuNavUl = document.getElementById("menu-nav-ul");
+
+    for (let i = 0; i < menuNavUl.children.length; i++) {
+        const menuNavLi = menuNavUl.children[i];
+
+        for (let i = 0; i < menuNavLi.children.length; i++) {
+            if (menuNavLi.children[i].classList.contains(activeClassName)) {
+                return menuNavLi.children[i].dataset.tipo;
+            }
+        }
+    }
+}
+
+/* Modal generica */
+function modalGenerica() {
+    let modal = document.getElementById("modal-generica")
+    modal.style.display = "block"
+    document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
+    const entradaDeDados = document.getElementById("modal-generica-entrada-de-dados")
+    entradaDeDados.focus()
+}
+function fecharModalGenerica() {
+    let modal = document.getElementById("modal-generica")
+    modal.style.display = "none"
+    document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
 }

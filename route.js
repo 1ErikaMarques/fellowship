@@ -25,7 +25,6 @@ async function loadFeed(ancoraMenuNav) {
         const activeClassName = 'active_menu_nav';
         const aparadorMenuNav = 'aparador_menu_nav';
         ancoraMenuNav.classList.toggle(activeClassName);
-       // ancoraMenuNav.classList.toggle(aparadorMenuNav);
 
         const menuNavUl = document.getElementById("menu-nav-ul");
 

@@ -138,15 +138,15 @@ function checkLogin(form) {
  * @param password a senha do usuario
  * @returns {{password, email, username}}
  */
-function addUser(id, username, email, password, birthday, postalCode , neighborhood) {
+function addUser(id, name, email, password, birthday, postalCode, neighborhood) {
     return {
         "id": id,
-        "username": username,
+        "name": name,
         "email": email,
         "password": password,
         "birthday": birthday,
-        "postalCode":postalCode,
-        "neighborhood":neighborhood
+        "postalCode": postalCode,
+        "neighborhood": neighborhood
     };
 }
 
@@ -157,11 +157,11 @@ function addUser(id, username, email, password, birthday, postalCode , neighborh
  */
 function register(form) {
 
-    if (form.username.value === '' || form.password.value === '') {
+    if (form.email.value === '' || form.email.value === '') {
         return;
     }
 
-    const newUser = addUser(uuid(), form.username.value, form.email.value, form.password.value , form.birthday.value, form.postalCode.value , form.neighborhood.value);
+    const newUser = addUser(uuid(), form.name.value, form.email.value, form.password.value, form.birthday.value, form.postalCode.value, form.neighborhood.value);
 
     if (localStorage.getItem('users')) {
         let storedUsers = JSON.parse(localStorage.getItem('users'));
@@ -229,51 +229,51 @@ const novoUsuario = 1;
 const usuarioCadastrado = 2;
 
 function buscarBairros(elem) {
-    let selector = document.getElementById("header_search");
-   /* // Check if input is empty
-    if (elem.value.trim() !== "") {
-        elem.classList.add("dropdown"); // Add dropdown class (for the CSS border-radius)
-        // If the selector div element does not exist, create it
-        if (selector == null) {
-            selector = document.createElement("div");
-            selector.id = "selector";
-            elem.parentNode.appendChild(selector);
-            // Position it below the input element
-            selector.style.left = elem.getBoundingClientRect().left + "px";
-            selector.style.top = elem.getBoundingClientRect().bottom + "px";
-            selector.style.width = elem.getBoundingClientRect().width + "px";
-        }
-        // Clear everything before new search
-        selector.innerHTML = "";
-        // Variable if result is empty
-        let empty = true;
-        for (let item in db) {
-            // Join the db elements in one string
-            let str = [item.toLowerCase(), db[item][0].toLowerCase(), db[item][1].toLowerCase()].join();
-            // If exists, create an item (button)
-            if (str.indexOf(elem.value) !== -1) {
-                let opt = document.createElement("button");
-                opt.setAttribute("onclick","insertValue(this);")
-                opt.innerHTML = db[item][0];
-                selector.appendChild(opt);
-                empty = false;
-            }
-        }
-        // If result is empty, display a disabled button with text
-        if (empty === true) {
-            let opt = document.createElement("button");
-            opt.disabled = true;
-            opt.innerHTML = "No results";
-            selector.appendChild(opt);
-        }
-    }
-    // Remove selector element if input is empty
-    else {
-        if (selector !== null) {
-            selector.parentNode.removeChild(selector);
-            elem.classList.remove("dropdown");
-        }
-    }*/
+   console.log(elem);
+    /* // Check if input is empty
+     if (elem.value.trim() !== "") {
+         elem.classList.add("dropdown"); // Add dropdown class (for the CSS border-radius)
+         // If the selector div element does not exist, create it
+         if (selector == null) {
+             selector = document.createElement("div");
+             selector.id = "selector";
+             elem.parentNode.appendChild(selector);
+             // Position it below the input element
+             selector.style.left = elem.getBoundingClientRect().left + "px";
+             selector.style.top = elem.getBoundingClientRect().bottom + "px";
+             selector.style.width = elem.getBoundingClientRect().width + "px";
+         }
+         // Clear everything before new search
+         selector.innerHTML = "";
+         // Variable if result is empty
+         let empty = true;
+         for (let item in db) {
+             // Join the db elements in one string
+             let str = [item.toLowerCase(), db[item][0].toLowerCase(), db[item][1].toLowerCase()].join();
+             // If exists, create an item (button)
+             if (str.indexOf(elem.value) !== -1) {
+                 let opt = document.createElement("button");
+                 opt.setAttribute("onclick","insertValue(this);")
+                 opt.innerHTML = db[item][0];
+                 selector.appendChild(opt);
+                 empty = false;
+             }
+         }
+         // If result is empty, display a disabled button with text
+         if (empty === true) {
+             let opt = document.createElement("button");
+             opt.disabled = true;
+             opt.innerHTML = "No results";
+             selector.appendChild(opt);
+         }
+     }
+     // Remove selector element if input is empty
+     else {
+         if (selector !== null) {
+             selector.parentNode.removeChild(selector);
+             elem.classList.remove("dropdown");
+         }
+     }*/
 }
 
 function insertValue(elem) {
@@ -283,10 +283,10 @@ function insertValue(elem) {
 }
 
 const db = {
-    "03067":["Bake Rolls 100g","snack"],
-    "04089":["Potato Chips 70g","snack"],
-    "05612":["Ice Coffee 100ml","drink"],
-    "07740":["Sparkling Water 1.5l","drink"]
+    "03067": ["Bake Rolls 100g", "snack"],
+    "04089": ["Potato Chips 70g", "snack"],
+    "05612": ["Ice Coffee 100ml", "drink"],
+    "07740": ["Sparkling Water 1.5l", "drink"]
 }
 
 function uuid() {
@@ -300,11 +300,11 @@ function uuid() {
 
 function modalCadastro() {
     const modal = document.getElementById("modalCadastro")
-    modal.style.display='block';
+    modal.style.display = 'block';
 
 }
 
-function fecharModalCadastro(){
+function fecharModalCadastro() {
     const modal = document.getElementById("modalCadastro")
-    modal.style.display='none';
+    modal.style.display = 'none';
 }

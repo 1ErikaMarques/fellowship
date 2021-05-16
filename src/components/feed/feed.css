@@ -23,7 +23,7 @@
     border-radius: 15px;         
     background-color: #fafafa;
     color: #b5b5b5;
-    border: 1px solid #eaeaea;
+    border: 1px solid #e9e9e9;
     cursor: pointer;
 }
 
@@ -35,14 +35,8 @@ p {
     word-break: break-all;
 }
 
-.share-box-entry button:active {
-    text-align: left;
-    border: 1px solid #e9e9e9;
-}
-
 .share-box-entry button:focus {
-    outline: none;
-    text-align: left;
+    outline: none;    
 }
 
 .share-box-entry img {
@@ -50,17 +44,15 @@ p {
     max-width: 3.0rem;
     border-radius: 30px;
     margin-left: 20px;
-    border: 1px solid #e9e9e9;
+    border: 1px solid #e9e9e9
 }
 
 /*Publicações*/
 
 .post {
     height: auto;
-    background-color: #ffffff;
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid #e2e2e2;
+    background-color: #fefefe;
+    align-items: center;       
     margin-top: 20px !important;
 }
 
@@ -68,9 +60,9 @@ p {
     max-height: 3.0rem;
     max-width: 100%;
     border-radius: 30px;
-    margin-left: 30px;
-    margin-top: 20px;
-    border: 1px solid #e2e2e2;
+    margin-left: 20px;
+    margin-top: 20px;   
+    border: 1px solid #e9e9e9 
 }
 
 .usuario_post {
@@ -79,7 +71,7 @@ p {
 }
 
 .usuario_post h3 {
-    font-size: 1.0rem;
+    font-size: 15px;
     letter-spacing: 0.03em;
     font-weight: bold;
     margin-top: 35px;
@@ -89,17 +81,20 @@ p {
 }
 
 .texto_publicacao {
-    font-size: 0.875rem;
+    font-size: 15px;
     color: #363636;
-    max-width: 92%;
-    margin-left: 38px;
+    max-width: 90%;
+    margin-left: 45px;
     line-height: 150%;
-    word-break: break-all;
+    letter-spacing: 0.03em;
+    word-break:keep-all;
+    margin-right: 17px;
+ 
 
 }
 
 .publicacao {
-    width: min(90vw, 680px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
+    width: min(90vw, 661px); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
     margin: auto;
 }
 

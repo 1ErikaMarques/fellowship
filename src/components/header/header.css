@@ -5,10 +5,9 @@
     z-index: 10;
     display: flex;
     width: 100%;       
-    justify-content: space-evenly;
+    justify-content: space-around ;
     align-items: center;    
-    background: #FEFEFE;
-    
+    background: #FEFEFE;  
       
     
 }
@@ -33,12 +32,12 @@
 }
 
 /*campo pesquisar*/
-.search {
-    width: 78%;    
+.search {    
     background: #FAFAFA;
     border: 1px solid #EAEAEA;
     border-radius: 4px;
-    height: 1.7rem;
+    height: 1.7rem;  
+    margin-inline-end: 10rem;    
 }
 
 .search:focus {
@@ -52,7 +51,7 @@
 }
 
 .search::placeholder {
-    text-align: left;    
+    text-align: center;    
     font-family:FontAwesome;  
     color: #b5b5b5;  
     font-size: 14px;
@@ -60,7 +59,7 @@
 }
 
 .search[type="text" i] {
-    padding: 1px 20px;   
+   padding: 1px 15px;
 }
 
 /*icones header*/
@@ -78,9 +77,10 @@
 /*Mobile*/
 @media only screen and (min-width: 320px) and (max-width: 480px) {  
     .header_logo { 
-        margin-inline-start: 15%;
+        
         margin-top: 10%;
         height: 10%;
+        margin-inline-start: 25%;  
     }
 
     .header_nav_items span {
@@ -88,30 +88,44 @@
     }
 
     .search {
-        width: 65%;
-        margin-inline-start: 20%;
+        width: 55%; 
+        margin-inline-start: 30%;   
+        margin-inline-end: 0%;    
+        
+    }
+    .search::placeholder {         
+        font-size: 12px;
+       
+        
     }
     .header_nav_items ul {
-        margin-top: 13%;
+        margin-top: 10%;
+        width: 65%;
+        margin-right: 30px;
     }
+  
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
 
     .header_logo { 
-        margin-inline-start: 10%;
+        margin-inline-start: 15%;
         margin-top: 5%;
+       
     }
     .header_nav_items span {
         display: none;
     }
     .search {
-       width: 70%;
-       margin-inline-start: 22%;
+       width: 65%;
+       margin-inline-start: 20%;
+       margin-inline-end: 0%;
        height: 1.6rem;
     }
 
     .header_nav_items ul {
-       margin-top: 13%;
+       margin-top: 10%;
+       margin-right: 20px;
+
     }
 }

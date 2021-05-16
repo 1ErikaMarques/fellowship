@@ -18,25 +18,38 @@ async function loadMenuNav() {
     contentDiv.innerHTML = await fetchHtmlAsText("./src/components/menu-nav/menu-nav.html");
 }
 
-async function loadFeed(element) {
+async function loadFeed(ancoraMenuNav) {
     const contentDiv = document.getElementById("content");
 
-    if (element !== undefined) {
+    if (ancoraMenuNav !== undefined) {
         const activeClassName = 'active_menu_nav';
-
-        element.classList.toggle(activeClassName);
+        const aparadorMenuNav = 'aparador_menu_nav';
+        ancoraMenuNav.classList.toggle(activeClassName);
+       // ancoraMenuNav.classList.toggle(aparadorMenuNav);
 
         const menuNavUl = document.getElementById("menu-nav-ul");
 
         for (let i = 0; i < menuNavUl.children.length; i++) {
             const menuNavLi = menuNavUl.children[i];
-
+                
             for (let i = 0; i < menuNavLi.children.length; i++) {
                 const menuNavLiChild = menuNavLi.children[i];
 
-                if (element !== menuNavLiChild && menuNavLiChild.classList.contains(activeClassName)) {
+                if (ancoraMenuNav !== menuNavLiChild && menuNavLiChild.classList.contains(activeClassName)) {
                     menuNavLiChild.classList.remove(activeClassName)
                 }
+                
+                for (let i = 0; i < menuNavLiChild.children.length; i++) {
+                    const menuNavAChild = menuNavLiChild.children[i];
+                    
+
+                    if (ancoraMenuNav.children[0] !== menuNavAChild && menuNavAChild.classList.contains(aparadorMenuNav)) { //filhos do a, que e a div
+                        menuNavAChild.classList.remove(aparadorMenuNav)
+                    }
+                    else if(ancoraMenuNav.children[0] === menuNavAChild) {
+                        menuNavAChild.classList.add(aparadorMenuNav)
+                    }
+                }                
             }
         }
     }

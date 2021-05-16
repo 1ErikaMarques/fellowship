@@ -65,9 +65,9 @@
     }
 
     .menu_nav ul li {            
-        height:0.8rem;
-        font-size: 12px;       
-        margin-bottom:10px;
+        height:0.1rem;
+        font-size: 0.8rem;      
+        margin-bottom:8%;
     }
 
   
@@ -84,13 +84,12 @@
         flex-flow:wrap;
         justify-content: center;
         align-items: center;
-        margin-inline-start: 0.9rem;
+        margin-inline-start: 0.9rem;      
         
     }
 
     .menu_nav ul li {
-        font-size: 12px;        
-        
+        font-size: 0.8rem;    
         margin-bottom:10px;
        
     }

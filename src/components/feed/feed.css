@@ -136,34 +136,22 @@ p {
 }
 
 
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(129, 129, 129, 0.1); /* Black w/ opacity */
+/* Modal generica */
+.modal-cadastro{
+    width: 100%!important;
 }
-
 /* Modal Content */
-.modal-content {
+.modal-generica-conteudo {
     background-color: #fefefe;
     padding: 20px;
-    border: 1px solid #888;
     width: 24%;
-    margin: 10rem auto auto;
+    margin: 5rem auto auto;
     height: auto;
 }
 
-.entry-input {
+.modal-generica-entrada-de-dados {
     width: 100%;
-    margin-top: 24px;
-    margin-right: 42px;
+    margin-bottom:2rem;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -172,22 +160,24 @@ p {
     text-align: left;
 }
 
-.entry-input:focus {
+.modal-generica-entrada-de-dados:focus {
     outline: none;
     text-align: left;
 }
 
 /* The Close Button */
-.close {
-    color: #aaaaaa;
+.close-modal-generica {
     float: right;
-    font-size: 28px;
+    margin-right: 30px;
+    margin-top: 15px;
+    font-size: 25px;
     font-weight: bold;
-    margin-left: 1rem;
-}
+    cursor: pointer;
+    color: #b5b5b5;
+  }
 
-.close:hover,
-.close:focus {
+.close-modal-generica:hover,
+.close-modal-generica:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

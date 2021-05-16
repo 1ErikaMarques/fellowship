@@ -1,34 +1,75 @@
 <div class="header_nav border" id="header-nav">
-
-    <div class="header_nav_items">
-        <img class="header_logo" src="assets/logo.svg"/>
+  <div class="header_nav_items">
+    <img class="header_logo" src="assets/logo.svg" />
+  </div>
+  <div class="header_nav_items">
+    <span class="bairro" id="bairro">Moema</span>
+  </div>
+  <div class="header_nav_items">
+    <div>
+      <input
+        type="text"
+        class="search"
+        placeholder="&#xf002;  Pesquisar"
+        id="header_search"
+        maxlength="28"
+        autocomplete="false"
+        onkeyup="buscarBairros(this)"
+      />
     </div>
-    <div class="header_nav_items">
-        <span class="bairro" id="bairro">Moema</span>
-    </div>
-    <div class="header_nav_items">
-        <div>
-        <input type="text" class="search" placeholder="&#xf002;  Pesquisar" id="header_search" maxlength="28"
-               autocomplete="false" onkeyup="buscarBairros(this)">
-        </div>
-    </div>
-    <div class="header_nav_items">
-        <ul>
-            <li>
-                <a tabindex="-1">
-                    <img src="assets/header/home.svg" alt="home"/>
-                </a>
-            </li>
-            <li>
-                <a tabindex="-1">
-                    <img src="assets/header/notification.svg" alt="notificao"/>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <img src="assets/header/perfil.svg" alt="profile"/>
-                </a>
-            </li>
+  </div>
+  <div class="header_nav_items">
+    <ul class="primary">
+      <li>
+        <img onclick="loadFeed()" src="assets/header/home.svg" alt="home" />
+      </li>
+      <li
+        onclick="adicionaPermaHoverClass(this)"
+        data-tipo="notifications"
+        id="notifications-icon"
+      >
+        <img src="assets/header/notification.svg" alt="notificao" />
+        <ul class="sub">
+          <div id="notifications">
+            <li><p>Test</p></li>
+          </div>
         </ul>
-    </div>
+      </li>
+      <li
+        onclick="adicionaPermaHoverClass(this)"
+        data-tipo="profile"
+        id="profile-icon"
+      >
+        <img src="assets/header/perfil.svg" alt="profile" />
+        <ul class="sub">
+          <li>
+            <a onclick="loadProfile()">
+              <img
+                class="icons"
+                src="assets/header/user-icone-modal.svg"
+                alt="Perfil"
+              />
+              Perfil</a
+            >
+          </li>
+          <li>
+            <a
+              ><img
+                class="icons"
+                src="assets/header/icone-ferramentas-modal.svg"
+                alt="Configurações"
+              />Configurações</a
+            >
+          </li>
+          <hr class="solid" />
+          <li>
+            <a>
+              <img class="icons" src="assets/header/logout.svg" alt="Perfil" />
+              Sair</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>

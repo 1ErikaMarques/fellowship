@@ -7,6 +7,9 @@
 /*
  font size 14px = 0.875rem
 line-height: 150% de texto
+Corpo 1 - 16 px - 0,5%
+Corpo 2 - 14 px - 0,25%
+
  */
 
 body {
@@ -23,16 +26,6 @@ p {
   font-family: -apple-system, Roboto, "Helvetica Neue", sans-serif;
   font-size: 0.875rem; /*14px*/
   /*line-height: 1.25rem;*/
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: min(
-      90vw,
-      680px
-    ); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
-    margin: auto;
-  }
 }
 
 .border {
@@ -92,7 +85,17 @@ p {
   .container {
     width: min(
       90vw,
-      680px
+      661px
+    ); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
+    margin: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: min(
+      90vw,
+      661px
     ); /*min e uma funcao, ela procura o menor entre os dois valores que passei*/
     margin: auto;
   }

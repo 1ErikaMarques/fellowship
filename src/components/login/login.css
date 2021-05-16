@@ -1,11 +1,11 @@
 body {
-    background-color: #fafcff!important;/*#fafcff*/
+    background-color: #fefefe!important;/*#fafcff*/
 }
 
 .wrapper {
   display: flex;  
   text-align: center;
-  margin-top: 8rem;
+  margin-top: 11rem;
   justify-content: center; 
   
 }

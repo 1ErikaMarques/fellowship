@@ -1,6 +1,6 @@
 /* Publicação do Post */
 .share-box-entry {
-    height: 120px;
+    height: 110px;
     background-color: #fefefe;
     align-items: center;    
     display: flex;
@@ -8,27 +8,30 @@
 }
 
 .share-box-entry-div {
-    flex-direction: row;
-    width: 90%;
+    flex-direction: row;    
 }
 
 .share-box-entry-div button {
-    font-size: 0.875rem;    
-    font-weight: bold;    
+    font-size: 14px;        
     text-align: left;
     margin-inline-end: 472px;
-    width: 97%;
-    height: 40px;    
+    width: 95%;
+    height: 40px;   
+    margin-left: 10px; 
     padding: 1px 15px;
     border-radius: 15px;         
-    background-color: #fafafa;
-    color: #b5b5b5;
-    border: 1px solid #e9e9e9;
+    background-color: #F7F7F8;
+    color: #9e9ea7;
+    border: 1px solid #F7F7F8;
     cursor: pointer;
+    letter-spacing: 0.05rem;
+
 }
 
 .share-box-entry-div button:hover{
     background-color: #fefefe;
+    border: 2px solid #F7F7F8;
+    transition: color 900ms ease;
 }
 
 p {
@@ -37,6 +40,7 @@ p {
 
 .share-box-entry button:focus {
     outline: none;    
+   
 }
 
 .share-box-entry img {
@@ -60,11 +64,22 @@ p {
     max-height: 3.0rem;
     max-width: 100%;
     border-radius: 30px;
-    margin-left: 20px;
+    margin-left: 22px;
     margin-top: 20px;   
     border: 1px solid #e9e9e9 
 }
+.call-comentarios{
+    font-weight: bold;
+    text-align: end;
+    font-size: 14px;
+    margin-right: 22px;
+    color:#62616d;   
+    cursor: pointer;
+}
 
+.call-comentarios:hover{
+    color: #818095;
+}
 .usuario_post {
     max-width: 400px;
     display: flex;
@@ -76,19 +91,19 @@ p {
     font-weight: bold;
     margin-top: 35px;
     margin-left: 10px;
-    color: #363636
+    color: #53525d;;
 
 }
 
 .texto_publicacao {
     font-size: 15px;
-    color: #363636;
-    max-width: 90%;
+    color: #62616d;
+    width: 92%;
     margin-left: 45px;
     line-height: 150%;
     letter-spacing: 0.03em;
-    word-break:keep-all;
-    margin-right: 17px;
+    word-break:normal;
+    
  
 
 }
@@ -101,10 +116,10 @@ p {
 /*Comentarios post*/
 
 .img_comentario {
-    max-height: 3.0rem;
-    max-width: 3.0rem;
+    height: 2.6rem;
+    width: 2.6rem;
     border-radius: 30px;
-    margin-left: 30px;
+    margin-left: 25px;
     margin-top: 20px;
     border: 1px solid #e2e2e2;
 }
@@ -118,21 +133,53 @@ p {
 }
 
 .area_comentarios input {
-    width: 542px;
-    height: 30px;
-    align-items: center;
-    border: 1px solid #e2e2e2;
-    border-radius: 0.938rem;
-    margin-top: 1.75rem;
-    float: right;
-    margin-right: 2.625rem;
+    width: 560px;
+    height:50%;  
+    border-radius: 12px;
+    margin-top: 25px;    
+    margin-left:8px;
+    background-color: #F7F7F8;    
+    border: 1px solid #F7F7F8;
+    color: #62616d;
+    font-size: 14px;
 }
+
 
 .area_comentarios input:focus {
     outline: none;
-    text-align: left;
+    cursor: none;
 }
 
+.aparador-post {
+    width: 100%;       
+    border-top: 1px solid #e9e9e9;
+    margin-top:25px;
+    height:auto;
+
+   
+}
+
+.comentario-perfil {
+    margin-bottom: 30px; 
+    margin-top:0px;
+
+}
+
+.comentario-perfil input {
+    background-color: #fefefe;
+    border:none;
+    height:50%;       
+   
+}
+.comentario-perfil input::placeholder{
+    color: #b5b5b5;
+   text-align:left;
+   padding: 1;
+}
+
+.comentario-perfil input::placeholder:focus{
+    color: orange;
+}
 
 /* Modal generica */
 .modal-cadastro{
@@ -176,7 +223,7 @@ p {
 
 .close-modal-generica:hover,
 .close-modal-generica:focus {
-    color: #000;
+    color: #666666;
     text-decoration: none;
     cursor: pointer;
 }
@@ -191,7 +238,7 @@ p {
 
 /* Solid border */
 hr.solid {
-    border-top: 1px solid #bbb;
+    border-top: 1px solid #F7F7F8;
 }
 
 
@@ -211,6 +258,7 @@ hr.solid {
 
     .share-box-entry {
         justify-content: space-evenly;
+
     }
 
     .area_comentarios_flex {
@@ -220,18 +268,28 @@ hr.solid {
 
 /*tablet*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+    .share-box-entry-div{
+        
+    }
 
     .share-box-entry-div button {
-        width: 90%;
+        width: 62%;
         margin-left:10px;
+        font-size: 12px;
+        height: 35px;
         
-        
+    }
+
+    .share-box-entry img {
+        max-height: 2.5rem;
+        max-width: 2.5rem;        
     }
 
     .area_comentarios input {
         width: 20rem;
         margin-left: 15px;
     }
+ 
 }
 /*notebook*/
 @media only screen and (min-width: 769px) and (max-width: 1024px) {

@@ -1,15 +1,14 @@
 
 
 .menu_nav_container {
-  margin-top:110px!important;  
+  margin-top:80px!important;  
   
 }
 
 
 
 /*conteudo menu nav*/
-.menu_nav {    
-   
+.menu_nav {       
     margin-bottom: 1rem;  
     background-color: #fefefe!important; 
    
@@ -27,7 +26,7 @@
     cursor: pointer;        
     font-weight: bold;
     font-size: 14px;    
-    color: #4b4b4b;
+    color: #6e6d7a;
     height:1.1rem;  
     
    
@@ -37,6 +36,11 @@
     color: #4285f4;
     font-weight: bold;   
     box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+}
+
+.menu_nav ul :hover{
+    color: #4285f4;    
+    transition: color 200ms ease;
 }
 
 .aparador_menu_nav{

@@ -5,7 +5,7 @@ body {
 .wrapper {
   display: flex;  
   text-align: center;
-  margin-top: 11rem;
+  margin-top: 4rem;
   justify-content: center; 
   
 }
@@ -17,20 +17,21 @@ body {
 
 /*ilustracao*/
 .img-login{
-    margin-top: 5rem;
-    margin-right: 70px;
-    max-width: 100%;   
+    margin-top: 6rem;
+    margin-right: 60px;
+    max-width: 98%; 
+    height: 88%;      
 }
 
 /*Container login*/
 .form-login {
-    height: auto;
+    height: 100%;
     background-color: #fefefe;
     align-items: center;
     border-radius: 4px;    
-    margin-top: 1rem;       
-    max-width: 100%;   
-    padding: 2rem; 
+    margin-top: 12rem;           
+    padding: 1.9rem; 
+    margin-right: 200px;    
 }
 
 /*Logo*/
@@ -39,6 +40,7 @@ body {
     height: 52.25822067260742px;        
     
 }
+
 /*campos email/senha*/
 .form-login input {    
     height: 36px;
@@ -48,9 +50,8 @@ body {
     border-radius: 6px;    
     margin-top: 1.3rem;  
     background-color: #fafafa
-    
-
 }
+
 .form-login input:focus{
    background-color: white;
    outline: none;      
@@ -153,39 +154,53 @@ input[type="date" i]{
 /*Mobile*/
 @media only screen and (max-width: 480px) {
     .img-login {
-        display: none
+        display: none;
+
     }
-    .wrapper {
-        justify-content: center;      
-    }
+   
+  
 
     
 }
 /*Tablet*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-   .wrapper {
-       justify-content: center;      
-   }
+  
     .img-login {
        display: none;
    }
    .form-login{
-    padding: 1.5rem;      
+    padding: 0.8rem;   
+    margin-right: 0;  
+    
 }
-  
-   
+.form-login input {    
+    height: 30px;
+    width: 250px;
+    left: 845px;
+    top: 384px;        
+    border-radius: 6px;    
+    margin-top: 1.3rem;  
+    background-color: #fafafa   
+
+}
+
+.aparador-login {
+    width: 252px; 
 }
 /*notebook*/
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     
     .form-login{        
-        margin-right: 50px;
+        padding: 1.2rem;   
+        margin-right: 0;  
         
     }
-    .img-login{
-       height: 70%;
-       max-width: 90%;
+    .img-login{      
+       
+ 
     }
+
    
 }
 
+}

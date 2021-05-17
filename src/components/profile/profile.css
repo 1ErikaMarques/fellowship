@@ -1,30 +1,44 @@
 /* Primeira section do profile */
 .profile-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 9rem;
 }
 
-.header-profile {
-  margin-left: 1rem;
-}
 
 .img-user {
   max-height: 3rem;
   border-radius: 30px;
+  margin-left: 35px;
 }
 
-.header-profile .profile-name {
-  margin-inline-end: 7rem;
-  font-weight: 600;
-  font-size: 18px;
+.header-profile .profile-name {  
+  font-weight: bold;
+  font-size: 0.875rem;
   color: #2d2d2d;
+  margin-left: 10px;
+}
+.btn-edit {
+  width: 40%;
+  height: 35px;
+  font-size: 12px;/*14px*/
+  font-weight: bold;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  color: var(--blue);
+  background-color: #fefefe;
+  border: 1px solid var(--blue);
+  margin-inline-start: 13rem;
 }
 
-.header-profile button {
-  margin-inline-end: 13px;
+.btn-edit:hover {
+  background-color: var(--blue);
+  color: #fefefe;
+  transition: color 200ms ease;
 }
+
 
 /* Segunda section do profile */
 .header-profile-bottom ul {
@@ -72,9 +86,35 @@
   margin-bottom: 1rem;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 600px) {
+/*Mobile*/
+@media only screen and (min-width: 320px) and (max-width: 480px) {
   .header-profile .profile-name {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
   }
+
+  
+}
+
+/*tablet*/
+@media only screen and (min-width: 481px) and (max-width: 768px){
+
+  .header-profile .profile-name {
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .btn-edit{
+  width: 98%;
+  height: 35px;
+  font-size: 12px;/*14px*/
+  margin-inline-start: 2rem;
+  }
+  .header-profile-bottom ul li span{
+    font-size:12px;
+  }
+}
+
+/*notebook*/
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+
 }

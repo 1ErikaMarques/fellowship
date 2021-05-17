@@ -24,7 +24,7 @@ body {
 
 p {
   font-family: -apple-system, Roboto, "Helvetica Neue", sans-serif;
-  font-size: 0.875rem; /*14px*/
+  /*font-size: 0.875rem; *14px*/
   /*line-height: 1.25rem;*/
 }
 
@@ -53,23 +53,7 @@ p {
   color: #fefefe;
 }
 
-.btn-edit {
-  width: 126px;
-  height: 40px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 4px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  color: var(--blue);
-  background-color: #fefefe;
-  border: 1px solid var(--blue);
-}
 
-.btn-edit:hover {
-  background-color: var(--blue);
-  color: #fefefe;
-}
 
 .close-modal {
   float: right;

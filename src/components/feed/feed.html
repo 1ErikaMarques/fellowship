@@ -12,7 +12,7 @@
 </section>
 
 <!-- Section onde fica todos os posts -->
-<section id="sessao-de-post">
+<section id="sessao-de-post ">
   <div class="post container border">
     <div class="usuario_post">
       <img
@@ -95,9 +95,9 @@
     <div id="modal-generica-header">
       <span class="close-modal-generica" onclick="fecharModalGenerica()"
         >&times;</span>
-      <span>Criar publicação</span>
+      <h4>Criar publicação</h4>      
     </div>
-    <hr class="solid" />
+    <hr class="aparador" />
     <div class="modal-generica-user-info">
       <img
         src="assets/images/usuarios/jovem-estudante.png"
@@ -115,15 +115,16 @@
 
     <!--  Espaco onde fica as imagens apos carregadas -->
     <section id="img-modal-post"></section>
-    <hr class="solid" />
+    <hr class="aparador"/>
     <input
       id="share-box-entry-toolbar-secondary"
       type="file"
       multiple
       onchange="addImgToPost(this)"
     />
-    <div>
-      <button onclick="publicarPost()" class="btn">Começar publicação</button>
+    <div class="btn-modal">
+      <button onclick="publicarPost()" class="btn">Publicar</button>
     </div>
+  
   </div>
 </div>

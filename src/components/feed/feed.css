@@ -1,10 +1,15 @@
+.post {
+    width:9000px;
+}
+
 /* Publicação do Post */
 .share-box-entry {
     height: 110px;
     background-color: #fefefe;
     align-items: center;    
     display: flex;
-    justify-content:flex-start
+    justify-content:space-between;
+   
 }
 
 .share-box-entry-div {
@@ -13,11 +18,9 @@
 
 .share-box-entry-div button {
     font-size: 14px;        
-    text-align: left;
-    margin-inline-end: 472px;
-    width: 95%;
-    height: 40px;   
-    margin-left: 10px; 
+    text-align: left;  
+    width: 565px;
+    height: 40px;       
     padding: 1px 15px;
     border-radius: 15px;         
     background-color: #F7F7F8;
@@ -25,12 +28,13 @@
     border: 1px solid #F7F7F8;
     cursor: pointer;
     letter-spacing: 0.05rem;
+    margin-right: 15px;
 
 }
 
 .share-box-entry-div button:hover{
     background-color: #fefefe;
-    border: 2px solid #F7F7F8;
+    border: 1px solid #F7F7F8;
     transition: color 900ms ease;
 }
 
@@ -44,8 +48,8 @@ p {
 }
 
 .share-box-entry img {
-    max-height: 3.0rem;
-    max-width: 3.0rem;
+    max-height: 3rem;
+    max-width: 3rem;
     border-radius: 30px;
     margin-left: 20px;
     border: 1px solid #e9e9e9
@@ -61,8 +65,8 @@ p {
 }
 
 .img_post {
-    max-height: 3.0rem;
-    max-width: 100%;
+    height: 3rem;
+    width: 3rem;
     border-radius: 30px;
     margin-left: 22px;
     margin-top: 20px;   
@@ -91,7 +95,7 @@ p {
     font-weight: bold;
     margin-top: 35px;
     margin-left: 10px;
-    color: #53525d;;
+    color: #53525d;
 
 }
 
@@ -120,7 +124,7 @@ p {
     width: 2.6rem;
     border-radius: 30px;
     margin-left: 25px;
-    margin-top: 20px;
+    margin-top: 12px;
     border: 1px solid #e2e2e2;
 }
 
@@ -133,15 +137,15 @@ p {
 }
 
 .area_comentarios input {
-    width: 560px;
+    width: 565px;
     height:50%;  
     border-radius: 12px;
-    margin-top: 25px;    
+    margin-top: 18px;    
     margin-left:8px;
     background-color: #F7F7F8;    
     border: 1px solid #F7F7F8;
     color: #62616d;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 
@@ -160,7 +164,7 @@ p {
 }
 
 .comentario-perfil {
-    margin-bottom: 30px; 
+    margin-bottom: 10px; 
     margin-top:0px;
 
 }
@@ -174,7 +178,7 @@ p {
 .comentario-perfil input::placeholder{
     color: #b5b5b5;
    text-align:left;
-   padding: 1;
+   padding: 0px;
 }
 
 .comentario-perfil input::placeholder:focus{
@@ -183,42 +187,49 @@ p {
 
 /* Modal generica */
 .modal-cadastro{
-    width: 100%!important;
-}
+    width: 100%!important;}
+
 /* Modal Content */
 .modal-generica-conteudo {
     background-color: #fefefe;
-    padding: 20px;
-    width: 24%;
-    margin: 5rem auto auto;
-    height: auto;
+    padding: 10px;    
+    width: 29%;
+    margin: 6rem auto auto;
+    height: auto;    
 }
 
 .modal-generica-entrada-de-dados {
-    width: 100%;
-    margin-bottom:2rem;
+    width: 100%;    
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     cursor: pointer;
-    background-color: #FAFAFA;
-    text-align: left;
+    background-color: #FAFAFA;    
 }
 
 .modal-generica-entrada-de-dados:focus {
     outline: none;
-    text-align: left;
+    
+}
+/*titulo criar publicacao*/
+#modal-generica-header h4 {
+    margin-left: 25px;
+    color: #aaa;
+    margin-top:15px;
+    padding:5px;
+    
 }
 
 /* The Close Button */
 .close-modal-generica {
     float: right;
-    margin-right: 30px;
-    margin-top: 15px;
+    margin-right: 24px;    
+    margin-top: 0px;
     font-size: 25px;
     font-weight: bold;
     cursor: pointer;
     color: #b5b5b5;
+    
   }
 
 .close-modal-generica:hover,
@@ -236,9 +247,15 @@ p {
     color: #666666;
 }
 
+
+
 /* Solid border */
 hr.solid {
-    border-top: 1px solid #F7F7F8;
+    border-top: 1px solid #e9e9e9;
+    width:100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    
 }
 
 
@@ -247,8 +264,9 @@ hr.solid {
 @media only screen and (min-width: 320px) and (max-width: 480px) {
 
     .share-box-entry-div button {
-        width: 80%;
-        margin-left: 15px;
+       width: 500px;
+      
+        
     }
 
     .area_comentarios input {
@@ -256,14 +274,7 @@ hr.solid {
         margin-left: 15px;
     }
 
-    .share-box-entry {
-        justify-content: space-evenly;
-
-    }
-
-    .area_comentarios_flex {
-        justify-content: space-evenly;
-    }
+    
 }
 
 /*tablet*/
@@ -271,16 +282,19 @@ hr.solid {
    
 
     .share-box-entry-div button {
-        width: 62%;
-        margin-left:10px;
+        width: 100%;
+        
         font-size: 12px;
         height: 35px;
+        margin-inline-end: 180px;
+       
         
     }
+   
 
     .share-box-entry img {
-        max-height: 2.5rem;
-        max-width: 2.5rem;        
+        height: 2.5rem;
+        width: 2.5rem;        
     }
 
     .area_comentarios input {
@@ -293,8 +307,9 @@ hr.solid {
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
 
     .share-box-entry-div button {
-        width: 95%;
-        margin-left:13px;
+      width: 560px;
+      margin-right: 19px;
+       
     }
 
     .area_comentarios input {

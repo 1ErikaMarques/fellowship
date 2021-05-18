@@ -1,46 +1,48 @@
 /*Flexbox container*/
 .header_nav {
- /* position: fixed;*/
+ position: fixed;
   top: 0;
   z-index: 10;
   display: flex;
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  background: #fefefe;
+  background: #fefefe; 
 }
 
 .header_nav_items {
   flex-direction: row;
   margin-top: 10px;
+  
 }
 
 /*Logo*/
 .header_nav_items img {
-  width: 100%;
-  
+  width: 100%;  
+  margin-top:5px;
+ 
 }
 
 /*Nome do bairro*/
 .bairro {
-  font-size: 18px;
-  color: #6e6d7a;
-  font-weight: bold;
+  font-size: 24px;
+  color: #6e6d7a;    
 }
 
 /*campo pesquisar*/
 .search {
   background: #F7F7F8;
-  border: 1px solid #F7F7F8;
+  border: 2px solid #F7F7F8;
   border-radius: 4px;
   height: 1.7rem;
   margin-bottom: 5px;  
+  
 }
 
 .search:focus {
   outline: none;
   background-color: #fefefe; 
-  border: 1px solid #e9e9e9;  
+  border: 2px solid #e9e9e9;  
 }
 
 .search:hover {
@@ -65,7 +67,9 @@
 .header_nav_items ul {
   display: flex;
   width: 100%;  
-  margin-right: 70%;
+  margin-right: 312px;
+  align-self: flex-end;
+ 
 }
 
 .header_nav_items li {

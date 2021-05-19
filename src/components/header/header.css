@@ -60,10 +60,10 @@
 
 .header_nav_items li {
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 1rem;  
 }
 
-/* aparador */
+/* aparador modal icones*/
 hr.solid {
   margin-inline-start: -40px;
   border: 1px solid #e9e9e9;
@@ -198,7 +198,11 @@ ul.primary li:hover > a {
   .header_nav_items ul {
     margin-top: 10%;
     margin-right: 8px;
-    width:65%;
+    
+  }
+
+  .header_nav_items img{
+    margin-bottom: 10px;   
   }
 
   .search::placeholder {   
@@ -219,7 +223,7 @@ ul.primary li:hover > a {
 
   .search {
     width: 85%;
-    margin-inline-start: 30%;
+    margin-inline-start: 0%;
     margin-inline-end: 0%;
     height: 1.6rem;
   }

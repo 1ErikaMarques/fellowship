@@ -1,6 +1,5 @@
 .post {
   width: 9000px;
- 
 }
 
 /* Publicação do Post */
@@ -59,8 +58,8 @@ p {
   height: auto;
   background-color: #fefefe;
   align-items: center;
-  margin-top: 20px !important;  
-  margin-bottom: 5%!important;
+  margin-top: 20px !important;
+  margin-bottom: 5% !important;
 }
 
 .img_post {
@@ -107,7 +106,7 @@ p {
   color: #62616d;
   width: 95%;
   margin-left: 21px;
-  line-height: 150%;
+  line-height: 160%;
   letter-spacing: 0.04em;
   word-break: normal;
 }
@@ -132,7 +131,7 @@ p {
 }
 
 .area_comentarios {
-  display: flex; 
+  display: flex;
 }
 
 .area_comentarios_flex {
@@ -173,7 +172,6 @@ p {
 .comentario-perfil {
   margin-bottom: 10px;
   margin-top: 0px;
-  
 }
 
 .comentario-perfil input {
@@ -186,8 +184,6 @@ p {
   text-align: left;
   padding: 0px;
 }
-
-
 
 /* Modal generica */
 .modal-cadastro {
@@ -312,10 +308,11 @@ p {
 
 .image-upload img {
   cursor: pointer;
-  width: 2rem;
 }
 .icone-video-modal {
   margin-inline-end: 50%;
+  margin-top: -7px;
+  margin-left: -10px;
 }
 
 /* Solid border */
@@ -326,40 +323,132 @@ hr.solid {
   margin-right: 10px;
 }
 
-/*Mobile*/
+/*Responsivo Mobile*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  .share-box-entry-div button {
-    width: 500px;
+
+  .active_menu_nav {
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    cursor: pointer;
+    transition: color 200ms ease;
+    padding: 5px;
   }
-
-  .area_comentarios input {
-    width: 19rem;
-    margin-left: 15px;
+  .menu_nav_ul {
+    padding: 5px;
   }
-}
-
-/*tablet*/
-@media only screen and (min-width: 481px) and (max-width: 768px) {
+  /*post*/
   .share-box-entry-div button {
-    width: 100%;
-
+    width: 360px;
     font-size: 12px;
     height: 35px;
-    margin-inline-end: 180px;
+    margin-inline-end: 0px;
+    margin-right: 10px;
   }
 
   .share-box-entry img {
     height: 2.5rem;
     width: 2.5rem;
   }
-
+  .img_post {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
   .area_comentarios input {
-    width: 22rem;
+    width: 340px;
     margin-left: 15px;
+    font-size: 10px;
+  }
+  .modal-generica-conteudo {
+    /*display block*/
+    width: 65%;
+    margin: 11rem auto auto;
+    height: auto;
+  }
+
+  .btn-modal button {
+    width: 90px;
+    margin-inline-start: -92px;
+  }
+  .image-upload img {
+    width: 1.5rem;
+  }
+  .icone-video-modal {
+    margin-inline-end: 60%;
+    margin-top: -7px;
+    margin-left: -10px;
   }
 }
-/*notebook*/
+
+/* Responsivo tablet*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .active_menu_nav {
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    cursor: pointer;
+    transition: color 200ms ease;
+    padding: 8px;
+    
+  }
+  .menu_nav_ul {
+    padding: 10px;
+  }
+
+
+  .share-box-entry-div button {
+    width: 360px;
+    font-size: 12px;
+    height: 35px;
+    margin-inline-end: 0px;
+    margin-right: 10px;
+  }
+
+  .share-box-entry img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .img_post {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .texto_publicacao {
+    font-size: 12px;
+    line-height: 170%;
+  }
+  .area_comentarios input {
+    width: 340px;
+    margin-left: 15px;
+    font-size: 10px;
+  }
+  .img_comentario {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .call-comentarios {
+    font-size: 12px;
+  }
+  .modal-generica-conteudo {
+    /*display block*/
+    width: 82%;
+    margin: 11rem auto auto;
+    height: auto;
+  }
+
+  .btn-modal button {
+    width: 90px;
+    margin-inline-start: -92px;
+  }
+  .image-upload img {
+    width: 1.5rem;
+  }
+  .icone-video-modal {
+    margin-inline-end: 60%;
+    margin-top: -7px;
+    margin-left: -10px;
+  }
+}
+/* Responsivo notebook*/
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .share-box-entry-div button {
     width: 560px;

@@ -291,16 +291,37 @@ function adicionaPermaHoverClass(elemento) {
         case 'notifications':
             elemento.classList.toggle("permahover-notifications");
             document.getElementById("profile-icon").classList.remove("permahover-profile");
+            hideOnClickOutside(elemento)
             break;
         case 'profile':
             elemento.classList.toggle("permahover-profile");
             document.getElementById("notifications-icon").classList.remove("permahover-notifications")
+            hideOnClickOutside(elemento)
             break;
     }
 }
 
-function hideHeaderModalWhenBlurred(elemento) {
-    console.log(elemento)
+const isVisible = elem => !!elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
+
+function hideOnClickOutside(elemento) {
+    const outsideClickListener = event => {
+        if (!elemento.contains(event.target) && isVisible(elemento)) {
+
+            if (elemento.dataset.tipo === 'profile') {
+                elemento.classList.remove("permahover-profile");
+            }
+            else if (elemento.dataset.tipo === 'notifications') {
+                elemento.classList.remove("permahover-notifications");
+            }
+            removeClickListener()
+        }
+    }
+
+    const removeClickListener = () => {
+        document.removeEventListener('click', outsideClickListener)
+    }
+
+    document.addEventListener('click', outsideClickListener)
 }
 
 /* Modal generica */

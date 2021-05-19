@@ -68,7 +68,8 @@
         </div>
        
         <div class="area_comentarios_flex">
-          <input type="text" placeholder="" value="É simplesmente um texto fictício da indústria de impressão e composição"/>
+          
+          <input type="text" placeholder="" value="É simplesmente um texto fictício da indústria de impressão e composição" />
         </div>      
       </div>
     </div>
@@ -97,34 +98,51 @@
         >&times;</span>
       <h4>Criar publicação</h4>      
     </div>
-    <hr class="aparador" />
+    <hr class="aparador aparador-modal-up" />
     <div class="modal-generica-user-info">
       <img
         src="assets/images/usuarios/jovem-estudante.png"
         alt="Ana Carolina Yamamoto"
-        class="img_post"
+        class="img_post"        
       />
-
-      <h3>Ana Carolina Yamamoto</h3>
+      <h3 class="nome-usuario-modal">Ana Carolina Yamamoto</h3>
     </div>
     <div
       contenteditable="true"
       class="modal-generica-entrada-de-dados"
-      id="modal-generica-entrada-de-dados"
+      id="modal-generica-entrada-de-dados"      
     ></div>
 
     <!--  Espaco onde fica as imagens apos carregadas -->
     <section id="img-modal-post"></section>
-    <hr class="aparador"/>
-    <input
-      id="share-box-entry-toolbar-secondary"
-      type="file"
+    <hr class="aparador aparador-modal-down"/>
+    <div class="botoes-modal-generica">
+    <div class="image-upload">
+  <label for="share-box-entry-toolbar-secondary">
+    <img src="assets/images/icones/icon-camera.svg"/>
+  </label>
+
+  <input id="share-box-entry-toolbar-secondary" type="file"
       multiple
       onchange="addImgToPost(this)"
-    />
-    <div class="btn-modal">
+   />  
+</div>
+
+<div class="image-upload icone-video-modal">
+  <label for="share-box-entry-toolbar-secondary">
+    <img src="assets/images/icones/icon-video.svg"/>
+  </label>
+
+  <input id="share-box-entry-toolbar-secondary" type="file"
+      multiple
+      onchange="addImgToPost(this)"
+   />  
+</div>
+
+
+  <div class="btn-modal">
       <button onclick="publicarPost()" class="btn">Publicar</button>
     </div>
-  
+  </div>
   </div>
 </div>

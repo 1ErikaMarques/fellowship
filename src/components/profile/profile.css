@@ -2,8 +2,9 @@
 .profile-section {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  height: 9rem;
+  align-items: center;  
+  margin-top: 45px ;
+  margin-bottom: 20px;
 }
 
 
@@ -14,10 +15,8 @@
 }
 
 .header-profile .profile-name {  
-  font-weight: bold;
-  font-size: 0.875rem;
-  color: #2d2d2d;
   margin-left: 10px;
+  
 }
 .btn-edit {
   width: 40%;
@@ -30,7 +29,7 @@
   color: var(--blue);
   background-color: #fefefe;
   border: 1px solid var(--blue);
-  margin-inline-start: 13rem;
+  margin-inline-start: 12.2rem;
 }
 
 .btn-edit:hover {
@@ -45,6 +44,8 @@
   display: table;
   border-spacing: 10px;
   border-collapse: separate;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .header-profile-bottom ul li {
@@ -59,6 +60,7 @@
   font-size: 16px;
   line-height: 24px;
   color: #3a3a3a;
+  
 }
 
 .header-profile-bottom ul li img {
@@ -67,23 +69,23 @@
 
 /* Terceira section do profile */
 .header-profile-about-title {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  word-wrap: break-word;
-  font-weight: 600;
-  font-size: 14px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left;  
+  font-weight: bold;
+  font-size: 16px;
   color: #b5b5b5;
+  margin-left: 35px ;
 }
 .header-profile-about-conteudo {
-  margin-inline-start: 1rem;
-  margin-inline-end: 1rem;
-  text-align: center;
-  word-wrap: break-word;
-  font-size: 12px;
-  line-height: 18px;
-  color: #2e2e2e;
-  margin-bottom: 1rem;
+  font-size: 14px;
+  color: #62616d;
+  width: 93%;
+  margin-left: 35px;
+  line-height: 150%;
+  letter-spacing: 0.03em;
+  word-break:keep-all;
+  margin-bottom: 2rem;
 }
 
 /*Mobile*/

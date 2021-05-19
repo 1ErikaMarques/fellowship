@@ -53,7 +53,7 @@
     cursor: none;
 }
 
-.menu_nav {        
+.menu_nav{        
     background: #FEFEFE;        
     border-radius: 4px;
     margin-top: 2rem;
@@ -82,11 +82,9 @@
     }
 }
  
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-    
+@media only screen and (min-width: 481px) and (max-width: 768px) {    
 
-    .menu_nav ul {
-       
+    .menu_nav ul {       
         flex-flow:wrap;
         justify-content: center;
         align-items: center;

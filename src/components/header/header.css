@@ -32,25 +32,11 @@
 /*campo pesquisar*/
 .search {
   background: #F7F7F8;
-  border: 2px solid #F7F7F8;
+  border: 1px solid #e9e9e9;
   border-radius: 4px;
   height: 1.7rem;
   margin-bottom: 5px;  
-  
-}
-
-.search:focus {
-  outline: none;
-  background-color: #fefefe; 
-  border: 2px solid #e9e9e9;  
-}
-
-.search:hover {
-  outline: none;
-  background-color: #fefefe;  
-  box-shadow: 0 0 0 1px rgb(13 12 34 / 10%);
-  transition: color 200ms ease;
-  
+  outline:none
 }
 .search::placeholder {
   text-align: center;

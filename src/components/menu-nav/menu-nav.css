@@ -27,14 +27,13 @@
     font-weight: bold;
     font-size: 14px;    
     color: #6e6d7a;
-    height:1.1rem;  
-    
-   
+    height:1.1rem;    
 }
 .active_menu_nav {
     text-decoration: none;   
     color: #4285f4;
-    font-weight: bold;      
+    font-weight: bold;   
+      
 }
 
 .menu_nav ul :focus{
@@ -43,7 +42,9 @@ transition: color 200ms ease;
 
 .menu_nav ul :hover{
     color: #4285f4;    
-    transition: color 300ms ease;
+    transition: color 400ms ease;       
+    background-color: rgb(66 133 244 / 1%);
+     
 }
 
 .aparador_menu_nav{

@@ -34,13 +34,16 @@
 .active_menu_nav {
     text-decoration: none;   
     color: #4285f4;
-    font-weight: bold;   
-    box-shadow: 0 5px 8px -12px rgba(0, 0, 0, 0.75);
+    font-weight: bold;      
+}
+
+.menu_nav ul :focus{
+transition: color 200ms ease;
 }
 
 .menu_nav ul :hover{
     color: #4285f4;    
-    transition: color 200ms ease;
+    transition: color 300ms ease;
 }
 
 .aparador_menu_nav{

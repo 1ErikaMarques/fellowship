@@ -194,11 +194,19 @@ function addImgToPost(inputElement) {
         // Criando URL
         const imgUrl = URL.createObjectURL(file)
         // Criando elemento img e atribuindo link da imagem
+
+        const div = document.createElement("div")
+        div.classList.add('imagens-carregadas-container-itens')
+
         const imgPost = document.createElement("img")
         imgPost.src = imgUrl;
+        imgPost.style.maxWidth = '450px';
+        imgPost.style.height = 'auto';
+
+        div.appendChild(imgPost)
 
         // Adicionando novo elemento a sessao
-        imgPostSection.appendChild(imgPost)
+        imgPostSection.appendChild(div)
     })
 
 
@@ -289,6 +297,10 @@ function adicionaPermaHoverClass(elemento) {
             document.getElementById("notifications-icon").classList.remove("permahover-notifications")
             break;
     }
+}
+
+function hideHeaderModalWhenBlurred(elemento) {
+    console.log(elemento)
 }
 
 /* Modal generica */

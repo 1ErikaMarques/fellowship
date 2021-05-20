@@ -337,3 +337,32 @@ function fecharModalGenerica() {
     modal.style.display = "none"
     document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
 }
+
+/* Modal Casa*/ 
+
+function modalCasa() {
+    let modal = document.getElementById("modal-casa")
+    modal.style.display = "block"
+    document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
+    const entradaDeDados = document.getElementById("modal-casa-entrada-de-dados")
+    entradaDeDados.focus()
+}
+function fecharModalCasa() {
+    let modal = document.getElementById("modal-casa")
+    modal.style.display = "none"
+    document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
+}
+
+/* Modal doacoes*/
+function modalDoacoes() {
+    let modal = document.getElementById("modal-doacoes")
+    modal.style.display = "block"
+    document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
+    const entradaDeDados = document.getElementById("modal-doacoes-entrada-de-dados")
+    entradaDeDados.focus()
+}
+function fecharModalDoacoes() {
+    let modal = document.getElementById("modal-doacoes")
+    modal.style.display = "none"
+    document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
+}

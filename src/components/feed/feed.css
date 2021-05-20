@@ -5,7 +5,7 @@
 /* Publicação do Post */
 .share-box-entry {
   height: 110px;
-  background-color: #fefefe;
+  background-color: #fff;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -26,14 +26,14 @@
   color: #9e9ea7;
   border: 1px solid #f7f7f8;
   cursor: pointer;
-  letter-spacing: 0.05rem;
+    
   margin-right: 15px;
 }
 
 .share-box-entry-div button:hover {
   background-color: #f3f3f3;
   border: 1px solid #f7f7f8;
-  transition: color 900ms ease;
+  transition: 200ms ease;
 }
 
 p {
@@ -56,7 +56,7 @@ p {
 
 .post {
   height: auto;
-  background-color: #fefefe;
+  background-color: #fff;
   align-items: center;
   margin-top: 20px !important;
   margin-bottom: 5% !important;
@@ -203,7 +203,7 @@ p {
   height: auto;
 }
 /*titulo criar publicacao*/
-#modal-generica-header h4 {
+.modal-generica-header h4 {
   margin-left: 25px;
   color: #aaa;
   margin-top: 15px;
@@ -227,7 +227,7 @@ p {
   border-radius: 25px;
   background-color: #eeeeee;
   cursor: pointer;
-  transition: color 200ms ease;
+  transition: color 200ms ease;    
 }
 
 /*conteiner usuario e foto*/
@@ -286,7 +286,7 @@ p {
 .btn-modal button {
   margin-bottom: 20px;
   margin-top: 5px;
-  margin-inline-start: -28px;
+  margin-inline-start: -28px; 
 }
 
 .btn-modal {
@@ -304,8 +304,8 @@ p {
 .image-upload:hover {
   border-radius: 15px;
   background-color: rgb(66 133 244 / 5%);
-  cursor: pointer;
-  transition: color 200ms ease;
+  cursor: pointer;    
+  transition:  300ms ease;
 }
 
 .image-upload img {
@@ -315,7 +315,7 @@ p {
   margin-inline-end: 50%;
   margin-top: -7px;
   margin-left: -10px;
-  padding: 11px 15px;
+  padding: 12px 15px;
 }
 
 /* Solid border */

@@ -93,7 +93,7 @@
 <!--   Modal de generica -->
 <div id="modal-generica" class="container modal-cadastro">
   <div class="modal-generica-conteudo border">
-    <div id="modal-generica-header">
+    <div id="modal-generica-header" class="modal-generica-header">
       <span class="close-modal-generica" onclick="fecharModalGenerica()"
         >&times;</span>
       <h4>Criar publicação</h4>      
@@ -108,6 +108,130 @@
       <h3 class="nome-usuario-modal">Ana Carolina Yamamoto</h3>
     </div>
     <div class="scroll-modal">
+    <div
+      contenteditable="true"
+      class="modal-generica-entrada-de-dados"
+      id="modal-generica-entrada-de-dados"      
+    ></div>
+
+    <!--  Espaco onde fica as imagens apos carregadas -->
+    <section id="img-modal-post" class="imagens-carregadas-container">
+    </section>
+  </div>
+    <hr class="aparador aparador-modal-down"/>
+    <div class="botoes-modal-generica">
+    <div class="image-upload">
+  <label for="share-box-entry-toolbar-secondary">
+    <img src="assets/images/icones/icon-camera.svg"/>
+  </label>
+
+  <input id="share-box-entry-toolbar-secondary" type="file"
+      multiple
+      onchange="addImgToPost(this)"
+   />  
+</div>
+
+<div class="image-upload icone-video-modal">
+  <label for="share-box-entry-toolbar-secondary">
+    <img src="assets/images/icones/icon-video.svg"/>
+  </label>
+
+  <input id="share-box-entry-toolbar-secondary" type="file"
+      multiple
+      onchange="addImgToPost(this)"
+   />  
+</div>
+
+
+  <div class="btn-modal">
+      <button onclick="publicarPost()" class="btn">Publicar</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- modal casa -->
+<div id="modal-casa" class="container modal-cadastro">
+  <div class="modal-generica-conteudo border">
+    <div id="modal-generica-header" class="modal-generica-header">
+      <span class="close-modal-generica" onclick="fecharModalCasa()"
+        >&times;</span>
+      <h4>Criar publicação</h4>      
+    </div>
+    <hr class="aparador aparador-modal-up" />
+    <div class="modal-generica-user-info">
+      <img
+        src="assets/images/usuarios/jovem-estudante.png"
+        alt="Ana Carolina Yamamoto"
+        class="img_post"        
+      />
+      <h3 class="nome-usuario-modal">Ana Carolina Yamamoto</h3>
+    </div>
+    <div class="scroll-modal">
+    <div
+      contenteditable="true"
+      class="modal-generica-entrada-de-dados"
+      id="modal-generica-entrada-de-dados"      
+    ></div>
+
+    <!--  Espaco onde fica as imagens apos carregadas -->
+    <section id="img-modal-post" class="imagens-carregadas-container">
+    </section>
+  </div>
+    <hr class="aparador aparador-modal-down"/>
+    <div class="botoes-modal-generica">
+    <div class="image-upload">
+  <label for="share-box-entry-toolbar-secondary">
+    <img src="assets/images/icones/icon-camera.svg"/>
+  </label>
+
+  <input id="share-box-entry-toolbar-secondary" type="file"
+      multiple
+      onchange="addImgToPost(this)"
+   />  
+</div>
+
+<div class="image-upload icone-video-modal">
+  <label for="share-box-entry-toolbar-secondary">
+    <img src="assets/images/icones/icon-video.svg"/>
+  </label>
+
+  <input id="share-box-entry-toolbar-secondary" type="file"
+      multiple
+      onchange="addImgToPost(this)"
+   />  
+</div>
+
+
+  <div class="btn-modal">
+      <button onclick="publicarPost()" class="btn">Publicar</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- modal doacoes -->
+<div id="modal-doacoes" class="container modal-cadastro">
+  <div class="modal-generica-conteudo border">
+    <div id="modal-generica-header" class="modal-generica-header">
+      <span class="close-modal-generica" onclick="fecharModalDoacoes()"
+        >&times;</span>
+      <h4>Criar publicação</h4>      
+    </div>
+    <hr class="aparador aparador-modal-up" />
+
+    <div class="modal-generica-user-info">
+      <img
+        src="assets/images/usuarios/jovem-estudante.png"
+        alt="Ana Carolina Yamamoto"
+        class="img_post"        
+      />
+      <h3 class="nome-usuario-modal">Ana Carolina Yamamoto</h3>
+  
+    </div>
+    <div class="scroll-modal">
+
+      <!--texto da publicacao/focus-->
     <div
       contenteditable="true"
       class="modal-generica-entrada-de-dados"

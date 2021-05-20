@@ -1,3 +1,7 @@
+.profile{
+  background-color:#fff;
+}
+
 /* Primeira section do profile */
 .profile-section {
   display: flex;
@@ -5,6 +9,7 @@
   align-items: center;  
   margin-top: 45px ;
   margin-bottom: 20px;
+ 
 }
 
 
@@ -22,20 +27,21 @@
   width: 40%;
   height: 35px;
   font-size: 12px;/*14px*/
-  font-weight: bold;
-  border-radius: 4px;
-  transition-duration: 0.4s;
+  font-weight: bold;  
   cursor: pointer;
-  color: var(--blue);
-  background-color: #fefefe;
-  border: 1px solid var(--blue);
-  margin-inline-start: 12.2rem;
+  color: #53525d;  
+  border:none;
+  margin-inline-start: 12.2rem;  
+  border: 1px solid #dedee0;
+  background-color: #fff;
+  border-radius: 4px;
+  letter-spacing: 0.03rem;
 }
 
-.btn-edit:hover {
-  background-color: var(--blue);
-  color: #fefefe;
-  transition: color 200ms ease;
+.btn-edit:hover { 
+  color: #53525d;
+  transition:  200ms ease;
+  border: 1px solid #cececf;
 }
 
 
@@ -85,7 +91,7 @@
   line-height: 150%;
   letter-spacing: 0.03em;
   word-break:keep-all;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 /*Mobile*/

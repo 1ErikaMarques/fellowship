@@ -7,7 +7,7 @@
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  background: #fefefe;
+  background: #fff;
 }
 
 .header_nav_items {
@@ -36,20 +36,18 @@
   height: 2rem;
   margin-bottom: 5px;
   outline: none;
-  width: auto;
   font-size: 16px;
   color: #53525d;
 }
 /*criando a lupa*/
 .search::placeholder {
   text-align: center;
-  color: #9e9ea7;
+  color: #aaa9a9;
   font-size: 14px;
   background-image: url("../../../assets/images/icones/icon-lupa.svg");
   background-repeat: no-repeat;
-  background-position: 30px center;
-  background-position-y: 7px;
-  background-size: 20px;
+  background-position: 45px center;
+  background-size: 16px;
 }
 
 .search:focus::-webkit-input-placeholder {
@@ -68,11 +66,12 @@
   width: 100%;
   margin-right: 312px;
   align-self: flex-end;
+
 }
 
 .header_nav_items li {
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 1rem;  
 }
 
 /* aparador modal icones*/
@@ -84,73 +83,70 @@ hr.header-solid {
 /* dropdown */
 ul.primary li a {
   display: block;
+  padding: 8px 3px;
+  
 }
-
-ul.primary li:last-child a {
-  border-right: none;
-}
-
-ul.primary li a:hover {
-  color: #000;
-}
-
 /* subs */
 ul.sub {
   z-index: 200;
   display: none;
   position: absolute;
   width: 145px;
-  height: 113px;
-  background: #fefefe;
+  height: 145px;  
   border: 1px solid #e9e9e9;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 5px;  
 }
 
 ul.sub li {
   float: none;
-  margin-bottom: 10px;
+  margin-bottom: -2px;
   margin-top: 10px;
 }
 
 ul.sub li a {
-  color: #000;
-  margin-bottom: 0.5rem;
+  color: #33323a;  
   text-align: left;
   margin-inline-start: -39px;
-  font-weight: 300;
+  font-weight: normal;
   font-size: 12px;
 }
 
-ul.sub li a:hover {
-  color: #000;
-  background: #eeeeee;
+ul.primary li:hover > a {
+  color:#202025;
+  border-radius: 3px;
+  background-color: rgb(66 133 244 / 6%);
+  padding: 8px 4px;
+  transition:  200ms ease;
+  width: 135px;
+  margin-right: 0px;
+  
 }
 
 /* sub display*/
 ul.primary li.permahover-notifications ul {
-  display: block;
-  background: #fff;
+  display: block;  
   margin-inline-start: -3.4rem;
-  margin-top: 10px;
 }
-
+/*conteiner*/
 ul.primary li.permahover-profile ul {
   display: block;
-  background: #fff;
+  background: #ffffff;
   margin-inline-start: -5.5rem;
-  margin-top: 10px;
+  margin-top: 10px;  
 }
 
-/* keeps the tab background white */
-ul.primary li:hover a {
-  background: #fff;
-  color: #666;
-  text-shadow: none;
+/* keeps the tab background white lista*/
+ul.primary li:hover a {  
+  text-shadow: none;    
 }
-
-ul.primary li:hover > a {
-  color: #000;
+/*icones do dropdown*/
+.icons {
+  width: 16px !important;
+  margin-top: 0 !important;
+  margin-right: 15px;
+  margin-left: 10px;
+  margin-bottom: -3px;
 }
 
 /*Mobile*/
@@ -182,12 +178,7 @@ ul.primary li:hover > a {
   }
 }
 
-.icons {
-  width: 16px !important;
-  margin-top: 0 !important;
-  margin-right: 10px;
-  margin-left: 10px;
-}
+
 
 /*tablet*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {

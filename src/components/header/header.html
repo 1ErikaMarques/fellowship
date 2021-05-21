@@ -21,25 +21,42 @@
   <div class="header_nav_items">
     <ul class="primary">
       <li>
-        <img onclick="loadFeed()" src="assets/header/home.svg" alt="home" />
+      
+  <svg  viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="icone-home" onclick="loadFeed()">
+<g clip-path="url(#clip0)">
+<path d="M31.5991 15.6254C31.7369 15.4751 31.8431 15.2987 31.9116 15.1067C31.98 14.9146 32.0092 14.7108 31.9976 14.5073C31.9859 14.3037 31.9336 14.1046 31.8437 13.9216C31.7538 13.7386 31.6281 13.5755 31.4741 13.442L17.1728 0.928314C16.5237 0.36065 15.483 0.372541 14.8475 0.955122L0.497691 14.1091C-0.137775 14.6917 -0.168964 15.6683 0.428637 16.2895L0.788408 16.6641C1.38528 17.2853 2.35006 17.3594 2.94192 16.8291L4.01435 15.8687V29.929C4.01435 30.7917 4.71334 31.4901 5.57537 31.4901H11.169C12.031 31.4901 12.73 30.7917 12.73 29.929V20.0925H19.8647V29.929C19.8523 30.7911 20.4691 31.4894 21.3311 31.4894H27.2589C28.121 31.4894 28.82 30.7911 28.82 29.9284V16.0666C28.82 16.0666 29.1162 16.3262 29.4816 16.6474C29.8464 16.9679 30.6126 16.7109 31.1926 16.0723L31.5991 15.6254Z"/>
+</g>
+ <defs>
+<clipPath id="clip0"> 
+<rect width="33" height="32"/> 
+ </clipPath>
+</defs> 
+</svg> 
+
       </li>
-      <li
-        onclick="adicionaPermaHoverClass(this)"
-        data-tipo="notifications"
-        id="notifications-icon"
-      >
-        <img src="assets/header/notification.svg" alt="notificao" />
-        <ul class="sub">
+     
+       <li  onclick="adicionaPermaHoverClass(this)"  data-tipo="notifications"
+        id="notifications-icon" >
+        
+             <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="icone-notificacao" onclick="loadFeed()">
+<path d="M25.5832 23.6169L23.58 20.2779C22.6549 18.7364 22.1662 16.9726 22.166 15.1749V12.25C22.166 8.5575 19.702 5.43435 16.3327 4.4275V2.33335C16.3327 1.0465 15.2862 0 13.9993 0C12.7125 0 11.666 1.0465 11.666 2.33335V4.4275C8.29667 5.43435 5.83267 8.5575 5.83267 12.25V15.1749C5.83267 16.9715 5.34382 18.7355 4.41982 20.2767L2.41667 23.6157C2.36346 23.7043 2.33477 23.8054 2.33354 23.9088C2.33231 24.0121 2.35858 24.1139 2.40967 24.2037C2.51352 24.3869 2.70602 24.5001 2.91602 24.5001H25.0827C25.2927 24.5001 25.4863 24.3869 25.5902 24.2049C25.694 24.0229 25.6905 23.7965 25.5832 23.6169ZM10.3255 25.6666C10.9835 27.041 12.3765 28 13.9993 28C15.6221 28 17.0152 27.041 17.6732 25.6666H10.3255V25.6666Z"/>
+</svg>    
+         <ul class="sub">
           <div id="notifications">
             <li><p>Test</p></li>
           </div>
-        </ul>
+        </ul> 
       </li>
-      <li
-        onclick="adicionaPermaHoverClass(this)"
+
+    
+    </ul>
+  </div>
+</div>
+<div>
+  <ul>
+  <li onclick="adicionaPermaHoverClass(this)"
         data-tipo="profile"
-        id="profile-icon"
-      >
+        id="profile-icon">
         <img src="assets/header/perfil.svg" alt="profile" />
         <ul class="sub">
           <li>
@@ -47,10 +64,7 @@
               <img
                 class="icons"
                 src="assets/header/user-icone-modal.svg"
-                alt="Perfil"
-              />
-              Perfil</a
-            >
+                alt="Perfil"/>Perfil</a>
           </li>
           <li>
             <a
@@ -65,11 +79,9 @@
           <li>
             <a>
               <img class="icons" src="assets/header/logout.svg" alt="Perfil" />
-              Sair</a
-            >
+              Sair</a>
           </li>
         </ul>
       </li>
-    </ul>
-  </div>
-</div>
+      </ul>
+      

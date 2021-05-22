@@ -234,6 +234,8 @@ p {
 .modal-generica-user-info {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+
 }
 /*imagem de perfil do usuario da modal*/
 .modal-generica-user-info img {
@@ -242,9 +244,32 @@ p {
 }
 /*nome do usuario na modal generica*/
 .nome-usuario-modal {
-  margin-left: 10px;
-  margin-top: 21px;
+  margin: 10px 28px 0 10px;  
   cursor: pointer;
+  
+}
+/*Modal doacoes*/
+.modal-doacoes-tipo {
+  color: #8d8d94;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  margin-top: 22px;
+  cursor: pointer;
+  
+}
+.modal-doacoes-tipo:hover{
+  color: var(--blue);
+  transition: color 200ms ease; 
+}
+.separador-de-texto {  
+ border: 1px solid #8d8d94;
+ height:14px;
+ margin-top:19px;
+ background-color:#8d8d94;
+ 
+
 }
 
 .nome-usuario-modal:hover {
@@ -317,6 +342,9 @@ p {
   margin-left: -10px;
   padding: 12px 15px;
 }
+
+
+
 
 /* Solid border */
 hr.solid {

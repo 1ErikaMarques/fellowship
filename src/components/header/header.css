@@ -1,6 +1,6 @@
 /*Flexbox container*/
 .header_nav {
-  position: fixed;
+ position: fixed;
   top: 0;
   z-index: 10;
   display: flex;
@@ -74,8 +74,8 @@
 
 /* icone home*/
 .icone-home {
-  height:28px;
-  width:28px;  
+  height:24px;
+  width:24px;
 }
 .icone-home path { 
   fill:none;
@@ -90,8 +90,8 @@
 
 /* icone-notification*/
 .icone-notificacao {
-  height:28px;
-  width:24px;  
+  height:24px;
+  width:24px;
 }
 
 .icone-notificacao path { 

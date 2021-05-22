@@ -366,3 +366,12 @@ function fecharModalDoacoes() {
     modal.style.display = "none"
     document.body.style.overflow = "auto" // exibir a barra de scroll quando fechamos a modal
 }
+
+/*Logout*/
+
+function logout() {
+    sessionStorage.clear();
+    /*sessionStorage.removeItem('image')*/
+    location.reload();
+
+}

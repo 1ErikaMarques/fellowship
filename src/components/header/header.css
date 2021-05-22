@@ -150,7 +150,26 @@ ul.primary li:hover > a {
   padding: 8px 4px;
   transition: 200ms ease;
   width: 135px;
-  margin-right: 0px;
+  margin-right: 0;
+}
+
+/*notificacoes*/
+ul.sub li p {
+  color: #33323a;
+  text-align: left;
+  margin-inline-start: -39px;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+ul.primary li:hover > p {
+  color: #202025;
+  border-radius: 3px;
+  background-color: rgb(66 133 244 / 6%);
+  padding: 8px 4px;
+  transition: 200ms ease;
+  width: 135px;
+  margin-right: 0;
 }
 
 /* sub display*/

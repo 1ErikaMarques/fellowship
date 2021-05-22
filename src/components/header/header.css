@@ -156,7 +156,9 @@ ul.primary li:hover > a {
 /* sub display*/
 ul.primary li.permahover-notifications ul {
   display: block;
+  background: #ffffff;
   margin-inline-start: -3.4rem;
+  margin-top: 10px;
 }
 /*conteiner*/
 ul.primary li.permahover-profile ul {

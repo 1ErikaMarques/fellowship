@@ -190,7 +190,8 @@ p {
 /* Modal generica */
 .modal-cadastro {
   /*esta com display block*/
-  width: 100% !important;
+  width: 100% !important;  
+  background: rgba(129, 129, 129, 0.3);
 }
 
 /* Modal Content */
@@ -201,6 +202,8 @@ p {
   width: 29%;
   margin: 6rem auto auto;
   height: auto;
+  box-shadow: 0px 10px 70px rgb(0 0 0 / 35%);
+
 }
 /*titulo criar publicacao*/
 .modal-generica-header h4 {
@@ -243,7 +246,7 @@ p {
 }
 /*nome do usuario na modal generica*/
 .nome-usuario-modal {
-  margin: 10px 28px 0 10px;
+  margin: 10px 26px 0 10px;
   cursor: pointer;
 }
 /*Modal doacoes*/
@@ -261,10 +264,10 @@ p {
   transition: color 200ms ease;
 }
 .separador-de-texto {
-  border: 1px solid #8d8d94;
+  border: 1px solid #e9e9e9;
   height: 14px;
   margin-top: 19px;
-  background-color: #8d8d94;
+  background-color: #e9e9e9;
 }
 
 .nome-usuario-modal:hover {

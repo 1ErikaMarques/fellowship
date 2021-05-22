@@ -1,5 +1,6 @@
 .profile{
   background-color:#fff;
+  margin-top: 120px!important;
 }
 
 /* Primeira section do profile */
@@ -9,7 +10,6 @@
   align-items: center;  
   margin-top: 45px ;
   margin-bottom: 20px;
- 
 }
 
 
@@ -21,18 +21,17 @@
 
 .header-profile .profile-name {  
   margin-left: 10px;
-  
 }
+
 .btn-edit {
   width: 40%;
   height: 35px;
-  font-size: 12px;/*14px*/
+  font-size: 12px;
   font-weight: bold;  
   cursor: pointer;
-  color: #53525d;  
+  color: #53525d;
   border:none;
-  margin-inline-start: 12.2rem;  
-  border: 1px solid #dedee0;
+  margin-inline-start: 12.2rem;
   background-color: #fff;
   border-radius: 4px;
   letter-spacing: 0.03rem;

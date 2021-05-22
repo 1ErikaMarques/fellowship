@@ -6,6 +6,8 @@ async function loadLogin() {
 async function loadProfile() {
     const contentDiv = document.getElementById("content");
     contentDiv.innerHTML = await fetchHtmlAsText("./src/components/profile/profile.html");
+   const menuNav = document.getElementById('menu_nav')
+    menuNav.style.display = "none";
 }
 
 async function loadHeader() {
@@ -19,6 +21,8 @@ async function loadMenuNav() {
 }
 
 async function loadFeed(ancoraMenuNav) {
+    const menuNav = document.getElementById('menu_nav')
+    menuNav.style.display = "block";
     const contentDiv = document.getElementById("content");
 
     if (ancoraMenuNav !== undefined) {

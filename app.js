@@ -371,7 +371,5 @@ function fecharModalDoacoes() {
 
 function logout() {
     sessionStorage.clear();
-    /*sessionStorage.removeItem('image')*/
     location.reload();
-
 }

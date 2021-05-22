@@ -26,7 +26,7 @@
   color: #9e9ea7;
   border: 1px solid #f7f7f8;
   cursor: pointer;
-    
+
   margin-right: 15px;
 }
 
@@ -227,15 +227,14 @@ p {
   border-radius: 25px;
   background-color: #eeeeee;
   cursor: pointer;
-  transition: color 200ms ease;    
+  transition: color 200ms ease;
 }
 
 /*conteiner usuario e foto*/
 .modal-generica-user-info {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-
+  
 }
 /*imagem de perfil do usuario da modal*/
 .modal-generica-user-info img {
@@ -244,9 +243,8 @@ p {
 }
 /*nome do usuario na modal generica*/
 .nome-usuario-modal {
-  margin: 10px 28px 0 10px;  
+  margin: 10px 28px 0 10px;
   cursor: pointer;
-  
 }
 /*Modal doacoes*/
 .modal-doacoes-tipo {
@@ -257,19 +255,16 @@ p {
   text-align: center;
   margin-top: 22px;
   cursor: pointer;
-  
 }
-.modal-doacoes-tipo:hover{
+.modal-doacoes-tipo:hover {
   color: var(--blue);
-  transition: color 200ms ease; 
+  transition: color 200ms ease;
 }
-.separador-de-texto {  
- border: 1px solid #8d8d94;
- height:14px;
- margin-top:19px;
- background-color:#8d8d94;
- 
-
+.separador-de-texto {
+  border: 1px solid #8d8d94;
+  height: 14px;
+  margin-top: 19px;
+  background-color: #8d8d94;
 }
 
 .nome-usuario-modal:hover {
@@ -284,11 +279,11 @@ p {
   -webkit-user-select: none;
   cursor: text;
   background-color: #fafafa;
-  padding: 10px 0px 50px 0px;
+  padding: 10px 0 50px 0;
   margin-top: 30px;
   color: #62616d;
   font-size: 18px;
-  text-align: 524px;
+  text-align: justify;
 }
 
 .modal-generica-entrada-de-dados:focus {
@@ -299,7 +294,7 @@ p {
   margin-top: 20px;
 }
 
-/*botoes da modal*/
+/*botoes da modal generica*/
 .botoes-modal-generica {
   display: flex;
   align-items: center;
@@ -311,7 +306,7 @@ p {
 .btn-modal button {
   margin-bottom: 20px;
   margin-top: 5px;
-  margin-inline-start: -28px; 
+  margin-inline-start: -28px;
 }
 
 .btn-modal {
@@ -329,8 +324,8 @@ p {
 .image-upload:hover {
   border-radius: 15px;
   background-color: rgb(66 133 244 / 5%);
-  cursor: pointer;    
-  transition:  300ms ease;
+  cursor: pointer;
+  transition: 300ms ease;
 }
 
 .image-upload img {
@@ -343,9 +338,6 @@ p {
   padding: 12px 15px;
 }
 
-
-
-
 /* Solid border */
 hr.solid {
   border-top: 1px solid #e9e9e9;
@@ -354,10 +346,69 @@ hr.solid {
   margin-right: 10px;
 }
 
+
+/*Modal casas*/
+.botoes-modal-casa-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 19px;
+}
+
+.botoes-modal-casa-itens {
+  display: flex;
+  align-items: center;
+}
+
+.image-upload-casa > input {
+  display: none;
+}
+.image-upload-casa {
+  margin-left: 15px;
+}
+
+.image-upload-casa:hover {
+  border-radius: 15px;
+  background-color: rgb(66 133 244 / 5%);
+  cursor: pointer;
+  transition:  300ms ease;
+}
+
+.image-upload-casa img {
+  cursor: pointer;
+}
+
+.botoes-modal-casa-input {
+  margin-left: 20px;
+  width: 121px;
+  height: 25px;
+  border: 1px solid var(--blue);
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.botoes-modal-casa-input::placeholder {
+  color: rgb(66 133 244 / 50%);
+  font-size: 15px;
+  text-align: center;
+}
+
+.botoes-modal-casa-input:focus-visible {
+  outline: none;
+  border-color: var(--blue);
+  transition: 300ms ease;
+}
+
+.botoes-modal-casa-itens-direita {
+  display: flex;
+  justify-content: center;
+  margin-top: -8px;
+  height: 81px;
+  margin-inline-end: 12px;
+}
+
 /*Responsivo Mobile*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  
   /*post*/
   .share-box-entry-div button {
     width: 360px;
@@ -403,7 +454,6 @@ hr.solid {
 
 /* Responsivo tablet*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-
   .share-box-entry-div button {
     width: 470px;
     font-size: 12px;

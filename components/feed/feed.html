@@ -1,10 +1,7 @@
 <!-- Section de publicacao -->
 <section class="share-box-entry container border" id="share-box-entry">
   <div class="share-box-entry-div">
-    <img
-      src="public/usuarios/jovem-estudante.png"
-      alt="Ana Carolina Yamamoto"
-    />
+    <img class="img-user" src="public/profile/foto-usuario-perfil.svg"/>
   </div>
   <div class="share-box-entry-div">
     <button onclick="exibirModal()">Começar publicação</button>
@@ -13,87 +10,6 @@
 
 <!-- Section onde fica todos os posts -->
 <section id="sessao-de-post">
-<!--  <div class="post container border">
-    <div class="usuario_post">
-      <img
-        src="public/usuarios/aposentada.png"
-        alt="Maria Francisca Da Silva Soares"
-        class="img_post"
-      />
-      <h3>Maria Francisca Da Silva Soares</h3>
-      &lt;!&ndash;<div class="tags">
-            <div class="donation-tag">
-              <p class="tag-child">Doando</p>
-            </div>
-          <div class="help-tag">
-            <p class="tag-child">Help</p>
-          </div>
-      </div>&ndash;&gt;
-    </div>
-      <p class="texto_publicacao">
-        É simplesmente um texto fictício da indústria de impressão e composição.
-        Lorem Ipsum tem sido o texto fictício padrão da indústria desde os anos
-        1500, quando um impressor desconhecido pegou uma galé do tipo e
-        embaralhou para fazer um livro de amostra de tipos. Ele sobreviveu não
-        apenas cinco séculos, mas também ao salto para a composição eletrônica,
-        permanecendo essencialmente inalterado. Ele foi popularizado na década
-        de 1960 com o lançamento de folhas de Letraset contendo passagens de
-        Lorem Ipsum e, mais recentemente, com software de editoração eletrônica
-        como Aldus PageMaker incluindo versões de Lorem Ipsum.
-      </p>
-
-      <img
-        src="public/casas/apartamento-alugar.png"
-        alt="apartamento para alugar"
-        class="publicacao"
-      />
-      <p class="call-comentarios"> 2 Comentários</p>
-      <div class="area_comentarios">
-        
-        <div class="area_comentarios_flex">
-          <img
-            src="public/usuarios/jovem-estudante.png"
-            alt=""
-            class="img_comentario"
-          />
-        </div>
-        <div class="area_comentarios_flex">
-          <label>
-            <input type="text" placeholder="" value="É simplesmente um texto fictício da indústria de impressão e composição" />
-          </label>
-        </div>
-      </div>
-
-      <div class="area_comentarios">
-        <div class="area_comentarios_flex">
-          <img
-            src="public/usuarios/servidor-publico.png"
-            alt=""
-            class="img_comentario"
-          />
-        </div>
-
-       
-        <div class="area_comentarios_flex">
-          <input type="text" placeholder="" value="É simplesmente um texto fictício da indústria de impressão e composição" />
-        </div>
-      </div>
-
-    <hr class="aparador-post" />
-    <div class="area_comentarios">
-      <div class="area_comentarios_flex comentario-perfil">
-        <img
-          src="public/usuarios/aposentada.png"
-          alt=""
-          class="img_comentario" onkeyup="addComentario(this)"
-        />         
-      </div>
-     
-      <div class="area_comentarios_flex comentario-perfil">
-        <input type="text" placeholder=" Escreva um comentário" />
-      </div>      
-  </div>
-  </div>-->
 </section>
 
 <!--   Modal de generica -->
@@ -106,7 +22,7 @@
     </div>
     <hr class="aparador aparador-modal-up" />
     <div class="modal-generica-user-info">
-      <img class="img_post"  id="foto-usuario-modal-generica"  />
+      <img class="img_post"  id="foto-usuario-modal-generica" src="public/profile/foto-usuario-perfil.svg" />
 
       <h3 class="nome-usuario-modal" id="nome-usuario-modal-generica"></h3>
     </div>
@@ -162,7 +78,7 @@
     </div>
     <hr class="aparador aparador-modal-up"/>
     <div class="modal-generica-user-info">
-      <img class="img_post" id="foto-usuario-modal-imoveis" />
+      <img class="img_post" id="foto-usuario-modal-imoveis" src="public/profile/foto-usuario-perfil.svg" />
       <h3 class="nome-usuario-modal" id="nome-usuario-modal-imoveis"></h3>
       <p class="modal-casa-opcao" id="opcao-vendendo" onclick="selecionandoTagImoveis(this)" data-tipo="vendendo">Vendendo</p>
       <hr class ="separador-de-texto"/>
@@ -244,7 +160,7 @@
     <hr class="aparador aparador-modal-up" />
 
     <div class="modal-generica-user-info">
-      <img class="img_post" id="foto-usuario-modal-doacoes" />
+      <img class="img_post" id="foto-usuario-modal-doacoes" src="public/profile/foto-usuario-perfil.svg" />
       <h3 class="nome-usuario-modal" id="nome-usuario-modal-doacoes"></h3>
       <p class="modal-doacoes-tipo doando" id="opcao-doando" data-tipo="doando" onclick="selecionandoTagDoacoes(this)">Doando</p>
       <hr class ="separador-de-texto"/>

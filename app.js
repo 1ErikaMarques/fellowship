@@ -495,7 +495,7 @@ async function publicarPost(tipoModal) {
     // criando a foto do usuario no post
     const fotoDoUsuario = document.createElement("img") // criando img
     fotoDoUsuario.className = "img_post" // estilo da img
-    fotoDoUsuario.src = "https://avatars.githubusercontent.com/u/63205222?v=4"
+    fotoDoUsuario.src = "public/profile/foto-usuario-perfil.svg"
     fotoDoUsuario.alt = usuarioLogado.name;
 
     // criando nome do usuario
@@ -652,7 +652,7 @@ async function publicarPost(tipoModal) {
     //img
     const usuarioComentarioImg = document.createElement("img");
     usuarioComentarioImg.className = "img_comentario";
-    usuarioComentarioImg.src = "assets/images/usuarios/jovem-estudante.png";
+    usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg";
 
     //div do input
     const divComentariosFlexInput = document.createElement("div");
@@ -730,7 +730,7 @@ function addComentario(event) {
         //img
         const usuarioComentarioImg = document.createElement("img");
         usuarioComentarioImg.className = "img_comentario";
-        //usuarioComentarioImg.src = usuarioLogado.photoUrl
+        usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg"
         usuarioComentarioImg.setAttribute("title", usuarioLogado.name)
         usuarioComentarioImg.setAttribute('data-userId', usuarioLogado.id)
         usuarioComentarioImg.setAttribute('onclick', 'loadProfile(this)');

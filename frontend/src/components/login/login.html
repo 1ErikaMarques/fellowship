@@ -1,0 +1,118 @@
+<div class="wrapper">
+  <div class="child-item">
+    <img class="img-login" src="public/login/ilustracao-login.svg" alt="..." />
+  </div>
+
+  <div class="child-item form-login border">
+    <form onsubmit="verificaLogin(this);return false;">
+      <img
+        src="public/logo.svg"
+        class="logo-login"
+        alt="Fellowship"
+      />
+      <div>
+        <label>Email</label>
+        <input
+          class="border-input form-control"
+          type="email"
+          id="floatingInput"
+          required
+          name="email"
+        />
+      </div>
+      <div>
+        <label>Senha</label>
+        <input
+          class="border-input form-control"
+          type="password"
+          id="floatingPassword"
+          required
+          name="password"
+        />
+      </div>
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+    <hr class="aparador-login" />
+
+    <div class="call-login">
+      <p>Ainda não tem conta?</p>
+      <h4 onclick="modalCadastro()">Cadastre-se</h4>
+    </div>
+
+    <!--Cadastro-->
+    <div class="modal-cadastro" id="modalCadastro">
+      <div class="modal-form-cadastro">
+        <form
+          class="form-cadastro border"
+          onsubmit="registro(this);return false;">
+          <span class="close-modal" onclick="fecharModalCadastro()"
+            >&times;</span
+          >
+          <div>
+            <img
+              src="public/logo.svg"
+              class="logo-cadastro"
+              alt="Fellowship"
+            />
+          </div>
+          <div>
+            <label>Nome Completo</label>
+            <input
+              class="border-input"
+              type="text"
+              id="nomeInput"
+              name="name" required
+            />
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+              class="border-input"
+              type="email"
+              id="emailInput"
+              name="email" required
+            />
+          </div>
+          <div>
+            <label>Senha</label>
+            <input
+              class="border-input"
+              type="password"
+              id="passwordInput"
+              name="password" required
+            />
+          </div>
+          <div>
+            <label>Data de nascimento</label>
+            <input
+              class="border-input"
+              type="date"
+              id="dataDeNascimentoInput"
+              placeholder="dd/mm/yyyy"
+              name="birthday"
+            />
+          </div>
+          <div>
+            <label>CEP</label>
+            <input
+              class="border-input"
+              type="text"
+              id="cepInput"
+              name="postalCode" required  size="10" maxlength="9" onblur="preencheBairro(this.value,'bairroCadastroInput')"   />
+          </div>
+          <div>
+            <label></label>
+            <input
+              class="border-input"
+              type="text"
+              id="bairroCadastroInput"
+              name="neighborhood" disabled
+              placeholder="Bairro"
+            />
+          </div>
+          <button type="submit" class="btn-cadastro">Cadastre-se</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

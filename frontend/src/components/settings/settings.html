@@ -1,0 +1,86 @@
+<section id="settings" class="settings ">
+    <div class="menu-settings">
+        <img src="https://avatars.githubusercontent.com/u/4424108?v=4">
+
+        <h4 class="menu-settings-nome-usuario" id="nome-usuario-settings"></h4>
+        <div class="menu-settings-titulo menu-settings-titulo-ativo" id="div-menu-settings-conta" data-name="conta"
+             onclick="menuSettings(this)">
+            <img src="public/settings/icone-conta.svg">
+            <h5 class="menu-settings-geral" id="menu-settings-conta">Conta</h5>
+        </div>
+        <div class="menu-settings-titulo" id="div-menu-settings-seguranca" data-name="seguranca"
+             onclick="menuSettings(this)">
+            <img src="public/settings/icone-seguranca.svg">
+            <h5 class="menu-settings-geral" id="menu-settings-seguranca">Segurança</h5>
+        </div>
+    </div>
+    <section class="header-settings">
+        <div class="ilustracao-settings">
+            <img src="public/settings/ilustracao-settings.svg">
+        </div>
+    </section>
+    <section class="editar-settings">
+        <div class="campos-settings">
+            <div id="settings-seguranca">
+                <h4>Alterar Login</h4>
+                <div class="campos-settings-child">
+                    <label>Email</label>
+                    <input
+                            class="border-input"
+                            type="email"
+                            name="email"
+                            id="email-input-settings"
+                            disabled
+                    /> <span data-id="email-input-settings" onclick="editarSettings(this)">Editar</span>
+                </div>
+                <div class="campos-settings-child">
+                    <label>Senha</label>
+                    <input
+                            class="border-input"
+                            type="password"
+                            name="password"
+                            id="password-input-settings"
+                            disabled
+                    /><span data-id="password-input-settings" onclick="editarSettings(this)">Editar</span>
+                </div>
+            </div>
+
+            <div id="settings-conta">
+                <h4>Dados Pessoais</h4>
+                <div class="campos-settings-child">
+                    <label>Nome</label>
+                    <input
+                            class="border-input"
+                            type="text"
+                            name="name"
+                            id="name-input-settings"
+                            disabled
+                    /><span data-id="name-input-settings" onclick="editarSettings(this)">Editar</span>
+                </div>
+
+                <div class="campos-settings-child">
+                    <label>CEP</label>
+                    <input
+                            class="border-input"
+                            type="text"
+                            name="postalCode"
+                            id="cep-input-settings"
+                            size="10" maxlength="9"
+                            disabled onblur="preencheBairro(this.value,'bairro-input-settings')"/>
+                    <span data-id="cep-input-settings" onclick="editarSettings(this)">Editar</span>
+                </div>
+                <div class="campos-settings-child">
+                    <input readonly disabled
+                           class="border-input"
+                           type="text"
+                           id="bairro-input-settings"
+                    />
+                </div>
+            </div>
+        </div>
+
+    </section>
+</section>
+
+
+

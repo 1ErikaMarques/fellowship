@@ -1,0 +1,295 @@
+<!-- Section de publicacao -->
+<section class="share-box-entry container border" id="share-box-entry">
+  <div class="share-box-entry-div">
+    <img
+      src="public/usuarios/jovem-estudante.png"
+      alt="Ana Carolina Yamamoto"
+    />
+  </div>
+  <div class="share-box-entry-div">
+    <button onclick="exibirModal()">Começar publicação</button>
+  </div>
+</section>
+
+<!-- Section onde fica todos os posts -->
+<section id="sessao-de-post">
+<!--  <div class="post container border">
+    <div class="usuario_post">
+      <img
+        src="public/usuarios/aposentada.png"
+        alt="Maria Francisca Da Silva Soares"
+        class="img_post"
+      />
+      <h3>Maria Francisca Da Silva Soares</h3>
+      &lt;!&ndash;<div class="tags">
+            <div class="donation-tag">
+              <p class="tag-child">Doando</p>
+            </div>
+          <div class="help-tag">
+            <p class="tag-child">Help</p>
+          </div>
+      </div>&ndash;&gt;
+    </div>
+      <p class="texto_publicacao">
+        É simplesmente um texto fictício da indústria de impressão e composição.
+        Lorem Ipsum tem sido o texto fictício padrão da indústria desde os anos
+        1500, quando um impressor desconhecido pegou uma galé do tipo e
+        embaralhou para fazer um livro de amostra de tipos. Ele sobreviveu não
+        apenas cinco séculos, mas também ao salto para a composição eletrônica,
+        permanecendo essencialmente inalterado. Ele foi popularizado na década
+        de 1960 com o lançamento de folhas de Letraset contendo passagens de
+        Lorem Ipsum e, mais recentemente, com software de editoração eletrônica
+        como Aldus PageMaker incluindo versões de Lorem Ipsum.
+      </p>
+
+      <img
+        src="public/casas/apartamento-alugar.png"
+        alt="apartamento para alugar"
+        class="publicacao"
+      />
+      <p class="call-comentarios"> 2 Comentários</p>
+      <div class="area_comentarios">
+        
+        <div class="area_comentarios_flex">
+          <img
+            src="public/usuarios/jovem-estudante.png"
+            alt=""
+            class="img_comentario"
+          />
+        </div>
+        <div class="area_comentarios_flex">
+          <label>
+            <input type="text" placeholder="" value="É simplesmente um texto fictício da indústria de impressão e composição" />
+          </label>
+        </div>
+      </div>
+
+      <div class="area_comentarios">
+        <div class="area_comentarios_flex">
+          <img
+            src="public/usuarios/servidor-publico.png"
+            alt=""
+            class="img_comentario"
+          />
+        </div>
+
+       
+        <div class="area_comentarios_flex">
+          <input type="text" placeholder="" value="É simplesmente um texto fictício da indústria de impressão e composição" />
+        </div>
+      </div>
+
+    <hr class="aparador-post" />
+    <div class="area_comentarios">
+      <div class="area_comentarios_flex comentario-perfil">
+        <img
+          src="public/usuarios/aposentada.png"
+          alt=""
+          class="img_comentario" onkeyup="addComentario(this)"
+        />         
+      </div>
+     
+      <div class="area_comentarios_flex comentario-perfil">
+        <input type="text" placeholder=" Escreva um comentário" />
+      </div>      
+  </div>
+  </div>-->
+</section>
+
+<!--   Modal de generica -->
+<div id="modal-generica" class="container modal-cadastro">
+  <div class="modal-generica-conteudo border">
+    <div id="modal-generica-header" class="modal-generica-header">
+      <span class="close-modal-generica" onclick="fecharModalGenerica()"
+        >&times;</span>
+      <h4>Criar publicação</h4>      
+    </div>
+    <hr class="aparador aparador-modal-up" />
+    <div class="modal-generica-user-info">
+      <img class="img_post"  id="foto-usuario-modal-generica"  />
+
+      <h3 class="nome-usuario-modal" id="nome-usuario-modal-generica"></h3>
+    </div>
+    <div class="scroll-modal">
+    <div
+      contenteditable="true"
+      class="modal-generica-entrada-de-dados"
+      id="modal-generica-entrada-de-dados"      
+    ></div>
+
+    <!--  Espaco onde fica as imagens apos carregadas -->
+    <section id="arquivos-modal-post-generica" class="imagens-carregadas-container">
+    </section>
+  </div>
+    <hr class="aparador aparador-modal-down"/>
+    <div class="botoes-modal-generica">
+    <div class="image-upload">
+  <label for="input-img-modal-generica">
+    <img src="public/modal/icon-camera.svg"/>
+  </label>
+
+  <input id="input-img-modal-generica" type="file" data-name="generica"
+      multiple
+      onchange="addImgModal(this)"
+   />  
+</div>
+
+<div class="image-upload icone-video-modal">
+  <label for="input-video-modal-generica">
+    <img src="public/modal/icon-video.svg"/>
+  </label>
+
+  <input id="input-video-modal-generica" type="file" data-name="generica"
+      multiple
+      onchange="addVideoModal(this)" />
+</div>
+
+
+  <div class="btn-modal" id="div-botao-modal-publicacao">
+      <button onclick="publicarPost(this)" class="btn" data-name="generica">Publicar</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- modal casa -->
+<div id="modal-casa" class="container modal-cadastro">
+  <div class="modal-generica-conteudo border">
+    <div id="modal-casa-header" class="modal-generica-header">
+      <span class="close-modal-generica" onclick="fecharModalCasa()"
+      >&times;</span>
+      <h4>Criar publicação</h4>
+    </div>
+    <hr class="aparador aparador-modal-up"/>
+    <div class="modal-generica-user-info">
+      <img class="img_post" id="foto-usuario-modal-imoveis" />
+      <h3 class="nome-usuario-modal" id="nome-usuario-modal-imoveis"></h3>
+      <p class="modal-casa-opcao" id="opcao-vendendo" onclick="selecionandoTagImoveis(this)" data-tipo="vendendo">Vendendo</p>
+      <hr class ="separador-de-texto"/>
+      <p class="modal-casa-opcao" id="opcao-alugando" onclick="selecionandoTagImoveis(this)" data-tipo="alugando">Alugando</p>
+      <hr class ="separador-de-texto"/>
+      <p class="modal-casa-opcao" id="opcao-procurando" onclick="selecionandoTagImoveis(this)" data-tipo="procurando">Procurando</p>
+    </div>
+    <div class="scroll-modal">
+      <div
+              contenteditable="true"
+              class="modal-generica-entrada-de-dados"
+              id="modal-imovel-entrada-de-dados"
+      ></div>
+
+      <!--  Espaco onde fica as imagens apos carregadas -->
+      <section id="arquivos-modal-post-imoveis" class="imagens-carregadas-container">
+      </section>
+    </div>
+
+    <hr class="aparador aparador-modal-down"/>
+
+    <div class="botoes-modal-casa-container ">
+
+      <div class="botoes-modal-casa-itens">
+        <div class="image-upload-casa">
+          <label for="modal-casa-icon-camera">
+            <img src="public/modal/icon-camera.svg"/>
+          </label>
+
+          <input id="modal-casa-icon-camera" type="file" data-name="imoveis"
+                 multiple
+                 onchange="addImgModal(this)"
+          />
+        </div>
+
+        <div class="image-upload-casa icone-video-modal-casa">
+          <label for="modal-casa-icon-video">
+            <img src="public/modal/icon-video.svg"/>
+          </label>
+
+          <input id="modal-casa-icon-video" type="file" data-name="imoveis"
+                 multiple
+                 onchange="addVideoModal(this)"/>
+        </div>
+      </div>
+
+        <div class="botoes-modal-casa-itens-input">
+
+          <!--tipo de imovel-->
+          <select id="tipoImovel-input"  class="botoes-modal-casa-input" required>
+            <option disabled selected value>Tipo</option>
+            <option name="Casa" value="Casa">Casa</option>
+            <option name="Apartamento" value="Apartamento">Apartamento</option>
+            <option name="Loft" value="Loft">Loft</option>
+            <option name="Quarto" value="Quarto">Quarto</option>
+            <option name="Terreno" value="Terreno">Terreno</option>
+          </select>
+
+          <!--Valor do imovel-->
+          <input id="valorImovel-input" class="botoes-modal-casa-input" placeholder="Valor" type="text"/>
+
+        </div>
+
+    </div>
+    <div class="botoes-modal-casa-itens-direita">
+      <button onclick="publicarPost(this)" class="btn" name="botao-modal-publicacao" data-name="imovel">Publicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- modal doacoes -->
+<div id="modal-doacoes" class="container modal-cadastro">
+  <div class="modal-generica-conteudo border">
+    <div id="modal-doacoes-header" class="modal-generica-header">
+      <span class="close-modal-generica" onclick="fecharModalDoacoes()"
+        >&times;</span>
+      <h4>Criar publicação</h4>      
+    </div>
+    <hr class="aparador aparador-modal-up" />
+
+    <div class="modal-generica-user-info">
+      <img class="img_post" id="foto-usuario-modal-doacoes" />
+      <h3 class="nome-usuario-modal" id="nome-usuario-modal-doacoes"></h3>
+      <p class="modal-doacoes-tipo doando" id="opcao-doando" data-tipo="doando" onclick="selecionandoTagDoacoes(this)">Doando</p>
+      <hr class ="separador-de-texto"/>
+      <p class="modal-doacoes-tipo pedido-de-doacao" id="opcao-help" data-tipo="help" onclick="selecionandoTagDoacoes(this)">Pedido de doação</p>
+    </div>
+    <div class="scroll-modal">
+
+      <!--texto da publicacao/focus-->
+    <div
+      contenteditable="true"
+      class="modal-generica-entrada-de-dados"
+      id="modal-doacoes-entrada-de-dados"
+    ></div>
+
+    <!--  Espaco onde fica as imagens apos carregadas -->
+    <section id="arquivos-modal-post-doacoes" class="imagens-carregadas-container">
+    </section>
+  </div>
+    <hr class="aparador aparador-modal-down"/>
+    <div class="botoes-modal-generica">
+    <div class="image-upload">
+  <label for="modal-doacoes-icon-img-input">
+    <img src="public/modal/icon-camera.svg"/>
+  </label>
+
+  <input id="modal-doacoes-icon-img-input" type="file" data-name="doacoes"
+      multiple
+      onchange="addImgModal(this)"
+   />  
+</div>
+
+<div class="image-upload icone-video-modal">
+  <label for="modal-doacoes-icon-video-input">
+    <img src="public/modal/icon-video.svg"/>
+  </label>
+
+  <input id="modal-doacoes-icon-video-input" type="file" data-name="doacoes"
+      multiple
+      onchange="addVideoModal(this)"/>
+</div>
+
+
+  <div class="btn-modal">
+      <button onclick="publicarPost(this)" class="btn" name="botao-modal-publicacao" data-name="doacoes">Publicar</button>
+    </div>
+  </div>
+  </div>
+</div>

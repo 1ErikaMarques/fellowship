@@ -730,7 +730,7 @@ function addComentario(event) {
         //img
         const usuarioComentarioImg = document.createElement("img");
         usuarioComentarioImg.className = "img_comentario";
-        usuarioComentarioImg.src = usuarioLogado.photoUrl
+        //usuarioComentarioImg.src = usuarioLogado.photoUrl
         usuarioComentarioImg.setAttribute("title", usuarioLogado.name)
         usuarioComentarioImg.setAttribute('data-userId', usuarioLogado.id)
         usuarioComentarioImg.setAttribute('onclick', 'loadProfile(this)');
@@ -1004,12 +1004,12 @@ function changePhotoProfile(element) {
     for (let i = 0; i < usuariosLocalStorage.length; i++) {
         let usuario = usuariosLocalStorage[i];
         if (idUsuarioLogado === usuario.id) {
-            usuario.photoUrl = imageProfile.src;
+            //usuario.photoUrl = imageProfile.src;
 
-            sessionStorage.setItem('loggedUser', JSON.stringify(usuario));
+            //sessionStorage.setItem('loggedUser', JSON.stringify(usuario));
         }
     }
-    localStorage.setItem('users', JSON.stringify(usuariosLocalStorage));
+   // localStorage.setItem('users', JSON.stringify(usuariosLocalStorage));
 }
 
 function focusAbout() {

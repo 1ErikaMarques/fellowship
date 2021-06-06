@@ -723,7 +723,9 @@ async function publicarPost(tipoModal) {
     divComentarios.appendChild(divComentariosFlexInput);
     criandoDiv.prepend(divInformacaoDoUsuario); // prepend para ele ser sempre o que veem em primeiro no post
     criandoDiv.append(paragrafo);
-    criandoDiv.append(divPrincipalCarrosel);
+    if(ulCarrosel.children.length > 0) {
+        criandoDiv.append(divPrincipalCarrosel);
+    }
     criandoDiv.append(contadorDeComentarios);
     criandoDiv.append(divSessaoComentarios);
     criandoDiv.append(aparador);
@@ -743,7 +745,10 @@ async function publicarPost(tipoModal) {
             break;
     }
     salvarFeeds(tipoModal.dataset.tipo, criandoDiv.id, criandoDiv.innerHTML, true)
-    new Splide('.splide').mount();//carrosel img
+
+    if(ulCarrosel.children.length > 0) {
+        new Splide('.splide').mount();//carrosel img
+    }
 }
 
 /**

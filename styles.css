@@ -1,10 +1,10 @@
 @import url(normalize.css);
-@import url(components/login/login.css);
-@import url(components/header/header.css);
-@import url(components/menu-nav/menu-nav.css);
-@import url(components/feed/feed.css);
-@import url(components/profile/profile.css);
-@import url(components/settings/settings.css);
+@import url(./components/login/login.css);
+@import url(./components/header/header.css);
+@import url(./components/menu-nav/menu-nav.css);
+@import url(./components/feed/feed.css);
+@import url(./components/profile/profile.css);
+@import url(./components/settings/settings.css);
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -45,7 +45,7 @@ p {
     border: none;
     transition: all 0.4s ease;
     cursor: pointer;
-    letter-spacing: 0.03rem;
+    letter-spacing: 0.05rem;
 }
 
 .btn:hover {

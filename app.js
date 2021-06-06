@@ -80,17 +80,37 @@ function logout() {
  * Cadastra usuario e ativa sessao.
  * @param form formulario de cadastro
  */
-function registro(form) {
+async function registro(form) {
 
-    if (form.email.value === '' || form.password.value === '') {
+    if (form.neighborhood.value === '') {
+        alert('Por favor insira um cep válido')
         return;
+    } else if (form.neighborhood.value === '...') {
+        await new Promise(r => setTimeout(r, 1000));
     }
 
-    const newUser = addUser(uuid(), form.name.value, form.email.value, form.password.value, form.birthday.value,
+    const newUser = addUser(uuid(), form.name.value, form.email.value, form.password.value,
+        moment(form.birthday.value).format('DD/MM/YYYY', true),
         form.postalCode.value, form.neighborhood.value);
 
     if (localStorage.getItem('users')) {
         let storedUsers = JSON.parse(localStorage.getItem('users'));
+
+        let emailAlreadyExists = false;
+        storedUsers.forEach(user => {
+            if (emailAlreadyExists) {
+                return;
+            }
+            if (form.email.value === user.email) {
+                emailAlreadyExists = true;
+            }
+        })
+
+        if (emailAlreadyExists) {
+            alert('Este endereço de email já está sendo usado por usuário.')
+            return;
+        }
+
         storedUsers.push(newUser)
         localStorage.setItem('users', JSON.stringify(storedUsers));
     } else {
@@ -108,7 +128,7 @@ function registro(form) {
  * @param valorPreenchido o cep preenchido no formulario de cadastro.
  * @param inputBairroId id do input do bairro
  */
-function preencheBairro(valorPreenchido, inputBairroId) {
+async function preencheBairro(valorPreenchido, inputBairroId) {
 
     //Nova variável "cep" somente com dígitos.
     let cep = valorPreenchido.replace(/\D/g, '');
@@ -120,12 +140,12 @@ function preencheBairro(valorPreenchido, inputBairroId) {
     if (validacep.test(cep)) {
         document.getElementById(inputBairroId).value = "...";
 
-        fetch(`https://viacep.com.br/ws/${cep}/json`)
+        await fetch(`https://viacep.com.br/ws/${cep}/json`)
             .then(response => response.json())
             .then(res => {
 
                 if (!("erro" in res)) {
-                    document.getElementById(inputBairroId).value = (res.bairro);
+                    document.getElementById(inputBairroId).value = `${res.bairro} - ${res.uf}`;
                 } else {
                     alert("CEP não encontrado.");
                     document.getElementById(inputBairroId).value = null;
@@ -503,6 +523,7 @@ async function publicarPost(tipoModal) {
     nomeUsuario.innerText = usuarioLogado.name;
     nomeUsuario.setAttribute('data-userId', usuarioLogado.id)
     nomeUsuario.setAttribute('onclick', 'loadProfile(this)');
+    nomeUsuario.setAttribute('name', 'user-name')
 
     //div que recebe o valor das divTags
     let divTagConstruida
@@ -527,6 +548,7 @@ async function publicarPost(tipoModal) {
             let tipoDeImovel = document.getElementById('tipoImovel-input').value;
             let inputValor = document.getElementById('valorImovel-input').value;
 
+
             //construindo as tags
             const divTags = document.createElement('div');//div principal
             divTags.classList.add('tags')
@@ -544,6 +566,8 @@ async function publicarPost(tipoModal) {
             const conteudoTipo = document.createElement('p'); //loft,casa,apartamento...opcoes do select
             conteudoTipo.classList.add('tag-child');
             conteudoTipo.textContent = tipoDeImovel;
+            document.getElementById('valorImovel-input').value = null;
+
 
             //tag valor
             const divValor = document.createElement('div');
@@ -551,10 +575,17 @@ async function publicarPost(tipoModal) {
             const conteudoValor = document.createElement('p');
             conteudoValor.classList.add('tag-child');
             conteudoValor.textContent = inputValor;
+            document.getElementById('tipoImovel-input').value = null;
 
             //associando os elementos
-            divTipo.appendChild(conteudoTipo);
-            divValor.appendChild(conteudoValor);
+            if (conteudoTipo.textContent) {
+                divTipo.appendChild(conteudoTipo);
+            }
+
+            if (conteudoValor.textContent) {
+                divValor.appendChild(conteudoValor);
+            }
+
             divOpcao.appendChild(conteudoOpcao);
             divTags.append(divTipo, divValor, divOpcao);
             divTagConstruida = divTags;
@@ -608,8 +639,15 @@ async function publicarPost(tipoModal) {
     paragrafo.innerText = conteudoPost // colocando o conteudo que conseguimos acessar da modal
     elementoPost.textContent = null // limpando o texto da modal apos a publicaçao,para as futuras publicaçoes a modal estar sem nenhum texto
 
+    //criando o carrosel das imgs do post
+    const divPrincipalCarrosel = document.createElement("div");
+    divPrincipalCarrosel.classList.add('splide');
+    const divCarrosel = document.createElement("div");
+    divCarrosel.classList.add('splide__track');
+    const ulCarrosel = document.createElement("ul");
+    ulCarrosel.classList.add('splide__list');
+
     //criando a img do post
-    let fotosDoPost = [];
     for (let i = 0; i < imgPostModal.children.length; i++) {
         let arquivoDaModal = imgPostModal.children[i].children[0]
         let arquivoDoPost
@@ -621,8 +659,13 @@ async function publicarPost(tipoModal) {
         }
         arquivoDoPost.className = "publicacao" // estilo da img
         arquivoDoPost.src = arquivoDaModal.src
-        fotosDoPost.push(arquivoDoPost)
+        const liCarrosel = document.createElement("li");
+        liCarrosel.classList.add('splide__slide');
+        liCarrosel.appendChild(arquivoDoPost);
+        ulCarrosel.appendChild(liCarrosel);
     }
+    divCarrosel.appendChild(ulCarrosel);
+    divPrincipalCarrosel.appendChild(divCarrosel);
 
     // Removendo elementos img da modal
     imgPostModal.textContent = null;
@@ -630,7 +673,7 @@ async function publicarPost(tipoModal) {
     //Criando contador de comentarios
     const contadorDeComentarios = document.createElement('p')
     contadorDeComentarios.classList.add('call-comentarios')
-    contadorDeComentarios.innerText = '0 Comentários'
+    contadorDeComentarios.innerText = '0 Comentário(s)'
     contadorDeComentarios.setAttribute('name', 'contadorDeComentarios')
 
     // criando area de comentarios
@@ -652,7 +695,7 @@ async function publicarPost(tipoModal) {
     //img
     const usuarioComentarioImg = document.createElement("img");
     usuarioComentarioImg.className = "img_comentario";
-    usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg";
+    usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg"
 
     //div do input
     const divComentariosFlexInput = document.createElement("div");
@@ -663,6 +706,7 @@ async function publicarPost(tipoModal) {
     comentarioUsuario.type = "text";
     comentarioUsuario.placeholder = "Escreva um comentário";
     comentarioUsuario.setAttribute('onkeyup', 'addComentario(event)');
+    comentarioUsuario.name = 'input-comentarios'
 
     //associando pais e filhos
     divInformacaoDoUsuario.appendChild(fotoDoUsuario);
@@ -675,13 +719,13 @@ async function publicarPost(tipoModal) {
 
     divComentariosFlex.appendChild(usuarioComentarioImg);
     divComentarios.appendChild(divComentariosFlex);
-    divComentariosFlexInput.appendChild(comentarioUsuario)
+    divComentariosFlexInput.appendChild(comentarioUsuario);
     divComentarios.appendChild(divComentariosFlexInput);
     criandoDiv.prepend(divInformacaoDoUsuario); // prepend para ele ser sempre o que veem em primeiro no post
     criandoDiv.append(paragrafo);
-    fotosDoPost.forEach(imgTags => criandoDiv.append(imgTags));
-    criandoDiv.append(contadorDeComentarios)
-    criandoDiv.append(divSessaoComentarios)
+    criandoDiv.append(divPrincipalCarrosel);
+    criandoDiv.append(contadorDeComentarios);
+    criandoDiv.append(divSessaoComentarios);
     criandoDiv.append(aparador);
     criandoDiv.append(divComentarios);
 
@@ -699,6 +743,7 @@ async function publicarPost(tipoModal) {
             break;
     }
     salvarFeeds(tipoModal.dataset.tipo, criandoDiv.id, criandoDiv.innerHTML, true)
+    new Splide('.splide').mount();//carrosel img
 }
 
 /**
@@ -730,32 +775,40 @@ function addComentario(event) {
         //img
         const usuarioComentarioImg = document.createElement("img");
         usuarioComentarioImg.className = "img_comentario";
-        usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg"
-        usuarioComentarioImg.setAttribute("title", usuarioLogado.name)
-        usuarioComentarioImg.setAttribute('data-userId', usuarioLogado.id)
+        usuarioComentarioImg.src = 'public/profile/foto-usuario-perfil.svg'
+        usuarioComentarioImg.setAttribute("title", usuarioLogado.name);
+        usuarioComentarioImg.setAttribute('data-userId', usuarioLogado.id);
         usuarioComentarioImg.setAttribute('onclick', 'loadProfile(this)');
+        usuarioComentarioImg.setAttribute('name', 'user-name')
 
         //div do input
         const divComentariosFlexInput = document.createElement("div");
-        divComentariosFlexInput.classList.add("area_comentarios_flex");
+        divComentariosFlexInput.classList.add("area_comentarios_body");
 
-        const inputComentario = document.createElement('p')
+        const inputComentario = document.createElement('p');
         inputComentario.innerText = comment;
 
+        //Nome do usuario
+        const usuarioComentario = document.createElement('span');
+        usuarioComentario.innerText = usuarioLogado.name;
+        usuarioComentario.classList.add("area_comentarios");
+        usuarioComentario.setAttribute('data-userId', usuarioLogado.id);
+        usuarioComentario.setAttribute('onclick', 'loadProfile(this)');
+        usuarioComentario.setAttribute('name', 'user-name')
 
-        divComentariosFlexInput.appendChild(inputComentario)
-        divComentariosFlex.appendChild(usuarioComentarioImg)
-        divComentarios.appendChild(divComentariosFlex)
-        divComentariosFlex.appendChild(divComentariosFlexInput)
-        section.prepend(divComentarios)
+        divComentariosFlexInput.append(usuarioComentario, inputComentario);
+        divComentariosFlex.appendChild(usuarioComentarioImg);
+        divComentarios.appendChild(divComentariosFlex);
+        divComentariosFlex.appendChild(divComentariosFlexInput);
+        section.prepend(divComentarios);
 
         const quantidadeDeComentarios = section.children.length;
 
-        contadorDeComentarios.innerText = quantidadeDeComentarios + ' Comentários';
+        contadorDeComentarios.innerText = quantidadeDeComentarios + ' Comentário(s)';
 
         event.target.value = null;
 
-        salvarFeeds(tipoFeed, postId, divPost.innerHTML, false)
+        salvarFeeds(tipoFeed, postId, divPost.innerHTML, false);
     }
 }
 
@@ -817,6 +870,79 @@ function salvarFeeds(tipoFeed, postId, post, novoFeed) {
 }
 
 /*Header*/
+
+/*modal bairro*/
+
+async function abrirModalBairro(event) {
+
+    if (event.type === 'change') {
+
+        const nomeBairro = document.getElementById('bairro'); //nome do bairro que esta no header
+        const bairroSelecionado = document.getElementById('header_search'); //bairro que seleciona no pesquisar
+
+        let bairrosDisponiveis = [];
+
+        const users = JSON.parse(localStorage.getItem('users'));
+        users.forEach(user => {
+            bairrosDisponiveis.push(user.neighborhood)
+        });
+
+        if (!bairrosDisponiveis.includes(bairroSelecionado.value)) {
+            alert('Infelizmente ainda não existem moradores nesse bairro que você pesquisou, selecione um bairro disponível na lista.')
+            return;
+        }
+
+        nomeBairro.textContent = bairroSelecionado.value;
+        await loadFeed();
+        const modalBairros = document.getElementById('modal-bairros');
+        modalBairros.style.display = 'block';
+        document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
+    }
+}
+
+function fecharModalBairros() {
+    espiadinha();
+}
+
+function espiadinha() {
+    const comecarPublicacao = document.getElementById('btn-comecar-publicacao');
+    comecarPublicacao.removeAttribute('onclick');
+    comecarPublicacao.style.cursor = 'not-allowed';
+
+    const listaInputComentario = document.getElementsByName('input-comentarios');
+
+    const nomeUsuarioPost = document.getElementsByName('user-name');
+
+    for (let nameUser of nomeUsuarioPost) {
+        nameUser.style.cursor = 'not-allowed';
+        nameUser.removeAttribute('onclick');
+    }
+
+    for (let input of listaInputComentario) {
+        input.style.cursor = 'not-allowed';
+        input.setAttribute('disabled', '');
+    }
+
+
+    sessionStorage.setItem('espiadinha', 'true')
+
+    document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");
+
+    const inputSearch = document.getElementById('header_search');
+    inputSearch.value = null
+    const modalBairros = document.getElementById('modal-bairros');
+    modalBairros.style.display = 'none';
+}
+
+async function mudarBairro() {
+    const nomeBairro = document.getElementById('bairro');
+    nomeBairro.textContent = usuarioLogado.neighborhood;
+    const inputSearch = document.getElementById('header_search');
+    inputSearch.value = null
+
+    await loadSettings()
+}
+
 /**
  * Adiciona class permahover para exibir a modal e so desaparecer quando clicar novamente.
  * @param elemento li dos icons do header
@@ -909,6 +1035,11 @@ function uuid() {
 }
 
 function reloadPage() {
+
+    if (sessionStorage.getItem('espiadinha')) {
+        sessionStorage.removeItem('espiadinha')
+    }
+
     location.reload();
 }
 
@@ -927,9 +1058,6 @@ function editarPerfil(element) {
 
     let editarRelacionamento = document.getElementById("perfil-relacionamento");
     editarRelacionamento.setAttribute("contenteditable", "true");
-
-    let editarDataNasc = document.getElementById("perfil-dataNasc");
-    editarDataNasc.setAttribute("contenteditable", "true");
 
     let editarHobbies = document.getElementById("perfil-hobbies");
     editarHobbies.setAttribute("contenteditable", "true");
@@ -961,9 +1089,6 @@ function salvandoDadosPerfil(element) {
 
     let editarRelacionamento = document.getElementById("perfil-relacionamento");
     editarRelacionamento.setAttribute("contenteditable", "false");
-
-    let editarDataNasc = document.getElementById("perfil-dataNasc");
-    editarDataNasc.setAttribute("contenteditable", "false");
 
     let editarHobbies = document.getElementById("perfil-hobbies");
     editarHobbies.setAttribute("contenteditable", "false");
@@ -1004,12 +1129,12 @@ function changePhotoProfile(element) {
     for (let i = 0; i < usuariosLocalStorage.length; i++) {
         let usuario = usuariosLocalStorage[i];
         if (idUsuarioLogado === usuario.id) {
-            //usuario.photoUrl = imageProfile.src;
+            usuario.photoUrl = imageProfile.src;
 
-            //sessionStorage.setItem('loggedUser', JSON.stringify(usuario));
+            sessionStorage.setItem('loggedUser', JSON.stringify(usuario));
         }
     }
-   // localStorage.setItem('users', JSON.stringify(usuariosLocalStorage));
+    localStorage.setItem('users', JSON.stringify(usuariosLocalStorage));
 }
 
 function focusAbout() {
@@ -1107,4 +1232,25 @@ function menuSettings(element) {
             break;
     }
 
+}
+
+
+function formataMoeda(elemento) {
+    const value = elemento.value.replace(/,/g, '');
+    const valorFormatado = parseFloat(value).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 0
+    });
+    if (valorFormatado === 'R$ NaN') {
+        elemento.value = null;
+    } else {
+        elemento.value = valorFormatado;
+    }
+}
+
+// Verifica se a pagina foi recarregada
+if (PerformanceNavigationTiming.type === PerformanceNavigationTiming.TYPE_RELOAD) {
+    sessionStorage.removeItem('espiadinha')
 }

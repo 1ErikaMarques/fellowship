@@ -12,10 +12,13 @@
                     class="search"
                     placeholder="Pesquisar"
                     id="header_search"
-                    maxlength="28"
-                    autocomplete="false"
-                    onkeyup="buscarBairros(this)"
+                    autocomplete="off"
+                    onchange="abrirModalBairro(event)"
+                    list="header_search_bairros"
             />
+            <datalist id="header_search_bairros">
+
+            </datalist>
         </div>
     </div>
     <div class="header_nav_items">

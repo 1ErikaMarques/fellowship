@@ -101,11 +101,11 @@ p {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 150%;
+    width: 100%;
     margin-top: 18px;
     font-size: 12px;
     font-weight: bold;
-    color: #fefefe;
+    color: #fff;
 }
 
 .donation-tag {
@@ -119,6 +119,7 @@ p {
     margin-top: 0;
     text-align: center;
     padding: 6px 11px;
+    letter-spacing: 0.05em;
 
 }
 
@@ -189,6 +190,39 @@ p {
 .area_comentarios_flex {
     display: flex;
 }
+.area_comentarios_body {
+    width: 545px;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 18px;
+    margin-left: 10px;
+    padding: 0 12px;
+    background-color: #f4f5f7;
+    border: 1px solid #f7f7f8;
+    line-height: 1.2rem;
+    display:block;
+}
+
+.area_comentarios span{
+    display:block;
+    color: #62616d;
+    font-size: 15px;
+    margin-top:10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.area_comentarios span:hover{
+    text-decoration:underline;
+}
+.area_comentarios p{
+    font-weight: normal;
+    cursor: text;
+    display:block;
+    color: #62616d;
+    font-size: 15px;
+    margin-top:10px;
+
+}
 
 .area_comentarios input {
     width: 565px;
@@ -201,21 +235,6 @@ p {
     color: #62616d;
     font-size: 15px;
 }
-
-.area_comentarios p {
-    width: 545px;
-    height: auto;
-    border-radius: 12px;
-    margin-top: 18px;
-    margin-left: 10px;
-    padding: 10px 7px;
-    background-color: #f4f5f7;
-    border: 1px solid #f7f7f8;
-    color: #62616d;
-    font-size: 15px;
-}
-
-
 .area_comentarios input:focus {
     outline: none;
     cursor: text;
@@ -313,20 +332,10 @@ p {
     align-items: center;
 }
 
-/*imagem de perfil do usuario da modal*/
-.modal-generica-user-info img {
-    cursor: pointer;
-}
-
 /*nome do usuario na modal generica*/
 .nome-usuario-modal {
-    margin: 24px 26px 0px 10px;
-    cursor: pointer;
+    margin: 24px 26px 0 10px;
     font-size: 14px;
-}
-
-.nome-usuario-modal:hover {
-    text-decoration-line: underline;
 }
 
 /*espaco onde sera feita a publicacao*/
@@ -344,7 +353,8 @@ p {
     font-size: 18px;
     text-align: justify;
     word-break: keep-all;
-    spacing-letter:0.02em;
+    letter-spacing:0.03em;
+    line-height:150%;
 }
 
 .modal-generica-entrada-de-dados:focus {
@@ -374,7 +384,7 @@ p {
     margin-bottom: 20px;
     margin-top: 5px;
     margin-inline-start: -40px;
-    font-size: 13px;
+
 }
 
 .btn-modal {
@@ -572,7 +582,36 @@ hr.solid {
     margin-bottom: 50px;
     background-color: #e9e9e9;
 }
+/*modal bairros*/
+#modal-bairro-conteudo{
+    height:342px;
+}
+#modal-bairros-header{
+    padding: 10px;
+}
+.aparador-modal-bairro{
+    margin: 15px 15px;
+}
+.texto-modal-bairro{
+    font-size: 18px;
+    line-height: 180%;
+    letter-spacing: 0.03em;
+    word-break:break-word;
+    text-align:justify;
+    color: #6e6d7a;
+    padding:20px;
+    margin-top:0;
 
+}
+.texto-modal-bairro a {
+    color: var(--blue);
+    cursor: pointer;
+    font-weight: bold;
+}
+.texto-modal-bairro a:hover{
+    color: var(--light-blue);
+    text-decoration: underline;
+}
 /*Responsivo Mobile*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {

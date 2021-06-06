@@ -13,6 +13,18 @@ async function loadHeader() {
     const headerDiv = document.getElementById('header');
     headerDiv.innerHTML = await fetchHtmlAsText(header);
     verificaBairro();
+
+    let listaBairros = document.getElementById('header_search_bairros');
+    const users = JSON.parse(localStorage.getItem('users'));
+    users.forEach(user => {
+
+        if (!listaBairros.children.namedItem(user.neighborhood) && user.id !== usuarioLogado.id) {
+            const option = document.createElement('option');
+            option.setAttribute('value', user.neighborhood);
+            option.setAttribute('name', user.neighborhood);
+            listaBairros.appendChild(option);
+        }
+    })
 }
 
 /**
@@ -40,26 +52,29 @@ async function loadProfile(userId) {
     contentDiv.innerHTML = await fetchHtmlAsText(profile);
 
     let profileName = document.getElementById('profile-name');
-    let perfilTrabalho =  document.getElementById('perfil-trabalho');
+    let perfilTrabalho = document.getElementById('perfil-trabalho');
     let perfilLocal = document.getElementById('perfil-local');
     let perfilRelacionamneto = document.getElementById('perfil-relacionamento');
     let perfilDataNasc = document.getElementById('perfil-dataNasc');
     let perfilMobile = document.getElementById('perfil-mobile');
     let perfilHobbies = document.getElementById('perfil-hobbies');
-    let fotoPerfil = document.getElementById('foto-perfil')
-    let fotoPerfilInput = document.getElementById('change-photo-profile')
-    let about = document.getElementById('perfil-about')
+    let fotoPerfil = document.getElementById('foto-perfil');
+    let fotoPerfilInput = document.getElementById('change-photo-profile');
+    let about = document.getElementById('perfil-about');
 
-   // Carrega informacoes do usuario clicado
+    document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");
+
+    // Carrega informacoes do usuario clicado
     if (userId !== undefined && userId.dataset.userid !== usuarioLogado.id) {
 
-        let inputCarregarFoto = document.getElementById('edit-profile')
-        inputCarregarFoto.removeAttribute('onclick')
-        let botaoEditar = document.getElementById('edit-profile')
+        let inputCarregarFoto = document.getElementById('edit-profile');
+        inputCarregarFoto.removeAttribute('onclick');
+        let botaoEditar = document.getElementById('edit-profile');
+        inputCarregarFoto.removeAttribute('title')
         botaoEditar.style.display = 'none'
 
         const idUsuarioPostagem = userId.dataset.userid
-        let  usuariosLocalStorage = JSON.parse(localStorage.getItem('users'))
+        let usuariosLocalStorage = JSON.parse(localStorage.getItem('users'));
 
         let usuarioDoPerfil
         for (let i = 0; i < usuariosLocalStorage.length; i++) {
@@ -70,7 +85,7 @@ async function loadProfile(userId) {
             }
         }
 
-        if(usuarioDoPerfil.photoUrl !== '') {
+        if (usuarioDoPerfil.photoUrl !== '') {
             fotoPerfil.src = usuarioDoPerfil.photoUrl
         }
         profileName.textContent = usuarioDoPerfil.name;
@@ -85,7 +100,7 @@ async function loadProfile(userId) {
 
     } else {
         // Carrega informacoes do usuario logado
-        if(usuarioLogado.photoUrl !== '') {
+        if (usuarioLogado.photoUrl !== '') {
             fotoPerfil.src = usuarioLogado.photoUrl
         }
         profileName.textContent = usuarioLogado.name;
@@ -200,12 +215,19 @@ async function loadFeed(menuSelecionado) {
                         criandoDiv.setAttribute('data-tipo', feed.tipoFeed)
                         criandoDiv.insertAdjacentHTML('beforeend', feed.html);
                         recuperarSessao.prepend(criandoDiv)
+
+                        let contemImg = criandoDiv.querySelector('.splide')
+                        if (contemImg) {
+                            new Splide('.splide').mount();//carrosel img
+                        }
                     }
                 }
             }
         }
     }
-
+    if (sessionStorage.getItem('espiadinha')) {
+        espiadinha()
+    }
 }
 
 /**

@@ -170,6 +170,9 @@ textarea {
   margin: 0; /* 2 */
 }
 
+input::-webkit-calendar-picker-indicator {
+  color: #fafafa;
+}
 /*preenchimento automatico chrome*/
 
 /* Change the white to any color */

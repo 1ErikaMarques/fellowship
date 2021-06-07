@@ -7,7 +7,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    align-items: center;
     margin-top: 45px;
     margin-bottom: 20px;
 }
@@ -39,7 +38,7 @@
     border-radius: 4px;
     background: #F4F5F7;
     color: #666572;
-    border: 1px solid #F4F5F7;
+    border: 1px solid #e9e9e9;
     cursor: pointer;
     padding: 0 15px;
 }
@@ -90,7 +89,7 @@
     font-size: 16px;
     letter-spacing: 0.03em;
     color: #3a3a3a;
-    padding: 7px 155px 7px 7px;
+    padding: 7px 25px 7px 7px;
     border: 1px solid transparent;
     transition: 200ms ease;
 }
@@ -101,7 +100,7 @@
     border: 1px solid var(--blue);
     box-shadow: 0 0 0 3px rgb(66 133 244 / 8%);
     border-radius: 4px;
-    padding: 7px 195px 7px 7px;
+    padding: 7px 55px 7px 7px;
     transition: 400ms ease;
 }
 
@@ -197,12 +196,12 @@
     border: 1px solid transparent;
     padding: 10px 10px;
     margin-top: -20px;
-    height: 150px;
+    height: 80px;
     transition: 400ms ease;
 }
 
 .header-profile-about-conteudo-ativo {
-    height: 150px !important;
+
     border: 1px solid #f4f5f7 !important;
     border-radius: 10px !important;
 }

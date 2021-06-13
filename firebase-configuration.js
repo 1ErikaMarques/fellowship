@@ -10,6 +10,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 const appCheck = firebase.appCheck();
 appCheck.activate('6LfTWyIbAAAAABOnVKOgs3RYaSIGIALGusMlsTgb');
@@ -25,26 +26,4 @@ let storageRef = firebase.storage().ref();
 const usersFilesStorage = storageRef.child('users');
 const feedsFilesStorage = storageRef.child('feeds');
 
-
-/*
-function getAllUsers() {
-    return usersRef
-        .onSnapshot((snapshot) => {
-            return snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-        });
-}*/
-
-/*
-var auth = firebase.auth();
-var emailAddress = "user@example.com";
-
-auth.sendPasswordResetEmail(emailAddress).then(function() {
-    // Email sent.
-}).catch(function(error) {
-    // An error happened.
-});
-*/
 

@@ -122,7 +122,7 @@ async function loadSettings() {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = await fetchHtmlAsText(settings);
     document.getElementById('nome-usuario-settings').textContent = usuarioLogado.name;
-    document.getElementById('email-input-settings').value = usuarioLogado.email;
+    document.getElementById('email-input-settings').value = firebase.auth().currentUser.email;
     document.getElementById('password-input-settings').value = usuarioLogado.password;
     document.getElementById('name-input-settings').value = usuarioLogado.name;
     document.getElementById('cep-input-settings').value = usuarioLogado.postalCode;
@@ -283,14 +283,11 @@ async function recuperaFeedsPorTopico(bairro, topico) {
  * @returns Array de bairros
  */
 async function recuperaTodosBairros() {
-
-    //db.collection('/feedsCollection/Jardim Oriental - SP/doacoes')
     await db.collection('/feedsCollection/')
         .get()
         .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             bairros.push(doc.id)
-            console.log(doc.id)
         });
     });
 

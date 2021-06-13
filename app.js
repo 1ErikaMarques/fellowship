@@ -11,7 +11,7 @@ async function verificaLogin(form) {
     await auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            sessionStorage.setItem('logged')
+            sessionStorage.setItem('logged',uuid())
             reloadPage();
         })
         .catch(function (error) {

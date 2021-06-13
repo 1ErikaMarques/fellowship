@@ -85,12 +85,32 @@
     border: 1px solid #F4F5F7;
 }
 
+.forgot-password {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 60px;
+}
+
+.forgot-password p {
+    font-size: 0.775rem;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    margin-right: 14px;
+    color: var(--blue);
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.forgot-password h4:hover {
+    text-decoration: underline;
+}
+
 /*call cadastre-se*/
 .call-login {
     display: flex;
     justify-content: center;
     align-items: baseline;
-    margin-bottom: 60px;
 }
 
 .call-login p {
@@ -121,7 +141,22 @@
     justify-content: center;
 }
 
+/* Esqueceu a senha */
+.forgot-password-div {
+    display: flex;
+    justify-content: center;
+    width: 81%;
+    margin: 2rem 2rem 1rem;
+}
+.forgot-password-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: #53525d;
+    width: 94%;
+}
+
 /*modal*/
+
 .modal-cadastro {
     display: none;
     position: fixed;

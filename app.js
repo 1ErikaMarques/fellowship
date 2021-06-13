@@ -125,6 +125,19 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
     }
 }
 
+
+async function recuperarSenha(form) {
+    await auth.sendPasswordResetEmail(form.email.value).then(function () {
+        alert('E-mail enviado com sucesso!Por favor verifique a sua caixa de entrada')
+    }).catch(function (error) {
+        alert('Não foi possivel recuperar ou encontrar o e-mail informado')
+        console.error(`Erro ao recuperar e-mail ${error}`)
+    });
+
+    form.email.value = null;
+    closeModalForgotPassword()
+}
+
 /*Modals*/
 
 /*Modal Cadastro*/
@@ -135,6 +148,17 @@ function modalCadastro() {
 
 function fecharModalCadastro() {
     const modal = document.getElementById("modalCadastro")
+    modal.style.display = 'none';
+}
+
+/* Modal Forgot password */
+function openModalForgotPassword() {
+    const modal = document.getElementById('modal-forgot-password')
+    modal.style.display = 'block';
+}
+
+function closeModalForgotPassword() {
+    const modal = document.getElementById('modal-forgot-password')
     modal.style.display = 'none';
 }
 

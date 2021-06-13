@@ -38,6 +38,44 @@
       <p>Ainda não tem conta?</p>
       <h4 onclick="modalCadastro()">Cadastre-se</h4>
     </div>
+    <div class="forgot-password">
+      <p onclick="openModalForgotPassword()">Esqueceu a senha?</p>
+    </div>
+
+    <!--Modal esqueceu a senha-->
+    <div class="modal-cadastro" id="modal-forgot-password">
+      <div class="modal-form-cadastro">
+        <form
+                class="form-cadastro border"
+                onsubmit="recuperarSenha(this);return false;">
+          <span class="close-modal" onclick="closeModalForgotPassword()"
+          >&times;</span
+          >
+          <div>
+            <img
+                    src="public/login/cadeado.svg"
+                    class="logo-cadastro"
+                    alt="Fellowship"
+            />
+          </div>
+          <h2>Esqueceu a senha?</h2>
+          <div class="forgot-password-div">
+          <h3 class="forgot-password-text">Após clicar em recuperar senha, você receberá as instruções por e-mail.</h3>
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+                    class="border-input"
+                    type="email"
+                    id="reset-password-input"
+                    name="email" required
+            />
+          </div>
+          <button type="submit" class="btn-cadastro">Recuperar senha</button>
+        </form>
+      </div>
+    </div>
+
 
     <!--Cadastro-->
     <div class="modal-cadastro" id="modalCadastro">

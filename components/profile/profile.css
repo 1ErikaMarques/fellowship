@@ -15,7 +15,7 @@
     height: 3rem;
     width: 3rem;
     border-radius: 30px;
-    margin-left: -22px;
+    margin-left: -2rem;
     cursor: pointer;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .profile-name {
-    margin-left: -129px;
+    margin-left: -10rem;
 }
 
 .btn-edit {

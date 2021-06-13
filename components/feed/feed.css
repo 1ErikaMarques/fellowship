@@ -83,6 +83,47 @@ p {
     text-decoration-line: underline;
 }
 
+.btn-apagar-post {
+    width: 28px;
+    height: 28px;
+    margin: 20px 20px 0 0;
+    cursor: pointer
+}
+
+#dropdown-apagar-post{
+    background: #fff;
+    box-shadow: 0 10px 70px rgb(0 0 0 / 12%);
+    border: 1px solid #e9e9e9;
+    padding: 0;
+    position: absolute;
+    display: none;
+}
+.apagar-post{
+    display: flex;
+    align-items: center;
+    margin: 10px 0 15px 0;
+    height:30px;
+    cursor: pointer;
+}
+
+.apagar-post:hover{
+    color: #fff;
+    background-color: rgb(223 56 43 / 50%);
+    transition: 200ms ease;
+}
+
+.apagar-post img {
+    width:20px;
+    padding:10px;
+}
+
+.apagar-post p {
+    color: #202025;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 4px 10px 0 0;
+}
+
 .tags {
     display: flex;
     justify-content: flex-end;
@@ -143,7 +184,7 @@ p {
     color: #62616d;
     width: 95%;
     padding: 0 0 50px 0;
-    margin-bottom: 30px;
+    margin-bottom:0;
     margin-left: 31px;
     line-height: 160%;
     letter-spacing: 0.04em;

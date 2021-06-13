@@ -1,78 +1,37 @@
-/*Login / Cadastro*/
-/**
- * Usuario objeto
- * @param id id do usuario
- * @param name o nome de usuario
- * @param email o email do usuario
- * @param password a senha do usuario
- * @param birthday data de nascimento
- * @param postalCode codigo postal do usuario
- * @param neighborhood bairro do usuario
- * @returns {{password, email, username}}
- */
-function addUser(id, name, email, password, birthday, postalCode, neighborhood) {
-    return {
-        "id": id,
-        "name": name,
-        "email": email,
-        "password": password,
-        "birthday": birthday,
-        "postalCode": postalCode,
-        "neighborhood": neighborhood,
-        "hobbies": "",
-        "mobile": "",
-        "relationship": "",
-        "work": "",
-        "location": "",
-        "photoUrl": "",
-        "about": ""
-    };
-}
-
-/** Const pra identificar se e um usuario novo ou ja existente */
-const novoUsuario = 1;
-const usuarioCadastrado = 2;
-
-const usuarioLogado = recuperaUsuarioLogado();
-
+//Login / Cadastro
 /**
  * Valida login
  * @param form formulario de login
  */
-function verificaLogin(form) {
+async function verificaLogin(form) {
 
-    if (form.email.value === '' || form.password.value === '') {
-        return;
-    }
+    const email = form.email.value;
+    const password = form.password.value;
 
-    const users = JSON.parse(localStorage.getItem('users'))
-
-    if (users !== null) {
-        let email;
-        let password;
-
-        for (let user of users) {
-
-            if (user.email === form.email.value) {
-                email = user.email
-                password = user.password
-                break;
+    await auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+            auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            reloadPage();
+        })
+        .catch(function (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log('errorCode', errorCode, 'error message ', errorMessage)
+            if (errorCode === 'auth/user-not-found') {
+                alert('Este email não está cadastrado')
+            } else if (errorCode === 'auth/wrong-password') {
+                alert('Senha incorreta')
             }
-        }
-
-        if (form.email.value === email && form.password.value === password) {
-            userSession(form.email.value, usuarioCadastrado);
-            reloadPage()
-        } else {
-            alert('Usuário ou Senha incorreto')
-        }
-    } else {
-        alert('Usuário não encontrado , por favor se cadastre!')
-    }
+        })
 }
 
 function logout() {
-    sessionStorage.clear();
+    auth.signOut().then(() => {
+        console.log('Usuario deslogado')
+    }).catch((error) => {
+        console.log('Ocorreu um erro', error)
+    });
+
     reloadPage()
 }
 
@@ -82,45 +41,51 @@ function logout() {
  */
 async function registro(form) {
 
-    if (form.neighborhood.value === '') {
+    const postalCode = form.postalCode.value;
+    const neighborhood = form.neighborhood.value;
+    const birthday = moment(form.birthday.value).format('DD/MM/YYYY', true);
+    const email = form.email.value;
+    const password = form.password.value;
+    const name = form.name.value;
+
+    if (neighborhood === '') {
         alert('Por favor insira um cep válido')
         return;
-    } else if (form.neighborhood.value === '...') {
-        await new Promise(r => setTimeout(r, 1000));
     }
 
-    const newUser = addUser(uuid(), form.name.value, form.email.value, form.password.value,
-        moment(form.birthday.value).format('DD/MM/YYYY', true),
-        form.postalCode.value, form.neighborhood.value);
-
-    if (localStorage.getItem('users')) {
-        let storedUsers = JSON.parse(localStorage.getItem('users'));
-
-        let emailAlreadyExists = false;
-        storedUsers.forEach(user => {
-            if (emailAlreadyExists) {
-                return;
-            }
-            if (form.email.value === user.email) {
-                emailAlreadyExists = true;
-            }
+    await auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            return userCredential.user;
+        }).then((registeredUser) => {
+            return usersRef.doc(registeredUser.uid).set(({
+                name: name,
+                birthday: birthday,
+                postalCode: postalCode,
+                neighborhood: neighborhood,
+                hobbies: '',
+                mobile: '',
+                relationship: '',
+                work: '',
+                location: '',
+                photoUrl: '',
+                about: '',
+            }))
+        }).then(() => {
+            auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            reloadPage();
+        }).then(() => {
+            firebase.auth().currentUser.sendEmailVerification().then(function () {
+                console.log('confirmacao de email enviado')
+            }).catch(function (error) {
+                console.log('Algo de ruim aconteceu', error.message)
+            });
         })
-
-        if (emailAlreadyExists) {
-            alert('Este endereço de email já está sendo usado por usuário.')
-            return;
-        }
-
-        storedUsers.push(newUser)
-        localStorage.setItem('users', JSON.stringify(storedUsers));
-    } else {
-        let users = [];
-        users.push(newUser)
-        localStorage.setItem('users', JSON.stringify(users));
-    }
-
-    userSession(newUser, novoUsuario);
-    reloadPage()
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log('errorCode', errorCode, 'error message ', errorMessage)
+            alert(errorMessage)
+        })
 }
 
 /**
@@ -143,7 +108,6 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
         await fetch(`https://viacep.com.br/ws/${cep}/json`)
             .then(response => response.json())
             .then(res => {
-
                 if (!("erro" in res)) {
                     document.getElementById(inputBairroId).value = `${res.bairro} - ${res.uf}`;
                 } else {
@@ -160,27 +124,6 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
         alert("Formato de CEP inválido.");
     }
 }
-
-
-/**
- * Cria a sessão do usuario
- * @param usuario usuário que terá a sessão criada
- * @param {tipoUsuario} tipoUsuario novoUsuario: 1 usuarioCadastrado = 2;
- */
-function userSession(usuario, tipoUsuario) {
-
-    if (tipoUsuario === novoUsuario) {
-        sessionStorage.setItem("loggedUser", JSON.stringify(usuario))
-    } else {
-        const users = JSON.parse(localStorage.getItem('users'))
-        for (let user of users) {
-            if (user.email === usuario) {
-                sessionStorage.setItem("loggedUser", JSON.stringify(user))
-            }
-        }
-    }
-}
-
 
 /*Modals*/
 
@@ -256,31 +199,31 @@ function addImgModal(element) {
     element.value = null;//limpando o input
 }
 
-async function uploadToFirebaseStorage(fileUrl) {
+async function uploadToFirebaseStorage(fileUrl, type) {
 
-    await fetch(fileUrl)
-        .then(response => response.blob())
-        .then(file => {
-            let storageRefFile = storageRef.child('/' + uuid())
-            storageRefFile.put(file)
-                .then(snapshot => {
-                    return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
-                })
+    let file = await downloadBlobFromMemory(fileUrl);
 
-                .then(downloadURL => {
-                    console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
-                    return downloadURL;
-                })
-
-                .catch(error => {
-                    // Use to signal error if something goes wrong.
-                    console.log(`Failed to upload file and get link - ${error}`);
-                });
-
+    let storageRefFile
+    if (type === 'user') {
+        storageRefFile = usersFilesStorage
+    } else {
+        storageRefFile = feedsFilesStorage
+    }
+    return await storageRefFile.child('/' + uuid()).put(file)
+        .then(snapshot => {
+            return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
+        })
+        .catch(error => {
+            console.log(`Failed to upload file and get link - ${error}`);
         })
         .catch(onerror => {
             console.log(`Erro ao baixar arquivo da modal - ${onerror}`)
         })
+}
+
+async function downloadBlobFromMemory(fileUrl) {
+    return await fetch(fileUrl)
+        .then(response => response.blob());
 }
 
 /*add video na modal generica*/
@@ -437,44 +380,6 @@ function exibirModal() {
         }
     }
 }
-
-function modeloFeed(bairro, tipoFeed, html) {
-    return {
-        "bairros": [{
-            "bairro": bairro,
-            "feeds": [{
-                "tipoFeed": [{
-                    "tipo": tipoFeed,
-                    "html": html
-                }]
-            }]
-        }]
-    };
-}
-
-function modeloFeedCriacaoBairro(bairro, tipoFeed, html, postId) {
-    return {
-        "bairros": {
-            "bairro": bairro,
-            "feeds": [{
-                "tipoFeed": [{
-                    "tipo": tipoFeed,
-                    "html": html,
-                    'postId': postId
-                }]
-            }]
-        }
-    };
-}
-
-function modeloFeedLight(tipoFeed, postId, html) {
-    return {
-        "tipoFeed": tipoFeed,
-        'postId': postId,
-        "html": html
-    }
-}
-
 
 /*Feed*/
 async function publicarPost(tipoModal) {
@@ -658,7 +563,7 @@ async function publicarPost(tipoModal) {
             arquivoDoPost.setAttribute("controls", "")//add play,volume...
         }
         arquivoDoPost.className = "publicacao" // estilo da img
-        arquivoDoPost.src = arquivoDaModal.src
+        arquivoDoPost.src = await uploadToFirebaseStorage(arquivoDaModal.src, 'feeds');
         const liCarrosel = document.createElement("li");
         liCarrosel.classList.add('splide__slide');
         liCarrosel.appendChild(arquivoDoPost);
@@ -723,7 +628,7 @@ async function publicarPost(tipoModal) {
     divComentarios.appendChild(divComentariosFlexInput);
     criandoDiv.prepend(divInformacaoDoUsuario); // prepend para ele ser sempre o que veem em primeiro no post
     criandoDiv.append(paragrafo);
-    if(ulCarrosel.children.length > 0) {
+    if (ulCarrosel.children.length > 0) {
         criandoDiv.append(divPrincipalCarrosel);
     }
     criandoDiv.append(contadorDeComentarios);
@@ -746,7 +651,7 @@ async function publicarPost(tipoModal) {
     }
     salvarFeeds(tipoModal.dataset.tipo, criandoDiv.id, criandoDiv.innerHTML, true)
 
-    if(ulCarrosel.children.length > 0) {
+    if (ulCarrosel.children.length > 0) {
         new Splide('.splide').mount();//carrosel img
     }
 }
@@ -780,7 +685,7 @@ function addComentario(event) {
         //img
         const usuarioComentarioImg = document.createElement("img");
         usuarioComentarioImg.className = "img_comentario";
-        usuarioComentarioImg.src = 'public/profile/foto-usuario-perfil.svg'
+        usuarioComentarioImg.src = usuarioLogado.photoUrl
         usuarioComentarioImg.setAttribute("title", usuarioLogado.name);
         usuarioComentarioImg.setAttribute('data-userId', usuarioLogado.id);
         usuarioComentarioImg.setAttribute('onclick', 'loadProfile(this)');
@@ -824,53 +729,40 @@ function addComentario(event) {
  * @param {InnerHTML} post Post que deve ser salvo
  * @param novoFeed
  */
-function salvarFeeds(tipoFeed, postId, post, novoFeed) {
+async function salvarFeeds(tipoFeed, postId, post, novoFeed) {
 
-    // Recupera os feeds salvos
-    let feeds = JSON.parse(localStorage.getItem('feeds'));
+    if (novoFeed) {
 
-    // Busca o bairro do usuario
-    const bairro = document.getElementById('bairro').textContent;
-
-    // Se ainda nao existir feed criamos um novo registro no localstorage
-    if (feeds === null) {
-        localStorage.setItem('feeds', JSON.stringify(modeloFeed(bairro)))
-        feeds = JSON.parse(localStorage.getItem('feeds'));
-    }
-
-    // Caso o bairro do usuario nao exista no local storage , criamos um novo registro
-    if (feeds.bairros.some(bairros => bairros.bairro === bairro)) {
-        console.log('bairro ja existe no localstorage')
-    } else {
-        feeds.bairros.push(modeloFeedCriacaoBairro(bairro).bairros)
-        localStorage.setItem('feeds', JSON.stringify(feeds));
-        feeds = JSON.parse(localStorage.getItem('feeds'));
-    }
-
-    // Adiciona o post no bairro especifico
-    for (let i = 0; i < feeds.bairros.length; i++) {
-        const feedBairro = feeds.bairros[i];
-        // Comparamos o bairro do usuario logado com o do localstorage
-        if (bairro === feedBairro.bairro && novoFeed) {
-            // Adicionamos o novo post ao array de feeds e salvamos na localstorage
-            feedBairro.feeds.push(modeloFeedLight(tipoFeed, postId, post))
-            localStorage.setItem('feeds', JSON.stringify(feeds))
-            break;
-        } else if (bairro === feedBairro.bairro && !novoFeed) {
-
-            for (let j = 0; j < feedBairro.feeds.length; j++) {
-                const actualFeed = feedBairro.feeds[j];
-                if (actualFeed.tipoFeed === tipoFeed && actualFeed.postId === postId) {
-                    feedBairro.feeds.splice(j)
-                    break;
-                }
+        await feedsRef.doc(usuarioLogado.neighborhood).get().then(bairro => {
+            if (!bairro.exist) {
+                feedsRef.doc(usuarioLogado.neighborhood).set({
+                    id: uuid()
+                }).then(() => {
+                    feedsRef.doc(usuarioLogado.neighborhood).collection(tipoFeed)
+                        .doc(postId)
+                        .set({
+                            html: post,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                            owner: usuarioLogado.id
+                        })
+                })
+            } else {
+                feedsRef.doc(usuarioLogado.neighborhood).collection(tipoFeed)
+                    .doc(postId)
+                    .set({
+                        html: post,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        owner: usuarioLogado.id
+                    })
             }
-
-            feedBairro.feeds.push(modeloFeedLight(tipoFeed, postId, post))
-
-            localStorage.setItem('feeds', JSON.stringify(feeds))
-            break;
-        }
+        })
+    } else {
+        feedsRef.doc(usuarioLogado.neighborhood)
+            .collection(tipoFeed)
+            .doc(postId)
+            .update({
+                html: post,
+            }, {merge: true});
     }
 }
 
@@ -885,19 +777,16 @@ async function abrirModalBairro(event) {
         const nomeBairro = document.getElementById('bairro'); //nome do bairro que esta no header
         const bairroSelecionado = document.getElementById('header_search'); //bairro que seleciona no pesquisar
 
-        let bairrosDisponiveis = [];
-
-        const users = JSON.parse(localStorage.getItem('users'));
-        users.forEach(user => {
-            bairrosDisponiveis.push(user.neighborhood)
-        });
+        let bairrosDisponiveis = await recuperaTodosBairros()
 
         if (!bairrosDisponiveis.includes(bairroSelecionado.value)) {
             alert('Infelizmente ainda não existem moradores nesse bairro que você pesquisou, selecione um bairro disponível na lista.')
             return;
         }
 
+        sessionStorage.setItem('bairroSelecionado', JSON.stringify(bairroSelecionado.value))
         nomeBairro.textContent = bairroSelecionado.value;
+
         await loadFeed();
         const modalBairros = document.getElementById('modal-bairros');
         modalBairros.style.display = 'block';
@@ -928,7 +817,6 @@ function espiadinha() {
         input.setAttribute('disabled', '');
     }
 
-
     sessionStorage.setItem('espiadinha', 'true')
 
     document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");
@@ -937,6 +825,7 @@ function espiadinha() {
     inputSearch.value = null
     const modalBairros = document.getElementById('modal-bairros');
     modalBairros.style.display = 'none';
+    document.body.style.overflow = "auto"
 }
 
 async function mudarBairro() {
@@ -1079,7 +968,7 @@ function editarPerfil(element) {
 }
 
 /*voltado para o estado inicial depois que salvar*/
-function salvandoDadosPerfil(element) {
+async function salvandoDadosPerfil(element) {
     element.style.display = 'none';
 
     let editarPerfil = document.getElementById('edit-profile');
@@ -1105,41 +994,52 @@ function salvandoDadosPerfil(element) {
     editarAbout.setAttribute("contenteditable", "false");
     editarAbout.classList.remove('header-profile-about-conteudo-ativo');
 
-    const idUsuarioLogado = usuarioLogado.id;
-    let usuariosLocalStorage = JSON.parse(localStorage.getItem('users'))
-
-    for (let i = 0; i < usuariosLocalStorage.length; i++) {
-        let usuario = usuariosLocalStorage[i];
-        if (idUsuarioLogado === usuario.id) {
-            usuario.work = editarTrabalho.textContent;
-            usuario.location = editarCidade.textContent;
-            usuario.relationship = editarRelacionamento.textContent;
-            usuario.hobbies = editarHobbies.textContent;
-            usuario.mobile = editarTelefone.textContent;
-            usuario.about = editarAbout.textContent;
-
-            sessionStorage.setItem('loggedUser', JSON.stringify(usuario));
-        }
-    }
-    localStorage.setItem('users', JSON.stringify(usuariosLocalStorage));
+    await updateUserProfile(
+        usuarioLogado.id,
+        editarHobbies.textContent,
+        editarTelefone.textContent,
+        editarRelacionamento.textContent,
+        editarTrabalho.textContent,
+        editarCidade.textContent,
+        editarAbout.textContent
+    )
 }
 
-function changePhotoProfile(element) {
+async function updateUserProfile(userId, hobbies, mobile, relationship, work, location, about) {
+    await usersRef
+        .doc(userId)
+        .update({
+            hobbies: hobbies,
+            mobile: mobile,
+            relationship: relationship,
+            work: work,
+            location: location,
+            about: about,
+        })
+        .then(() => {
+            console.log("User updated");
+        })
+        .catch((error) => {
+            console.error("Error updating user", error);
+        });
+}
+
+async function changePhotoProfile(element) {
     let imageProfile = document.getElementById('foto-perfil');
-    imageProfile.src = URL.createObjectURL(element.files[0]);
 
-    const idUsuarioLogado = usuarioLogado.id;
-    let usuariosLocalStorage = JSON.parse(localStorage.getItem('users'))
+    imageProfile.src = await uploadToFirebaseStorage(URL.createObjectURL(element.files[0]), 'user');
 
-    for (let i = 0; i < usuariosLocalStorage.length; i++) {
-        let usuario = usuariosLocalStorage[i];
-        if (idUsuarioLogado === usuario.id) {
-            usuario.photoUrl = imageProfile.src;
-
-            sessionStorage.setItem('loggedUser', JSON.stringify(usuario));
-        }
-    }
-    localStorage.setItem('users', JSON.stringify(usuariosLocalStorage));
+    await usersRef
+        .doc(usuarioLogado.id)
+        .update({
+            photoUrl: imageProfile.src
+        })
+        .then(() => {
+            console.log("User photo updated");
+        })
+        .catch((error) => {
+            console.error("Error updating user photo", error);
+        });
 }
 
 function focusAbout() {
@@ -1162,35 +1062,45 @@ async function editarSettings(elemento) {
             elementoInput.setAttribute('disabled', '')
             elemento.textContent = 'Editar'
 
-            const idUsuarioLogado = usuarioLogado.id
-            let usuariosLocalStorage = JSON.parse(localStorage.getItem('users'))//todos os usuarios
-
-            for (let i = 0; i < usuariosLocalStorage.length; i++) {
-                let usuario = usuariosLocalStorage[i]
-                if (idUsuarioLogado === usuario.id) {
-                    switch (elementoInput.name) {
-                        case 'email':
-                            usuario.email = elementoInput.value;
-                            break;
-                        case 'password':
-                            usuario.password = elementoInput.value;
-                            break;
-                        case 'name':
-                            usuario.name = elementoInput.value;
-                            break;
-                        case 'postalCode':
-                            usuario.postalCode = elementoInput.value;
-                            let inputBairro = document.getElementById('bairro-input-settings');
-                            if (inputBairro.value === '...') {
-                                await new Promise(r => setTimeout(r, 2000));
-                            }
-                            usuario.neighborhood = inputBairro.value
-                            break;
+            switch (elementoInput.name) {
+                case 'email':
+                    await firebase.auth().currentUser.updateEmail(elementoInput.value);
+                    break;
+                case 'password':
+                    await firebase.auth().currentUser.updatePassword(elementoInput.value);
+                    break;
+                case 'name':
+                    await usersRef
+                        .doc(usuarioLogado.id)
+                        .update({
+                            name: elementoInput.value
+                        })
+                        .then(() => {
+                            console.log("User updated");
+                        })
+                        .catch((error) => {
+                            console.error("Error updating user", error);
+                        });
+                    break;
+                case 'postalCode':
+                    let inputBairro = document.getElementById('bairro-input-settings');
+                    if (inputBairro.value === '...') {
+                        await new Promise(r => setTimeout(r, 2000));
                     }
-                }
+                    await usersRef
+                        .doc(usuarioLogado.id)
+                        .update({
+                            postalCode: elementoInput.value,
+                            neighborhood: inputBairro.value
+                        })
+                        .then(() => {
+                            console.log("User updated");
+                        })
+                        .catch((error) => {
+                            console.error("Error updating user", error);
+                        });
+                    break;
             }
-
-            localStorage.setItem('users', JSON.stringify(usuariosLocalStorage)) //atualizando os dados que foram alterados na localStorage
 
             if (elementoInput.name === 'postalCode') {
                 alert('Por favor faça login novamente')
@@ -1258,4 +1168,5 @@ function formataMoeda(elemento) {
 // Verifica se a pagina foi recarregada
 if (PerformanceNavigationTiming.type === PerformanceNavigationTiming.TYPE_RELOAD) {
     sessionStorage.removeItem('espiadinha')
+    sessionStorage.removeItem('bairroSelecionado')
 }

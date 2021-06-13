@@ -83,6 +83,14 @@
             />
           </div>
           <div>
+            <label>CEP</label>
+            <input
+                    class="border-input"
+                    type="text"
+                    id="cepInput"
+                    name="postalCode" required  size="10" maxlength="9" onblur="preencheBairro(this.value,'bairroCadastroInput')"   />
+          </div>
+          <div>
             <label>Data de nascimento</label>
             <input
               class="border-input"
@@ -92,14 +100,7 @@
               required
             />
           </div>
-          <div>
-            <label>CEP</label>
-            <input
-              class="border-input"
-              type="text"
-              id="cepInput"
-              name="postalCode" required  size="10" maxlength="9" onblur="preencheBairro(this.value,'bairroCadastroInput')"   />
-          </div>
+
           <div>
             <label></label>
             <input

@@ -5,6 +5,8 @@ const header = './components/header/header.html';
 const menuNav = './components/menu-nav/menu-nav.html';
 const feed = './components/feed/feed.html';
 const settings = './components/settings/settings.html';
+let usuarioLogado;
+let bairros = []
 
 /**
  * Carrega pagina do Header.
@@ -12,17 +14,20 @@ const settings = './components/settings/settings.html';
 async function loadHeader() {
     const headerDiv = document.getElementById('header');
     headerDiv.innerHTML = await fetchHtmlAsText(header);
-    verificaBairro();
 
-    let listaBairros = document.getElementById('header_search_bairros');
-    const users = JSON.parse(localStorage.getItem('users'));
-    users.forEach(user => {
+    const bairro = document.getElementById('bairro');
 
-        if (!listaBairros.children.namedItem(user.neighborhood) && user.id !== usuarioLogado.id) {
+    bairro.textContent = usuarioLogado.neighborhood;
+
+    let listaBairrosSearch = document.getElementById('header_search_bairros');
+
+    bairros.forEach(bairro => {
+
+        if (!listaBairrosSearch.children.namedItem(bairro) && bairro !== usuarioLogado.neighborhood) {
             const option = document.createElement('option');
-            option.setAttribute('value', user.neighborhood);
-            option.setAttribute('name', user.neighborhood);
-            listaBairros.appendChild(option);
+            option.setAttribute('value', bairro);
+            option.setAttribute('name', bairro);
+            listaBairrosSearch.appendChild(option);
         }
     })
 }
@@ -77,13 +82,8 @@ async function loadProfile(userId) {
         let usuariosLocalStorage = JSON.parse(localStorage.getItem('users'));
 
         let usuarioDoPerfil
-        for (let i = 0; i < usuariosLocalStorage.length; i++) {
-            let usuario = usuariosLocalStorage[i];
-            if (idUsuarioPostagem === usuario.id) {
-                usuarioDoPerfil = usuario;
-                break;
-            }
-        }
+
+        await usersRef.doc(idUsuarioPostagem).get().then(user => usuarioDoPerfil = user.data())
 
         if (usuarioDoPerfil.photoUrl !== '') {
             fotoPerfil.src = usuarioDoPerfil.photoUrl
@@ -193,38 +193,27 @@ async function loadFeed(menuSelecionado) {
         nomeMenu = menuSelecionado.dataset.name;
     }
 
-    const feedsGuardados = JSON.parse(localStorage.getItem('feeds'));
-
     // Busca o bairro do usuario
-    const bairro = document.getElementById('bairro').textContent;
+    const bairro = sessionStorage.getItem('bairroSelecionado') ? JSON.parse(sessionStorage.getItem('bairroSelecionado')) : usuarioLogado.neighborhood
 
-    if (feedsGuardados !== null) {
+    const recuperarSessao = document.getElementById("sessao-de-post");
 
-        const recuperarSessao = document.getElementById("sessao-de-post");
+    const feeds = await recuperaFeedsPorTopico(bairro, nomeMenu)
 
-        for (let i = 0; i < feedsGuardados.bairros.length; i++) {
-            const feedBairro = feedsGuardados.bairros[i];
-            // Comparamos o bairro do usuario logado com o do localstorage
-            if (bairro === feedBairro.bairro) {
-                for (let i = 0; i < feedBairro.feeds.length; i++) {
-                    const feed = feedBairro.feeds[i];
-                    if (nomeMenu === feed.tipoFeed && feed.html !== undefined) {
-                        let criandoDiv = document.createElement('div');
-                        criandoDiv.classList.add('post', 'container', 'border')
-                        criandoDiv.setAttribute('id', feed.postId);
-                        criandoDiv.setAttribute('data-tipo', feed.tipoFeed)
-                        criandoDiv.insertAdjacentHTML('beforeend', feed.html);
-                        recuperarSessao.prepend(criandoDiv)
+    for (let [key, feed] of feeds) {
+        let criandoDiv = document.createElement('div');
+        criandoDiv.classList.add('post', 'container', 'border')
+        criandoDiv.setAttribute('id', key);
+        criandoDiv.setAttribute('data-tipo', nomeMenu)
+        criandoDiv.insertAdjacentHTML('beforeend', feed.html);
+        recuperarSessao.prepend(criandoDiv)
 
-                        let contemImg = criandoDiv.querySelector('.splide')
-                        if (contemImg) {
-                            new Splide('.splide').mount();//carrosel img
-                        }
-                    }
-                }
-            }
+        let contemImg = criandoDiv.querySelector('.splide')
+        if (contemImg) {
+            new Splide('.splide').mount();//carrosel img
         }
     }
+
     if (sessionStorage.getItem('espiadinha')) {
         espiadinha()
     }
@@ -244,34 +233,66 @@ async function fetchHtmlAsText(url) {
  */
 async function loadMainComponents() {
 
-    await isUserLoggedIn().then(value => {
-        if (value) {
-            console.log('user is loggedIn ' + value)
-            loadHeader();
-            loadMenuNav();
-            loadFeed();
-        } else {
-            console.log('user is NOT loggedIn ' + value)
-            loadLogin();
+    if (firebase.auth().currentUser) {
+        if (usuarioLogado === undefined) {
+            await loadUserDetails();
         }
+        await recuperaTodosBairros()
+        loadHeader();
+        loadMenuNav();
+        loadFeed();
+    } else {
+        loadLogin();
+    }
+}
+
+async function loadUserDetails() {
+    await usersRef.doc(firebase.auth().currentUser.uid).get().then(user => {
+        usuarioLogado = ({
+            id: user.id,
+            ...user.data(),
+        })
     });
 }
 
-function verificaBairro() {
-    const usuario = recuperaUsuarioLogado();
-    const bairro = document.getElementById('bairro');
-    bairro.textContent = usuario.neighborhood;
+/**
+ * Busca bairro por topico
+ * @param bairro bairro do usuario
+ * @param topico topico que deseja buscar
+ * @returns {Promise<Map<any, any>>}
+ */
+async function recuperaFeedsPorTopico(bairro, topico) {
 
-}
+    let feeds = new Map();
 
-function recuperaUsuarioLogado() {
-    return JSON.parse(sessionStorage.getItem('loggedUser'));
+    const path = `/feedsCollection/${bairro}/${topico}`
+
+    await db.collection(path).get().then((querySnapshot) => {
+        if (!querySnapshot.empty) {
+            querySnapshot.forEach((doc) => {
+                feeds.set(doc.id, doc.data())
+            });
+        }
+    });
+
+    return feeds;
 }
 
 /**
- *
- * @returns {Promise<boolean>} retorna true se o usuario esta logado senao false.
+ * Recupera bairros cadastrados
+ * @returns Array de bairros
  */
-async function isUserLoggedIn() {
-    return sessionStorage.getItem('loggedUser') != null
+async function recuperaTodosBairros() {
+
+    //db.collection('/feedsCollection/Jardim Oriental - SP/doacoes')
+    await db.collection('/feedsCollection/')
+        .get()
+        .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            bairros.push(doc.id)
+            console.log(doc.id)
+        });
+    });
+
+    return bairros;
 }

@@ -40,9 +40,9 @@
 .form-login label {
     display: flex;
     width: auto;
-    margin-left: 42px;
-    margin-top: 15px;
-    padding: 0 6px;
+    margin-left: 60px;
+    margin-top: 16px;
+    padding: 0 11px;
     position: absolute;
     font-size: 12px;
     letter-spacing: 0.03em;
@@ -299,26 +299,28 @@ input[type="date" i]:focus {
 
     .form-login {
         margin-right: 0;
-        width: 302px;
+        width: 70%;
+
     }
 
-    .form-login input {
-        width: 270px;
-        top: 384px;
-        border-radius: 6px;
-        margin-top: 1.3rem;
-        background-color: #fafafa;
+    .form-login label {
+        margin-left: 47px;
     }
+}
 
-    .aparador-login {
-        width: 230px;
+/*notebook*/
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .form-login {
+        width: 70%;
+        margin-right: 40px;
     }
+    .form-login label {
 
-    /*notebook*/
-    @media only screen and (min-width: 769px) and (max-width: 1024px) {
-        .form-login {
-            padding: 1.2rem;
-            margin-right: 0;
-        }
+    }
+    .call-login {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        margin-bottom: 50px;
     }
 }

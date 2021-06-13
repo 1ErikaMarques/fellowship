@@ -1,10 +1,10 @@
 .settings {
     display: flex;
-    width:820px!important;
-    height:820px;
+    width: 51rem;
+    height: 50rem;
     margin: 120px auto;
     background-color: rgb(66 133 244 / 10%);
-    box-shadow: 0 10px 70px rgb(0 0 0 / 5%)!important;
+    box-shadow: 0 10px 70px rgb(0 0 0 / 5%) !important;
 }
 
 /*conteiner-menu*/
@@ -46,24 +46,26 @@
     cursor: pointer;
 }
 
-.menu-settings-titulo:hover{
-    background:#E8F0FE;
-}
-.menu-settings-titulo-ativo{
-    background:#E8F0FE;
+.menu-settings-titulo:hover {
+    background: #E8F0FE;
 }
 
-.menu-settings-titulo img{
-    margin: 0;
-    border-radius:0;
-    width: 22px;
-    margin-inline-start:62px;
+.menu-settings-titulo-ativo {
+    background: #E8F0FE;
 }
+
+.menu-settings-titulo img {
+    margin: 0;
+    border-radius: 0;
+    width: 22px;
+    margin-inline-start: 62px;
+}
+
 .menu-settings-titulo svg {
-    width:8px;
-    fill:none;
-    margin-top:3px;
-    padding:10px;
+    width: 8px;
+    fill: none;
+    margin-top: 3px;
+    padding: 10px;
 }
 
 .menu-settings h5 {
@@ -73,19 +75,18 @@
     letter-spacing: 0.05em;
     cursor: pointer;
 }
+
 .menu-settings-geral {
     padding: 10px;
 }
 
-#settings-seguranca{
+#settings-seguranca {
     display: none;
 }
 
 .header-settings {
     display: block;
-    height: 132px;
-    width: 707px;
-    margin-left: 213px;
+    margin-left: 207px;
     position: absolute;
 }
 
@@ -95,7 +96,7 @@
     justify-content: center;
     background: #fff;
     height: 115px;
-    width:607px;
+    width: 38rem;
 }
 
 .ilustracao-settings img {
@@ -107,13 +108,12 @@
 .editar-settings {
     display: flex;
     background-color: #fff;
-    width: 54%;
+    width: 50%;
     align-self: center;
     justify-content: center;
-    height: 50%;
     border-top-left-radius: 40px;
     margin-top: 130px;
-    margin-left: 89px;
+    margin-left: 7rem;
     box-shadow: 0 10px 70px rgb(0 0 0 / 10%);
 }
 
@@ -121,14 +121,16 @@
 .campos-settings {
     display: flex;
     flex-direction: column;
-    justify-content:flex-start;
+    justify-content: flex-start;
     align-items: center;
     padding: 30px;
 }
-.campos-settings-child{
+
+.campos-settings-child {
     display: flex;
     align-items: baseline;
 }
+
 .campos-settings h4 {
     color: #53525d;
     font-size: 18px;
@@ -136,6 +138,7 @@
     margin-left: 22px;
     margin-bottom: 40px;
 }
+
 .campos-settings label {
     display: flex;
     width: auto;
@@ -176,17 +179,20 @@
 
 ::placeholder {
     font-size: 12px;
-    color: #393939;}
+    color: #393939;
+}
 
 /*input desabilitado*/
-#bairro-input-settings{
+#bairro-input-settings {
     background: #e9e9e9;
     cursor: not-allowed;
 }
-#bairro-input-settings:hover{
+
+#bairro-input-settings:hover {
     border: 1px solid #e9e9e9;
-    box-shadow:none;
+    box-shadow: none;
 }
+
 /*btn editar*/
 .campos-settings span {
     font-size: 14px;
@@ -199,4 +205,69 @@
 
 .campos-settings span:hover {
     color: var(--light-blue);
+}
+
+/*Mobile*/
+@media only screen and (max-width: 480px) {
+
+}
+
+/*Tablet*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .settings {
+        width: 95% !important;
+    }
+
+    .header-settings {
+        margin-left: 118px;
+        width: 88%;
+    }
+
+    .ilustracao-settings {
+        width: 80%;
+    }
+
+    .ilustracao-settings img {
+        height: 110%;
+    }
+    .menu-settings img {
+        height: 3rem;
+        width: 3rem;
+    }
+    .menu-settings-nome-usuario {
+        font-size: 12px;
+    }
+    .menu-settings-titulo img {
+        margin-inline-start: 6px;
+        width:1.5rem;
+        height:1.5rem;
+    }
+
+    .menu-settings h5 {
+        font-size: 12px;
+    }
+
+    .editar-settings {
+        margin-left: 2rem;
+        width: 62%;
+        height: 50%;
+    }
+
+    .campos-settings h4 {
+        font-size: 14px;
+    }
+
+    .campos-settings input {
+        font-size: 12px;
+        width: 170px;
+    }
+
+    .campos-settings span {
+        font-size: 12px;
+    }
+}
+
+/*notebook*/
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
 }

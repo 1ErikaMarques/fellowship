@@ -23,12 +23,14 @@
     display: none;
 }
 
-.header-profile  {
+.header-profile {
     margin-left: -24px;
 }
-.profile-name{
+
+.profile-name {
     margin-left: -129px;
 }
+
 .btn-edit {
     width: 100%;
     height: 38px;
@@ -225,17 +227,23 @@
 
 /*tablet*/
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+    .img-user {
+        margin-left: -29px,
+    }
 
     .header-profile .profile-name {
         font-weight: 600;
         font-size: 12px;
     }
 
+    .profile-name {
+        margin-left: -91px
+    }
+
     .btn-edit {
-        width: 92%;
+        width: 100%;
         height: 35px;
         font-size: 12px;
-        margin-inline-start: 2rem;
     }
 
     .btn-salvar {
@@ -247,5 +255,8 @@
 
     .header-profile-bottom ul li span {
         font-size: 12px;
+    }
+    .header-profile-about-title{
+        font-size: 14px;
     }
 }

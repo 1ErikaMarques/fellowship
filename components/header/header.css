@@ -62,10 +62,6 @@
 .search[type="text" i] {
     padding: 0 8%;
 }
-#header_search_bairros {
-    color:red;
-    background:orange;
-}
 
 /*icones header*/
 .header_nav_items ul {
@@ -319,23 +315,42 @@ ul.primary li:hover a {
     }
 
     .search {
-        width: 65%;
-        margin-inline-start: 25%;
+        width: 75%;
+        margin-inline-start: 12%;
         margin-inline-end: 0;
-        height: 1.6rem;
+        height: 1.8rem;
     }
 
     .header_nav_items ul {
         margin-top: 10%;
         margin-right: 8px;
+        width: 73%;
+    }
+
+    .header_nav_items li {
+        margin-right: 0.8rem;
     }
 
     .header_nav_items img {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        width:75%;
     }
 
+    .icone-home{
+        height:24px;
+        width: 24px;
+    }
+
+    .icone-notificacao{
+        height: 26px;
+        width: 22px;
+    }
     .search::placeholder {
         font-size: 12px;
+        background-position: 32px center;
+        background-size: 12px;
+        text-align: right;
+
     }
 }
 

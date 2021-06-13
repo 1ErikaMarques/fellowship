@@ -214,6 +214,13 @@ async function loadFeed(menuSelecionado) {
         }
     }
 
+    const photos = document.getElementById('content').querySelectorAll('[name="foto-user"]');
+    if (photos.length > 0) {
+        photos.forEach(photo => {
+            photo.src = usuarioLogado.photoUrl === '' ? 'public/profile/foto-usuario-perfil.svg' : usuarioLogado.photoUrl;
+        })
+    }
+
     if (sessionStorage.getItem('espiadinha')) {
         espiadinha()
     }
@@ -233,7 +240,7 @@ async function fetchHtmlAsText(url) {
  */
 async function loadMainComponents() {
 
-    if (firebase.auth().currentUser) {
+    if (sessionStorage.getItem('logged')) {
         if (usuarioLogado === undefined) {
             await loadUserDetails();
         }
@@ -286,10 +293,10 @@ async function recuperaTodosBairros() {
     await db.collection('/feedsCollection/')
         .get()
         .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            bairros.push(doc.id)
+            querySnapshot.forEach((doc) => {
+                bairros.push(doc.id)
+            });
         });
-    });
 
     return bairros;
 }

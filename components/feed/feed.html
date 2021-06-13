@@ -2,7 +2,7 @@
 <section class="share-box-entry container border" id="share-box-entry">
     <div class="share-box-entry-div">
         <img
-                src="public/profile/foto-usuario-perfil.svg"/>
+                src="public/profile/foto-usuario-perfil.svg" name="foto-user"/>
     </div>
     <div class="share-box-entry-div">
         <button id="btn-comecar-publicacao" onclick="exibirModal()">Começar publicação</button>
@@ -30,16 +30,17 @@
 
         </div><p class="texto_publicacao">hello<br><br></p>
           <section class="interacao-post">
-                <img class="escolher-emoji" src="public/feed/btn-emoji.svg" alt="Escolher emoji"/>
-                <div class="interacao-emojis">
-                    <img  src="public/feed/emoji-smile.svg" alt="Emoji smile"/>
-                    <img  src="public/feed/emoji-dissapointed.svg" alt="Emoji dessapoint"/>
-                    <img  src="public/feed/emoji-love.svg" alt="Emoji love"/>
-                    <img  src="public/feed/emoji-furious.svg" alt="Emoji angry"/>
-
+                <img class="escolher-emoji" src="public/feed/btn-emoji.svg" alt="Escolher emoji" onclick="hideEmojis()"/>
+                <div class="interacao-emojis" id="interacao-emojis">
+                    <img  src="public/feed/emoji-smile.svg" alt="Emoji smile"  data-name="smile" onclick="addEmojis(this)"/>
+                    <img  src="public/feed/emoji-dissapointed.svg" alt="Emoji dessapoint" data-name="dessapoint" onclick="addEmojis(this)"/>
+                    <img  src="public/feed/emoji-love.svg" alt="Emoji love" data-name="love" onclick="addEmojis(this)"/>
+                    <img  src="public/feed/emoji-furious.svg" alt="Emoji angry" data-name="angry" onclick="addEmojis(this)"/>
                 </div>
 
+              <div class="interacao-emojis-adicionados">
 
+              </div>
 
               <p class="call-comentarios" name="contadorDeComentarios">0 Comentário(s)</p>
           </section>

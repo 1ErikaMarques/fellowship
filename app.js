@@ -11,6 +11,7 @@ async function verificaLogin(form) {
     await auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            sessionStorage.setItem('logged')
             reloadPage();
         })
         .catch(function (error) {
@@ -28,6 +29,7 @@ async function verificaLogin(form) {
 function logout() {
     auth.signOut().then(() => {
         console.log('Usuario deslogado')
+        sessionStorage.clear()
     }).catch((error) => {
         console.log('Ocorreu um erro', error)
     });
@@ -625,6 +627,7 @@ async function publicarPost(tipoModal) {
     const usuarioComentarioImg = document.createElement("img");
     usuarioComentarioImg.className = "img_comentario";
     usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg"
+    usuarioComentarioImg.setAttribute('name', 'foto-user')
 
     //div do input
     const divComentariosFlexInput = document.createElement("div");
@@ -1128,7 +1131,7 @@ async function editarSettings(elemento) {
 
             if (elementoInput.name === 'postalCode') {
                 alert('Por favor faça login novamente')
-                sessionStorage.clear();
+                await logout()
                 reloadPage()
             }
     }
@@ -1187,6 +1190,82 @@ function formataMoeda(elemento) {
     } else {
         elemento.value = valorFormatado;
     }
+}
+
+/**
+ * Esconde e exibi div emojis
+ */
+function hideEmojis() {
+
+    const divEmojis = document.getElementById('interacao-emojis');
+
+    switch (divEmojis.style.display) {
+        case 'flex':
+            divEmojis.style.display = 'none';
+            break;
+        case 'none':
+            divEmojis.style.display = 'flex';
+            break;
+        default:
+            divEmojis.style.display = 'none';
+            break;
+    }
+}
+
+function addEmojis(element) {
+
+    const divEmojisAdicionados = document.getElementsByClassName('interacao-emojis-adicionados')[0]
+
+    const img = document.createElement('img')
+    img.src = element.src;
+    img.alt = element.alt;
+
+    img.setAttribute('data-name', element.dataset.name)
+
+    const emojisAdicionados = divEmojisAdicionados.children.length
+    let emojiJaExiste = false;
+
+    if (emojisAdicionados === 0) {
+        divEmojisAdicionados.append(img)
+
+        const contador = document.createElement('p')
+        contador.setAttribute('data-name', img.dataset.name)
+        contador.setAttribute('name', img.dataset.name)
+        contador.classList.add('interacao-emojis-adicionados-contador')
+        contador.textContent = '1';
+
+        img.after(contador)
+        emojiJaExiste = true;
+    }
+
+    for (let i = 0; i < emojisAdicionados; i++) {
+        let emoji = divEmojisAdicionados.children[i];
+        if (emoji.nodeName === "IMG") {
+            if (emoji.dataset.name === img.dataset.name) {
+                let contadores = document.getElementsByName(img.dataset.name)
+                contadores.forEach(contador => {
+                    if (contador.dataset.name === img.dataset.name) {
+                        let count = Number(contador.textContent)
+                        contador.textContent = count + 1;
+                    }
+                })
+                emojiJaExiste = true;
+                break;
+            }
+        }
+    }
+
+    if (!emojiJaExiste) {
+        divEmojisAdicionados.append(img)
+        const contador = document.createElement('p')
+        contador.setAttribute('data-name', img.dataset.name)
+        contador.setAttribute('name', img.dataset.name)
+        contador.classList.add('interacao-emojis-adicionados-contador')
+        contador.textContent = '1';
+        img.after(contador)
+    }
+
+    hideEmojis()
 }
 
 // Verifica se a pagina foi recarregada

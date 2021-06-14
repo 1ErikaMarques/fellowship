@@ -91,7 +91,7 @@ p {
    
 }
 
-#dropdown-apagar-post {
+.dropdown-apagar-post {
     background: #fff;
     box-shadow: 0 10px 70px rgb(0 0 0 / 12%);
     border: 1px solid #e9e9e9;
@@ -101,7 +101,7 @@ p {
 }
 
 .dropdown-apagar-post-ativo {
-    display: block!important;
+    display: block;
 }
 
 .apagar-post {
@@ -133,9 +133,8 @@ p {
 .tags {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
-    margin-top: 18px;
     font-size: 12px;
     font-weight: bold;
     color: #fff;

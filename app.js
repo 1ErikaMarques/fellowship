@@ -460,30 +460,33 @@ async function publicarPost(tipoModal) {
     nomeUsuario.setAttribute('name', 'user-name')
 
     //criando a modal apagar post
+    const ulPrincipalApagarPost = document.createElement('ul')
+
     const liApagarPost = document.createElement('li')
 
     const btnApagarPost = document.createElement('img')
     btnApagarPost.className = "btn-apagar-post"
     btnApagarPost.src = "public/feed/icone-reticencias.svg"
+    btnApagarPost.setAttribute('onclick', 'modalApagarPost(this)')
 
     const ulModalApagarPost = document.createElement('ul')
+    ulModalApagarPost.className = "dropdown-apagar-post"
 
-    const divModalApagarPost = document.createElement('div')
-    divModalApagarPost.className = "triangulo-up-borda-dropdown"
+    const divTrianguloUp = document.createElement('div')
+    divTrianguloUp.className = "triangulo-up-borda-dropdown"
 
-    const divTrianguloApagarPost = document.createElement('div')
-    divTrianguloApagarPost.className = "triangulo-down-borda-dropdown"
+    const divTrianguloDown = document.createElement('div')
+    divTrianguloDown.className = "triangulo-down-borda-dropdown"
 
     const liModalApagarPost = document.createElement('li')
     liModalApagarPost.className = "apagar-post"
+    liModalApagarPost.setAttribute('onclick', 'apagarPost(this)')
 
     const iconeModalApagarPost = document.createElement('img')
     iconeModalApagarPost.src = 'public/feed/icone-lixeira.svg'
-    iconeModalApagarPost.classList('apagar-post')
 
     const textoModalApagarPost = document.createElement('p')
-
-
+    textoModalApagarPost.textContent = 'Apagar post'
 
 
     //div que recebe o valor das divTags
@@ -671,8 +674,13 @@ async function publicarPost(tipoModal) {
     comentarioUsuario.name = 'input-comentarios'
 
     //associando pais e filhos
+    liModalApagarPost.append(iconeModalApagarPost,textoModalApagarPost);
+    ulModalApagarPost.append(divTrianguloUp,divTrianguloDown,liModalApagarPost);
+    liApagarPost.append(btnApagarPost,ulModalApagarPost);
+    ulPrincipalApagarPost.append(liApagarPost);
     divInformacaoDoUsuario.appendChild(fotoDoUsuario);
     divInformacaoDoUsuario.appendChild(nomeUsuario);
+    divInformacaoDoUsuario.appendChild(ulPrincipalApagarPost);
 
     // Se a div tag tiver valor adicionamos ela no feed
     if (divTagConstruida !== undefined) {
@@ -713,11 +721,37 @@ async function publicarPost(tipoModal) {
     }
 }
 
-/*abrir modal apagar post*/
+/**
+ * abrir modal com a opcao apagar post
+ * @param element
+ */
  function modalApagarPost(element) {
-        const modalApagarPost = document.getElementById("dropdown-apagar-post")
+        const modalApagarPost = element.nextSibling
         modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
  }
+
+/**
+ * Apaga o post
+ * @param element
+ */
+async function apagarPost(element) {
+    const divFather = element.parentNode.parentNode.parentNode.parentNode.parentNode;//acessando a div que tem o id do post
+    const idDivFather = divFather.id;
+    const topico = divFather.dataset.tipo;
+    const menuNavAtivo = procurarMenuNavAtivo();
+
+    const path = `/feedsCollection/${usuarioLogado.neighborhood}/${topico}`//caminho do banco de dados
+    await db.collection(path).doc(idDivFather).delete().then(() => { //deletando do banco de dados
+        alert('Publicação excluida com sucesso')
+        loadFeed(menuNavAtivo)
+    }).catch((erro) => { //caso ocorra erro
+        alert('Erro ao excluir publicação, por favor tente novamente')
+        console.log('Erro ao excluir', erro)
+    })
+
+}
+
+
 
 /**
  * Adiciona comentario ao post

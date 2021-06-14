@@ -240,9 +240,10 @@ async function fetchHtmlAsText(url) {
  */
 async function loadMainComponents() {
 
-    if (sessionStorage.getItem('logged')) {
+    if (sessionStorage.getItem('loggedUser')) {
         if (usuarioLogado === undefined) {
             await loadUserDetails();
+            usuarioLogado = JSON.parse(sessionStorage.getItem('loggedUser'));
         }
         await recuperaTodosBairros()
         loadHeader();
@@ -259,7 +260,9 @@ async function loadUserDetails() {
             id: user.id,
             ...user.data(),
         })
+        sessionStorage.setItem('loggedUser', JSON.stringify(usuarioLogado));
     });
+
 }
 
 /**
@@ -272,7 +275,7 @@ async function recuperaFeedsPorTopico(bairro, topico) {
 
     let feeds = new Map();
 
-    const path = `/feedsCollection/${bairro}/${topico}`
+    const path = `/feedsCollection/${ bairro }/${ topico }`
 
     await db.collection(path).get().then((querySnapshot) => {
         if (!querySnapshot.empty) {

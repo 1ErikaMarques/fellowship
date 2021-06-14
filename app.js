@@ -11,8 +11,6 @@ async function verificaLogin(form) {
     await auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            sessionStorage.setItem('logged',uuid())
-            reloadPage();
         })
         .catch(function (error) {
             const errorCode = error.code;
@@ -24,6 +22,8 @@ async function verificaLogin(form) {
                 alert('Senha incorreta')
             }
         })
+    await loadUserDetails();
+    reloadPage();
 }
 
 function logout() {
@@ -107,11 +107,11 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
     if (validacep.test(cep)) {
         document.getElementById(inputBairroId).value = "...";
 
-        await fetch(`https://viacep.com.br/ws/${cep}/json`)
+        await fetch(`https://viacep.com.br/ws/${ cep }/json`)
             .then(response => response.json())
             .then(res => {
                 if (!("erro" in res)) {
-                    document.getElementById(inputBairroId).value = `${res.bairro} - ${res.uf}`;
+                    document.getElementById(inputBairroId).value = `${ res.bairro } - ${ res.uf }`;
                 } else {
                     alert("CEP não encontrado.");
                     document.getElementById(inputBairroId).value = null;
@@ -119,7 +119,7 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
 
             })
             .catch(onerror => {
-                alert(`Erro ao carregar cep ${onerror}`)
+                alert(`Erro ao carregar cep ${ onerror }`)
             })
 
     } else {
@@ -133,7 +133,7 @@ async function recuperarSenha(form) {
         alert('E-mail enviado com sucesso!Por favor verifique a sua caixa de entrada')
     }).catch(function (error) {
         alert('Não foi possivel recuperar ou encontrar o e-mail informado')
-        console.error(`Erro ao recuperar e-mail ${error}`)
+        console.error(`Erro ao recuperar e-mail ${ error }`)
     });
 
     form.email.value = null;
@@ -205,7 +205,7 @@ function addImgModal(element) {
         case 'generica':
             sessaoCarregamento = document.getElementById("arquivos-modal-post-generica")
             break;
-        case'doacoes':
+        case 'doacoes':
             sessaoCarregamento = document.getElementById("arquivos-modal-post-doacoes")
             break;
     }
@@ -240,10 +240,10 @@ async function uploadToFirebaseStorage(fileUrl, type) {
             return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
         })
         .catch(error => {
-            console.log(`Failed to upload file and get link - ${error}`);
+            console.log(`Failed to upload file and get link - ${ error }`);
         })
         .catch(onerror => {
-            console.log(`Erro ao baixar arquivo da modal - ${onerror}`)
+            console.log(`Erro ao baixar arquivo da modal - ${ onerror }`)
         })
 }
 
@@ -264,7 +264,7 @@ function addVideoModal(element) {
         case 'generica':
             sessaoCarregamento = document.getElementById("arquivos-modal-post-generica")
             break;
-        case'doacoes':
+        case 'doacoes':
             sessaoCarregamento = document.getElementById("arquivos-modal-post-doacoes")
             break;
     }
@@ -789,7 +789,7 @@ async function salvarFeeds(tipoFeed, postId, post, novoFeed) {
             .doc(postId)
             .update({
                 html: post,
-            }, {merge: true});
+            }, { merge: true });
     }
 }
 

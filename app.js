@@ -110,11 +110,11 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
     if (validacep.test(cep)) {
         document.getElementById(inputBairroId).value = "...";
 
-        await fetch(`https://viacep.com.br/ws/${ cep }/json`)
+        await fetch(`https://viacep.com.br/ws/${cep}/json`)
             .then(response => response.json())
             .then(res => {
                 if (!("erro" in res)) {
-                    document.getElementById(inputBairroId).value = `${ res.bairro } - ${ res.uf }`;
+                    document.getElementById(inputBairroId).value = `${res.bairro} - ${res.uf}`;
                 } else {
                     alert("CEP não encontrado.");
                     document.getElementById(inputBairroId).value = null;
@@ -122,7 +122,7 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
 
             })
             .catch(onerror => {
-                alert(`Erro ao carregar cep ${ onerror }`)
+                alert(`Erro ao carregar cep ${onerror}`)
             })
 
     } else {
@@ -136,7 +136,7 @@ async function recuperarSenha(form) {
         alert('E-mail enviado com sucesso!Por favor verifique a sua caixa de entrada')
     }).catch(function (error) {
         alert('Não foi possivel recuperar ou encontrar o e-mail informado')
-        console.error(`Erro ao recuperar e-mail ${ error }`)
+        console.error(`Erro ao recuperar e-mail ${error}`)
     });
 
     form.email.value = null;
@@ -244,10 +244,10 @@ async function uploadToFirebaseStorage(fileUrl, type) {
             return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
         })
         .catch(error => {
-            console.log(`Failed to upload file and get link - ${ error }`);
+            console.log(`Failed to upload file and get link - ${error}`);
         })
         .catch(onerror => {
-            console.log(`Erro ao baixar arquivo da modal - ${ onerror }`)
+            console.log(`Erro ao baixar arquivo da modal - ${onerror}`)
         })
 }
 
@@ -472,6 +472,7 @@ async function publicarPost(tipoModal) {
     btnApagarPost.className = "btn-apagar-post"
     btnApagarPost.src = "public/feed/icone-reticencias.svg"
     btnApagarPost.setAttribute('onclick', 'modalApagarPost(this)')
+    btnApagarPost.setAttribute('data-tipo', 'apagar-post');
 
     const ulModalApagarPost = document.createElement('ul')
     ulModalApagarPost.className = "dropdown-apagar-post"
@@ -495,7 +496,7 @@ async function publicarPost(tipoModal) {
     //seção emojis e contador de comentarios
     const divEmojisAdicionados = document.createElement('div')
     divEmojisAdicionados.className = 'interacao-emojis-adicionados'
-    divEmojisAdicionados.setAttribute('name','interacao-emojis-adicionados')
+    divEmojisAdicionados.setAttribute('name', 'interacao-emojis-adicionados')
 
     const secaoInteracaoPost = document.createElement('section')
     secaoInteracaoPost.className = 'interacao-post'
@@ -537,8 +538,8 @@ async function publicarPost(tipoModal) {
 
     /*Associando pais e filhos da secao interacao*/
 
-    divEscolherEmoji.append(emojiSmile,emojiDissapointed,emojiLove,emojiFurious);
-    secaoInteracaoPost.append(btnEscolherEmoji,divEscolherEmoji,contadorDeComentarios);
+    divEscolherEmoji.append(emojiSmile, emojiDissapointed, emojiLove, emojiFurious);
+    secaoInteracaoPost.append(btnEscolherEmoji, divEscolherEmoji, contadorDeComentarios);
 
 
     //div que recebe o valor das divTags
@@ -722,9 +723,9 @@ async function publicarPost(tipoModal) {
 
     //associando pais e filhos
 
-    liModalApagarPost.append(iconeModalApagarPost,textoModalApagarPost);
-    ulModalApagarPost.append(divTrianguloUp,divTrianguloDown,liModalApagarPost);
-    liApagarPost.append(btnApagarPost,ulModalApagarPost);
+    liModalApagarPost.append(iconeModalApagarPost, textoModalApagarPost);
+    ulModalApagarPost.append(divTrianguloUp, divTrianguloDown, liModalApagarPost);
+    liApagarPost.append(btnApagarPost, ulModalApagarPost);
     ulPrincipalApagarPost.append(liApagarPost);
     divInformacaoDoUsuario.append(fotoDoUsuario);
     divInformacaoDoUsuario.append(nomeUsuario);
@@ -773,10 +774,11 @@ async function publicarPost(tipoModal) {
  * abrir modal com a opcao apagar post
  * @param element
  */
- function modalApagarPost(element) {
-        const modalApagarPost = element.nextElementSibling
-        modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
- }
+function modalApagarPost(element) {
+    const modalApagarPost = element.nextElementSibling
+    hideOnClickOutside(element)
+    modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
+}
 
 /**
  * Apaga o post
@@ -906,7 +908,7 @@ async function salvarFeeds(tipoFeed, postId, post, novoFeed) {
             .doc(postId)
             .update({
                 html: post,
-            }, { merge: true });
+            }, {merge: true});
     }
 }
 
@@ -1022,6 +1024,8 @@ function hideOnClickOutside(elemento) {
             } else if (elemento.dataset.tipo === 'notifications') {
                 elemento.classList.remove("permahover-notifications");
                 elemento.children[0].classList.remove("icone-notificacao-ativo");
+            } else if (elemento.dataset.tipo === 'apagar-post') {
+                elemento.nextElementSibling.classList.remove('dropdown-apagar-post-ativo');
             }
             removeClickListener()
         }

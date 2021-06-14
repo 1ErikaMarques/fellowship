@@ -65,7 +65,8 @@ p {
 
 .usuario_post {
     max-width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
 }
 
 .usuario_post h3 {
@@ -74,21 +75,29 @@ p {
     letter-spacing: 0.03em;
     font-weight: bold;
     margin-top: 35px;
-    margin-left: 10px;
     color: #53525d;
+    margin-inline-start: -26px;
     cursor: pointer;
+    grid-column-end: 5;
+    grid-column-start: 2;
+    grid-row-start: 1;
 }
 
 .usuario_post h3:hover {
     text-decoration-line: underline;
 }
 
+.reticencias {
+    height: 0;
+    grid-area: 1 / col4-start / last-line / 6;
+    justify-self: end;
+}
+
 .btn-apagar-post {
     width: 28px;
     height: 28px;
-    margin: 20px 27px 0 0;
+    margin: 0 27px 0 0;
     cursor: pointer;
-   
 }
 
 .dropdown-apagar-post {
@@ -132,12 +141,12 @@ p {
 
 .tags {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 100%;
     font-size: 12px;
     font-weight: bold;
     color: #fff;
+    grid-column-start: 4;
+    grid-row-end: 3;
+    grid-column-end: 8;
 }
 
 .donation-tag {

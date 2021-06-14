@@ -11,44 +11,72 @@
 
 <!-- Section onde fica todos os posts -->
 <section id="sessao-de-post">
-    <div class="post container border" id="925a6331-f914-446e-9037-c355df2a0344" data-tipo="noticias">
+  <!--  <div class="post container border" id="925a6331-f914-446e-9037-c355df2a0344" data-tipo="noticias">
         <div class="usuario_post">
             <img class="img_post" src="public/profile/foto-usuario-perfil.svg" alt="Elzinha">
-            <h3 data-userid="a64f7d11-1941-4ebf-b74c-99467c9b778d" onclick="loadProfile(this)" name="user-name">Elzinha</h3>
-            <ul class="">
-            <li>
-            <img class="btn-apagar-post" src="public/feed/icone-reticencias.svg" onclick="modalApagarPost(this)"  />
-            <ul class="dropdown-apagar-post" id="dropdown-apagar-post">
-                <div class="triangulo-up-borda-dropdown"></div>
-                <div class="triangulo-down-borda-dropdown"></div>
-                <li class="apagar-post" onclick="apagarPost(this)"> <img src="public/feed/icone-lixeira.svg"/>
-                    <p>Apagar Post</p>
+            <h3 data-userid="a64f7d11-1941-4ebf-b74c-99467c9b778d" onclick="loadProfile(this)" name="user-name">
+                Elzinha</h3>
+
+            <div class="tags">
+                <div class="tiposImoveis-tag"><p class="tag-child">Apartamento</p></div>
+                <div class="valor-tag"><p class="tag-child">R$&nbsp;3.432</p></div>
+                <div class="opcao-tag"><p class="tag-child">Procurando</p></div>
+            </div>
+
+            <ul>
+                <li>
+                    <img class="btn-apagar-post" src="public/feed/icone-reticencias.svg"
+                         onclick="modalApagarPost(this)"/>
+                    <ul class="" id="dropdown-apagar-post">
+                        <div class="triangulo-up-borda-dropdown"></div>
+                        <div class="triangulo-down-borda-dropdown"></div>
+                        <li class="apagar-post">
+                            <img src="public/feed/icone-lixeira.svg"/>
+                            <p>Apagar Post</p>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-            </li>
-            </ul>
 
-        </div><p class="texto_publicacao">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        </div>
+        <p class="texto_publicacao">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+            piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
+            professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
+            from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
+            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
+            (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+            ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..",
+            comes from a line in section 1.10.32.
 
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><br></p>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><br></p>
         <div class="interacao-emojis-adicionados"></div>
-          <section class="interacao-post">
+        <section class="interacao-post">
 
-                <img class="escolher-emoji" src="public/feed/btn-emoji.svg" alt="Escolher emoji" onclick="hideEmojis()"/>
-                <div class="interacao-emojis" id="interacao-emojis">
-                    <img  src="public/feed/emoji-smile.svg" alt="Emoji smile"  data-name="smile" onclick="addEmojis(this)"/>
-                    <img  src="public/feed/emoji-dissapointed.svg" alt="Emoji dissapointed" data-name="dissapointed" onclick="addEmojis(this)"/>
-                    <img  src="public/feed/emoji-love.svg" alt="Emoji love" data-name="love" onclick="addEmojis(this)"/>
-                    <img  src="public/feed/emoji-furious.svg" alt="Emoji angry" data-name="angry" onclick="addEmojis(this)"/>
-                </div>
-
-             
-
+            <img class="escolher-emoji" src="public/feed/btn-emoji.svg" alt="Escolher emoji" onclick="hideEmojis()"/>
+            <div class="interacao-emojis" id="interacao-emojis">
+                <img src="public/feed/emoji-smile.svg" alt="Emoji smile" data-name="smile" onclick="addEmojis(this)"/>
+                <img src="public/feed/emoji-dissapointed.svg" alt="Emoji dissapointed" data-name="dissapointed"
+                     onclick="addEmojis(this)"/>
+                <img src="public/feed/emoji-love.svg" alt="Emoji love" data-name="love" onclick="addEmojis(this)"/>
+                <img src="public/feed/emoji-furious.svg" alt="Emoji angry" data-name="angry" onclick="addEmojis(this)"/>
+            </div>
 
 
-              <p class="call-comentarios" name="contadorDeComentarios">0 Comentário(s)</p>
-          </section>
-        <section name="comments-section"></section><hr class="aparador-post"><div class="area_comentarios"><div class="area_comentarios_flex comentario-perfil"><img class="img_comentario" src="public/profile/foto-usuario-perfil.svg"></div><div class="area_comentarios_flex comentario-perfil"><input type="text" placeholder="Escreva um comentário" onkeyup="addComentario(event)" name="input-comentarios"></div></div></div>
+            <p class="call-comentarios" name="contadorDeComentarios">0 Comentário(s)</p>
+        </section>
+        <section name="comments-section"></section>
+        <hr class="aparador-post">
+        <div class="area_comentarios">
+            <div class="area_comentarios_flex comentario-perfil"><img class="img_comentario"
+                                                                      src="public/profile/foto-usuario-perfil.svg">
+            </div>
+            <div class="area_comentarios_flex comentario-perfil"><input type="text" placeholder="Escreva um comentário"
+                                                                        onkeyup="addComentario(event)"
+                                                                        name="input-comentarios"></div>
+        </div>
+    </div>-->
 </section>
 
 <!--   Modal de generica -->
@@ -200,7 +228,8 @@
                 </select>
 
                 <!--Valor do imovel-->
-                <input id="valorImovel-input" class="botoes-modal-casa-input" placeholder="Valor" onblur="formataMoeda(this)" type="text"/>
+                <input id="valorImovel-input" class="botoes-modal-casa-input" placeholder="Valor"
+                       onblur="formataMoeda(this)" type="text"/>
 
             </div>
 

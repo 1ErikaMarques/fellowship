@@ -110,11 +110,11 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
     if (validacep.test(cep)) {
         document.getElementById(inputBairroId).value = "...";
 
-        await fetch(`https://viacep.com.br/ws/${cep}/json`)
+        await fetch(`https://viacep.com.br/ws/${ cep }/json`)
             .then(response => response.json())
             .then(res => {
                 if (!("erro" in res)) {
-                    document.getElementById(inputBairroId).value = `${res.bairro} - ${res.uf}`;
+                    document.getElementById(inputBairroId).value = `${ res.bairro } - ${ res.uf }`;
                 } else {
                     alert("CEP não encontrado.");
                     document.getElementById(inputBairroId).value = null;
@@ -122,7 +122,7 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
 
             })
             .catch(onerror => {
-                alert(`Erro ao carregar cep ${onerror}`)
+                alert(`Erro ao carregar cep ${ onerror }`)
             })
 
     } else {
@@ -136,7 +136,7 @@ async function recuperarSenha(form) {
         alert('E-mail enviado com sucesso!Por favor verifique a sua caixa de entrada')
     }).catch(function (error) {
         alert('Não foi possivel recuperar ou encontrar o e-mail informado')
-        console.error(`Erro ao recuperar e-mail ${error}`)
+        console.error(`Erro ao recuperar e-mail ${ error }`)
     });
 
     form.email.value = null;
@@ -243,10 +243,10 @@ async function uploadToFirebaseStorage(fileUrl, type) {
             return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
         })
         .catch(error => {
-            console.log(`Failed to upload file and get link - ${error}`);
+            console.log(`Failed to upload file and get link - ${ error }`);
         })
         .catch(onerror => {
-            console.log(`Erro ao baixar arquivo da modal - ${onerror}`)
+            console.log(`Erro ao baixar arquivo da modal - ${ onerror }`)
         })
 }
 
@@ -461,6 +461,7 @@ async function publicarPost(tipoModal) {
 
     //criando a modal apagar post
     const ulPrincipalApagarPost = document.createElement('ul')
+    ulPrincipalApagarPost.classList.add('reticencias')
 
     const liApagarPost = document.createElement('li')
 
@@ -716,18 +717,18 @@ async function publicarPost(tipoModal) {
     comentarioUsuario.name = 'input-comentarios'
 
     //associando pais e filhos
-    liModalApagarPost.append(iconeModalApagarPost, textoModalApagarPost);
-    ulModalApagarPost.append(divTrianguloUp, divTrianguloDown, liModalApagarPost);
-    liApagarPost.append(btnApagarPost, ulModalApagarPost);
-    ulPrincipalApagarPost.append(liApagarPost);
-    divInformacaoDoUsuario.appendChild(fotoDoUsuario);
-    divInformacaoDoUsuario.appendChild(nomeUsuario);
-    divInformacaoDoUsuario.appendChild(ulPrincipalApagarPost);
 
+    liModalApagarPost.append(iconeModalApagarPost,textoModalApagarPost);
+    ulModalApagarPost.append(divTrianguloUp,divTrianguloDown,liModalApagarPost);
+    liApagarPost.append(btnApagarPost,ulModalApagarPost);
+    ulPrincipalApagarPost.append(liApagarPost);
+    divInformacaoDoUsuario.append(fotoDoUsuario);
+    divInformacaoDoUsuario.append(nomeUsuario);
     // Se a div tag tiver valor adicionamos ela no feed
     if (divTagConstruida !== undefined) {
-        divInformacaoDoUsuario.appendChild(divTagConstruida);
+        divInformacaoDoUsuario.append(divTagConstruida);
     }
+    divInformacaoDoUsuario.append(ulPrincipalApagarPost);
 
     divComentariosFlex.appendChild(usuarioComentarioImg);
     divComentarios.appendChild(divComentariosFlex);
@@ -768,10 +769,10 @@ async function publicarPost(tipoModal) {
  * abrir modal com a opcao apagar post
  * @param element
  */
-function modalApagarPost(element) {
-    const modalApagarPost = element.nextSibling
-    modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
-}
+ function modalApagarPost(element) {
+        const modalApagarPost = element.nextElementSibling
+        modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
+ }
 
 /**
  * Apaga o post
@@ -901,7 +902,7 @@ async function salvarFeeds(tipoFeed, postId, post, novoFeed) {
             .doc(postId)
             .update({
                 html: post,
-            }, {merge: true});
+            }, { merge: true });
     }
 }
 

@@ -110,11 +110,11 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
     if (validacep.test(cep)) {
         document.getElementById(inputBairroId).value = "...";
 
-        await fetch(`https://viacep.com.br/ws/${ cep }/json`)
+        await fetch(`https://viacep.com.br/ws/${cep}/json`)
             .then(response => response.json())
             .then(res => {
                 if (!("erro" in res)) {
-                    document.getElementById(inputBairroId).value = `${ res.bairro } - ${ res.uf }`;
+                    document.getElementById(inputBairroId).value = `${res.bairro} - ${res.uf}`;
                 } else {
                     alert("CEP não encontrado.");
                     document.getElementById(inputBairroId).value = null;
@@ -122,7 +122,7 @@ async function preencheBairro(valorPreenchido, inputBairroId) {
 
             })
             .catch(onerror => {
-                alert(`Erro ao carregar cep ${ onerror }`)
+                alert(`Erro ao carregar cep ${onerror}`)
             })
 
     } else {
@@ -136,7 +136,7 @@ async function recuperarSenha(form) {
         alert('E-mail enviado com sucesso!Por favor verifique a sua caixa de entrada')
     }).catch(function (error) {
         alert('Não foi possivel recuperar ou encontrar o e-mail informado')
-        console.error(`Erro ao recuperar e-mail ${ error }`)
+        console.error(`Erro ao recuperar e-mail ${error}`)
     });
 
     form.email.value = null;
@@ -243,10 +243,10 @@ async function uploadToFirebaseStorage(fileUrl, type) {
             return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
         })
         .catch(error => {
-            console.log(`Failed to upload file and get link - ${ error }`);
+            console.log(`Failed to upload file and get link - ${error}`);
         })
         .catch(onerror => {
-            console.log(`Erro ao baixar arquivo da modal - ${ onerror }`)
+            console.log(`Erro ao baixar arquivo da modal - ${onerror}`)
         })
 }
 
@@ -488,6 +488,53 @@ async function publicarPost(tipoModal) {
     const textoModalApagarPost = document.createElement('p')
     textoModalApagarPost.textContent = 'Apagar post'
 
+    //seção emojis e contador de comentarios
+    const divEmojisAdicionados = document.createElement('div')
+    divEmojisAdicionados.className = 'interacao-emojis-adicionados'
+
+    const secaoInteracaoPost = document.createElement('section')
+    secaoInteracaoPost.className = 'interacao-post'
+
+    const btnEscolherEmoji = document.createElement('img')
+    btnEscolherEmoji.src = 'public/feed/btn-emoji.svg'
+    btnEscolherEmoji.className = 'escolher-emoji'
+    btnEscolherEmoji.setAttribute('onclick', 'hideEmojis()')
+
+    const divEscolherEmoji = document.createElement('div')
+    divEscolherEmoji.className = 'interacao-emojis'
+
+    const emojiSmile = document.createElement('img')
+    emojiSmile.src = 'public/feed/emoji-smile.svg'
+    emojiSmile.setAttribute('onclick', 'addEmojis(this)')
+    emojiSmile.setAttribute('data-name', 'smile')
+
+    const emojiDissapointed = document.createElement('img')
+    emojiDissapointed.src = 'public/feed/emoji-dissapointed.svg'
+    emojiDissapointed.setAttribute('onclick', 'addEmojis(this)')
+    emojiDissapointed.setAttribute('data-name', 'dissapointed')
+
+    const emojiLove = document.createElement('img')
+    emojiLove.src = 'public/feed/emoji-love.svg'
+    emojiLove.setAttribute('onclick', 'addEmojis(this)')
+    emojiLove.setAttribute('data-name', 'love')
+
+    const emojiFurious = document.createElement('img')
+    emojiFurious.src = 'public/feed/emoji-furious.svg'
+    emojiFurious.setAttribute('onclick', 'addEmojis(this)')
+    emojiFurious.setAttribute('data-name', 'angry')
+
+
+    //Criando contador de comentarios
+    const contadorDeComentarios = document.createElement('p')
+    contadorDeComentarios.classList.add('call-comentarios')
+    contadorDeComentarios.innerText = '0 Comentário(s)'
+    contadorDeComentarios.setAttribute('name', 'contadorDeComentarios')
+
+    /*Associando pais e filhos da secao interacao*/
+
+    divEscolherEmoji.append(emojiSmile,emojiDissapointed,emojiLove,emojiFurious);
+    secaoInteracaoPost.append(btnEscolherEmoji,divEscolherEmoji,contadorDeComentarios);
+
 
     //div que recebe o valor das divTags
     let divTagConstruida
@@ -634,11 +681,6 @@ async function publicarPost(tipoModal) {
     // Removendo elementos img da modal
     imgPostModal.textContent = null;
 
-    //Criando contador de comentarios
-    const contadorDeComentarios = document.createElement('p')
-    contadorDeComentarios.classList.add('call-comentarios')
-    contadorDeComentarios.innerText = '0 Comentário(s)'
-    contadorDeComentarios.setAttribute('name', 'contadorDeComentarios')
 
     // criando area de comentarios
     const divSessaoComentarios = document.createElement('section')
@@ -674,9 +716,9 @@ async function publicarPost(tipoModal) {
     comentarioUsuario.name = 'input-comentarios'
 
     //associando pais e filhos
-    liModalApagarPost.append(iconeModalApagarPost,textoModalApagarPost);
-    ulModalApagarPost.append(divTrianguloUp,divTrianguloDown,liModalApagarPost);
-    liApagarPost.append(btnApagarPost,ulModalApagarPost);
+    liModalApagarPost.append(iconeModalApagarPost, textoModalApagarPost);
+    ulModalApagarPost.append(divTrianguloUp, divTrianguloDown, liModalApagarPost);
+    liApagarPost.append(btnApagarPost, ulModalApagarPost);
     ulPrincipalApagarPost.append(liApagarPost);
     divInformacaoDoUsuario.appendChild(fotoDoUsuario);
     divInformacaoDoUsuario.appendChild(nomeUsuario);
@@ -696,7 +738,8 @@ async function publicarPost(tipoModal) {
     if (ulCarrosel.children.length > 0) {
         criandoDiv.append(divPrincipalCarrosel);
     }
-    criandoDiv.append(contadorDeComentarios);
+    criandoDiv.append(divEmojisAdicionados);
+    criandoDiv.append(secaoInteracaoPost);
     criandoDiv.append(divSessaoComentarios);
     criandoDiv.append(aparador);
     criandoDiv.append(divComentarios);
@@ -725,10 +768,10 @@ async function publicarPost(tipoModal) {
  * abrir modal com a opcao apagar post
  * @param element
  */
- function modalApagarPost(element) {
-        const modalApagarPost = element.nextSibling
-        modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
- }
+function modalApagarPost(element) {
+    const modalApagarPost = element.nextSibling
+    modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
+}
 
 /**
  * Apaga o post
@@ -750,7 +793,6 @@ async function apagarPost(element) {
     })
 
 }
-
 
 
 /**
@@ -859,7 +901,7 @@ async function salvarFeeds(tipoFeed, postId, post, novoFeed) {
             .doc(postId)
             .update({
                 html: post,
-            }, { merge: true });
+            }, {merge: true});
     }
 }
 

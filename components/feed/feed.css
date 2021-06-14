@@ -179,7 +179,7 @@ p {
 .tiposImoveis-tag {
     background-color: #34A853;
     border-radius: 10px;
-    margin-right: 10px;
+    margin-right: 7px;
     height: 24px;
 }
 
@@ -189,7 +189,7 @@ p {
     color: #62616d;
     width: 93%;
     padding: 0 0 20px 0;
-    margin-bottom:0;
+    margin-bottom:20px;
     margin-left: 25px;
     line-height: 160%;
     letter-spacing: 0.07em;

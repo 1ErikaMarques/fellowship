@@ -93,17 +93,19 @@
 }
 
 .forgot-password p {
-    font-size: 0.775rem;
+    font-size: 0.8rem;
     font-weight: bold;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     margin-right: 14px;
     color: var(--blue);
     margin-left: 5px;
     cursor: pointer;
+    
 }
 
-.forgot-password h4:hover {
+.forgot-password p:hover {
     text-decoration: underline;
+   
 }
 
 /*call cadastre-se*/
@@ -146,13 +148,23 @@
     display: flex;
     justify-content: center;
     width: 81%;
-    margin: 2rem 2rem 1rem;
+    margin: 2rem 2rem 1rem;    
+}
+
+.titulo-modal-esqueceu-senha {
+    letter-spacing: 0.09em;
+    font-size: 1rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    color:#53525d;
 }
 .forgot-password-text {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     letter-spacing: 0.03em;
     color: #53525d;
     width: 94%;
+    line-height: 150%;
+    font-weight: normal;
 }
 
 /*modal*/
@@ -180,8 +192,8 @@
 
 .logo-cadastro {
     margin-top: 31px;
-    height: 52.25822067260742px;
-    margin-left: 42px;
+    height: 3.5rem;
+    margin-left: 3rem;
 }
 
 .close-modal {
@@ -232,16 +244,16 @@ input[type="date" i]:focus {
     text-indent: 4px;
     transition: 400ms ease;
 }
-#bairroCadastroInput{
+#bairroCadastroInput {
     background:#e9e9e9;
     cursor: not-allowed;
 }
 
-#bairroCadastroInput:hover{
+#bairroCadastroInput:hover {
     border: 1px solid #e9e9e9;
     box-shadow:none;
 }
-#bairroCadastroInput::placeholder{
+#bairroCadastroInput::placeholder {
     color: #7e7e7e;
     font-size: 12px;
     letter-spacing: 0.03em;

@@ -86,11 +86,12 @@ p {
 .btn-apagar-post {
     width: 28px;
     height: 28px;
-    margin: 20px 20px 0 0;
-    cursor: pointer
+    margin: 20px 27px 0 0;
+    cursor: pointer;
+   
 }
 
-#dropdown-apagar-post{
+#dropdown-apagar-post {
     background: #fff;
     box-shadow: 0 10px 70px rgb(0 0 0 / 12%);
     border: 1px solid #e9e9e9;
@@ -98,7 +99,12 @@ p {
     position: absolute;
     display: none;
 }
-.apagar-post{
+
+.dropdown-apagar-post-ativo {
+    display: block!important;
+}
+
+.apagar-post {
     display: flex;
     align-items: center;
     margin: 10px 0 15px 0;
@@ -106,7 +112,7 @@ p {
     cursor: pointer;
 }
 
-.apagar-post:hover{
+.apagar-post:hover {
     color: #fff;
     background-color: rgb(223 56 43 / 50%);
     transition: 200ms ease;
@@ -182,12 +188,12 @@ p {
 .texto_publicacao {
     font-size: 16px;
     color: #62616d;
-    width: 95%;
-    padding: 0 0 50px 0;
+    width: 93%;
+    padding: 0 0 20px 0;
     margin-bottom:0;
-    margin-left: 31px;
+    margin-left: 25px;
     line-height: 160%;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.07em;
     word-break: break-word;
 }
 
@@ -206,6 +212,7 @@ p {
     margin-left: 2rem;
     gap: 1rem;
     grid-template-columns: repeat(12, 1fr);
+    height: 30px;    
 }
 
 .escolher-emoji {
@@ -221,10 +228,10 @@ p {
     height: 1.8rem;
     display: flex;
     align-items: center;
-    margin: 0;
-    grid-column-start: 2;
+    margin: 0;    
     justify-content: space-evenly;
     cursor: pointer;
+   
 }
 
 .interacao-emojis img {
@@ -238,7 +245,8 @@ p {
     height: 1.8rem;
     display: flex;
     align-items: center;
-    margin: 0;
+    margin: 0 0 2rem 1.2rem ;
+    transition:800ms ease;
 }
 
 .interacao-emojis-adicionados-contador {
@@ -259,8 +267,8 @@ p {
     cursor: pointer;
     margin: 0;
     padding: 0;
-    grid-column-start: 11;
-    grid-column-end: 10;
+    grid-column-start: 13;
+    grid-column-end: 9;
     width: 8rem;
     place-self: center;
 }

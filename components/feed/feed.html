@@ -17,7 +17,7 @@
             <h3 data-userid="a64f7d11-1941-4ebf-b74c-99467c9b778d" onclick="loadProfile(this)" name="user-name">Elzinha</h3>
             <ul class="">
             <li>
-            <img class="btn-apagar-post" src="public/feed/icone-reticencias.svg"/>
+            <img class="btn-apagar-post" src="public/feed/icone-reticencias.svg" onclick="modalApagarPost(this)"  />
             <ul class="" id="dropdown-apagar-post">
                 <div class="triangulo-up-borda-dropdown"></div>
                 <div class="triangulo-down-borda-dropdown"></div>
@@ -28,19 +28,23 @@
             </li>
             </ul>
 
-        </div><p class="texto_publicacao">hello<br><br></p>
+        </div><p class="texto_publicacao">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><br></p>
+        <div class="interacao-emojis-adicionados"></div>
           <section class="interacao-post">
+
                 <img class="escolher-emoji" src="public/feed/btn-emoji.svg" alt="Escolher emoji" onclick="hideEmojis()"/>
                 <div class="interacao-emojis" id="interacao-emojis">
                     <img  src="public/feed/emoji-smile.svg" alt="Emoji smile"  data-name="smile" onclick="addEmojis(this)"/>
-                    <img  src="public/feed/emoji-dissapointed.svg" alt="Emoji dessapoint" data-name="dessapoint" onclick="addEmojis(this)"/>
+                    <img  src="public/feed/emoji-dissapointed.svg" alt="Emoji dissapointed" data-name="dissapointed" onclick="addEmojis(this)"/>
                     <img  src="public/feed/emoji-love.svg" alt="Emoji love" data-name="love" onclick="addEmojis(this)"/>
                     <img  src="public/feed/emoji-furious.svg" alt="Emoji angry" data-name="angry" onclick="addEmojis(this)"/>
                 </div>
 
-              <div class="interacao-emojis-adicionados">
+             
 
-              </div>
+
 
               <p class="call-comentarios" name="contadorDeComentarios">0 Comentário(s)</p>
           </section>

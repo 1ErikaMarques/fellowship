@@ -459,6 +459,33 @@ async function publicarPost(tipoModal) {
     nomeUsuario.setAttribute('onclick', 'loadProfile(this)');
     nomeUsuario.setAttribute('name', 'user-name')
 
+    //criando a modal apagar post
+    const liApagarPost = document.createElement('li')
+
+    const btnApagarPost = document.createElement('img')
+    btnApagarPost.className = "btn-apagar-post"
+    btnApagarPost.src = "public/feed/icone-reticencias.svg"
+
+    const ulModalApagarPost = document.createElement('ul')
+
+    const divModalApagarPost = document.createElement('div')
+    divModalApagarPost.className = "triangulo-up-borda-dropdown"
+
+    const divTrianguloApagarPost = document.createElement('div')
+    divTrianguloApagarPost.className = "triangulo-down-borda-dropdown"
+
+    const liModalApagarPost = document.createElement('li')
+    liModalApagarPost.className = "apagar-post"
+
+    const iconeModalApagarPost = document.createElement('img')
+    iconeModalApagarPost.src = 'public/feed/icone-lixeira.svg'
+    iconeModalApagarPost.classList('apagar-post')
+
+    const textoModalApagarPost = document.createElement('p')
+
+
+
+
     //div que recebe o valor das divTags
     let divTagConstruida
     if (tipoModal.dataset.name !== 'generica') {
@@ -685,6 +712,12 @@ async function publicarPost(tipoModal) {
         new Splide('.splide').mount();//carrosel img
     }
 }
+
+/*abrir modal apagar post*/
+ function modalApagarPost(element) {
+        const modalApagarPost = document.getElementById("dropdown-apagar-post")
+        modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
+ }
 
 /**
  * Adiciona comentario ao post
@@ -1033,10 +1066,6 @@ async function salvandoDadosPerfil(element) {
         editarCidade.textContent,
         editarAbout.textContent
     )
-
-    // Updating user profile
-    await loadUserDetails(usuarioLogado.id);
-    usuarioLogado = JSON.parse(sessionStorage.getItem('loggedUser'));
 }
 
 async function updateUserProfile(userId, hobbies, mobile, relationship, work, location, about) {

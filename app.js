@@ -176,7 +176,8 @@ function modalGenerica() {
 
     //Adicionando foto do usuario logado
     let fotoUsuario = document.getElementById('foto-usuario-modal-generica');
-    fotoUsuario.alt = usuarioLogado.name;
+    fotoUsuario.alt = usuarioLogado.name
+    fotoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg"
 
     modal.style.display = "block"
     document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
@@ -300,6 +301,7 @@ function modalCasa() {
     //Adicionando foto do usuario logado
     let fotoUsuario = document.getElementById('foto-usuario-modal-imoveis');
     fotoUsuario.alt = usuarioLogado.name;
+    fotoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg";
 
     modal.style.display = "block"
     document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
@@ -349,6 +351,7 @@ function modalDoacoes() {
     //Adicionando foto do usuario logado
     let fotoUsuario = document.getElementById('foto-usuario-modal-doacoes');
     fotoUsuario.alt = usuarioLogado.name;
+    fotoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg";
 
     modal.style.display = "block"
     document.body.style.overflow = "hidden" // removendo o scroll da pag quando abre a modal
@@ -449,7 +452,7 @@ async function publicarPost(tipoModal) {
     // criando a foto do usuario no post
     const fotoDoUsuario = document.createElement("img") // criando img
     fotoDoUsuario.className = "img_post" // estilo da img
-    fotoDoUsuario.src = "public/profile/foto-usuario-perfil.svg"
+    fotoDoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg"
     fotoDoUsuario.alt = usuarioLogado.name;
 
     // criando nome do usuario

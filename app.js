@@ -8,9 +8,12 @@ async function verificaLogin(form) {
     const email = form.email.value;
     const password = form.password.value;
 
+    let userId;
+
     await auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((authentication) => {
             auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            userId = authentication.user.uid
         })
         .catch(function (error) {
             const errorCode = error.code;
@@ -22,7 +25,7 @@ async function verificaLogin(form) {
                 alert('Senha incorreta')
             }
         })
-    await loadUserDetails();
+    await loadUserDetails(userId);
     reloadPage();
 }
 
@@ -1030,6 +1033,10 @@ async function salvandoDadosPerfil(element) {
         editarCidade.textContent,
         editarAbout.textContent
     )
+
+    // Updating user profile
+    await loadUserDetails(usuarioLogado.id);
+    usuarioLogado = JSON.parse(sessionStorage.getItem('loggedUser'));
 }
 
 async function updateUserProfile(userId, hobbies, mobile, relationship, work, location, about) {

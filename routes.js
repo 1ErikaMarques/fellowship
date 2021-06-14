@@ -242,7 +242,6 @@ async function loadMainComponents() {
 
     if (sessionStorage.getItem('loggedUser')) {
         if (usuarioLogado === undefined) {
-            await loadUserDetails();
             usuarioLogado = JSON.parse(sessionStorage.getItem('loggedUser'));
         }
         await recuperaTodosBairros()
@@ -254,8 +253,8 @@ async function loadMainComponents() {
     }
 }
 
-async function loadUserDetails() {
-    await usersRef.doc(firebase.auth().currentUser.uid).get().then(user => {
+async function loadUserDetails(userId) {
+    await usersRef.doc(userId).get().then(user => {
         usuarioLogado = ({
             id: user.id,
             ...user.data(),

@@ -492,6 +492,7 @@ async function publicarPost(tipoModal) {
     //seção emojis e contador de comentarios
     const divEmojisAdicionados = document.createElement('div')
     divEmojisAdicionados.className = 'interacao-emojis-adicionados'
+    divEmojisAdicionados.setAttribute('name','interacao-emojis-adicionados')
 
     const secaoInteracaoPost = document.createElement('section')
     secaoInteracaoPost.className = 'interacao-post'
@@ -499,7 +500,7 @@ async function publicarPost(tipoModal) {
     const btnEscolherEmoji = document.createElement('img')
     btnEscolherEmoji.src = 'public/feed/btn-emoji.svg'
     btnEscolherEmoji.className = 'escolher-emoji'
-    btnEscolherEmoji.setAttribute('onclick', 'hideEmojis()')
+    btnEscolherEmoji.setAttribute('onclick', 'hideEmojis(this)')
 
     const divEscolherEmoji = document.createElement('div')
     divEscolherEmoji.className = 'interacao-emojis'
@@ -813,7 +814,7 @@ function addComentario(event) {
         const tipoFeed = divPost.dataset.tipo;
 
         const section = divPost.children.namedItem('comments-section')
-        const contadorDeComentarios = divPost.children.namedItem('contadorDeComentarios');
+        const contadorDeComentarios = divPost.children.item(3).children.namedItem('contadorDeComentarios');
 
         const divComentarios = document.createElement("div");
         divComentarios.className = "area_comentarios";
@@ -1143,6 +1144,7 @@ async function salvandoDadosPerfil(element) {
         editarCidade.textContent,
         editarAbout.textContent
     )
+    await reloadUserProfile();
 }
 
 async function updateUserProfile(userId, hobbies, mobile, relationship, work, location, about) {
@@ -1180,6 +1182,14 @@ async function changePhotoProfile(element) {
         .catch((error) => {
             console.error("Error updating user photo", error);
         });
+
+    await reloadUserProfile();
+
+}
+
+async function reloadUserProfile() {
+    await loadUserDetails(usuarioLogado.id);
+    usuarioLogado = JSON.parse(sessionStorage.getItem('loggedUser'));
 }
 
 function focusAbout() {
@@ -1308,9 +1318,9 @@ function formataMoeda(elemento) {
 /**
  * Esconde e exibi div emojis
  */
-function hideEmojis() {
+function hideEmojis(element) {
 
-    const divEmojis = document.getElementById('interacao-emojis');
+    const divEmojis = element.nextElementSibling;
 
     switch (divEmojis.style.display) {
         case 'flex':
@@ -1327,7 +1337,7 @@ function hideEmojis() {
 
 function addEmojis(element) {
 
-    const divEmojisAdicionados = document.getElementsByClassName('interacao-emojis-adicionados')[0]
+    const divEmojisAdicionados = element.parentNode.parentNode.parentElement.children.namedItem('interacao-emojis-adicionados')
 
     const img = document.createElement('img')
     img.src = element.src;
@@ -1378,7 +1388,7 @@ function addEmojis(element) {
         img.after(contador)
     }
 
-    hideEmojis()
+    hideEmojis(element.parentNode.parentNode.children.item(0))
 }
 
 // Verifica se a pagina foi recarregada

@@ -975,6 +975,15 @@ function espiadinha() {
         apagarPostElement.style.display = 'none'
     }
 
+    const emojis = document.getElementsByClassName('interacao-emojis')
+    const divEmoji = document.getElementsByClassName('escolher-emoji')[0]
+    divEmoji.removeAttribute('onclick');
+
+    for(let emoji of emojis){
+        emoji.style.cursor = 'not-allowed';
+        emoji.removeAttribute('onclick');
+    }
+
     sessionStorage.setItem('espiadinha', 'true')
 
     document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");

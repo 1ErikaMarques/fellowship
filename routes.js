@@ -221,6 +221,14 @@ async function loadFeed(menuSelecionado) {
         })
     }
 
+    const apagarPost = document.getElementsByClassName('reticencias');
+    for (let apagarPostElement of apagarPost) {
+        const postOwner = apagarPostElement.dataset.owner
+        if(postOwner !== usuarioLogado.id){
+            apagarPostElement.style.display = 'none'
+        }
+    }
+
     if (sessionStorage.getItem('espiadinha')) {
         espiadinha()
     }

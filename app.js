@@ -24,9 +24,15 @@ async function verificaLogin(form) {
             } else if (errorCode === 'auth/wrong-password') {
                 alert('Senha incorreta')
             }
+            else if(errorCode === 'auth/too-many-requests'){
+                alert('O acesso a esta conta foi temporariamente desativado devido a muitas tentativas de login falhadas. ' +
+                    'Você pode restaurá-lo imediatamente redefinindo sua senha ou pode tentar novamente mais tarde.')
+            }
         })
-    await loadUserDetails(userId);
-    reloadPage();
+    if (userId !== undefined) {
+        await loadUserDetails(userId);
+        reloadPage();
+    }
 }
 
 function logout() {
@@ -465,6 +471,7 @@ async function publicarPost(tipoModal) {
     //criando a modal apagar post
     const ulPrincipalApagarPost = document.createElement('ul')
     ulPrincipalApagarPost.classList.add('reticencias')
+    ulPrincipalApagarPost.setAttribute('data-owner', usuarioLogado.id)
 
     const liApagarPost = document.createElement('li')
 
@@ -961,6 +968,11 @@ function espiadinha() {
     for (let input of listaInputComentario) {
         input.style.cursor = 'not-allowed';
         input.setAttribute('disabled', '');
+    }
+
+    const apagarPost = document.getElementsByClassName('reticencias');
+    for (let apagarPostElement of apagarPost) {
+        apagarPostElement.style.display = 'none'
     }
 
     sessionStorage.setItem('espiadinha', 'true')

@@ -975,15 +975,22 @@ function espiadinha() {
     }
 
 
-    const divEmoji = document.getElementsByClassName('escolher-emoji')[0]
-    divEmoji.removeAttribute('onclick');
-    divEmoji.style.cursor = 'not-allowed';
-
-    const emojis = document.getElementsByClassName('interacao-emojis')
-    for (let emoji of emojis) {
-        emoji.style.cursor = 'not-allowed';
-        emoji.removeAttribute('onclick');
+    const divsEmoji = document.getElementsByClassName('escolher-emoji')
+    for (let divEmoji of divsEmoji) {
+        divEmoji.removeAttribute('onclick');
+        divEmoji.style.cursor = 'not-allowed';
     }
+
+
+    const emojisParents = document.getElementsByClassName('interacao-emojis')
+
+    for (let emojiParent of emojisParents) {
+        for (let emoji of emojiParent.children) {
+            emoji.style.cursor = 'not-allowed';
+            emoji.removeAttribute('onclick');
+        }
+    }
+
 
     sessionStorage.setItem('espiadinha', 'true')
 

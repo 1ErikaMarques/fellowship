@@ -79,7 +79,6 @@ async function loadProfile(userId) {
         botaoEditar.style.display = 'none'
 
         const idUsuarioPostagem = userId.dataset.userid
-        let usuariosLocalStorage = JSON.parse(localStorage.getItem('users'));
 
         let usuarioDoPerfil
 
@@ -127,6 +126,7 @@ async function loadSettings() {
     document.getElementById('name-input-settings').value = usuarioLogado.name;
     document.getElementById('cep-input-settings').value = usuarioLogado.postalCode;
     document.getElementById('bairro-input-settings').value = usuarioLogado.neighborhood;
+
 }
 
 /**

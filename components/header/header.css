@@ -5,13 +5,13 @@
     z-index: 1;
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     background: #fff;
 }
 
 .header_nav_items {
-    margin-top: 10px;
+    margin-top: 0.8rem;
     margin-inline-end: 0;
 }
 
@@ -23,56 +23,62 @@
 
 /*Nome do bairro*/
 .bairro {
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
     color: #6e6d7a;
-    letter-spacing: 0.01em;
 }
 
 /*campo pesquisar*/
 .search {
-    font-family: -apple-system, Roboto, "Helvetica Neue", sans-serif;
-    background: #fafafa;
-    border: 1px solid  #e9e9e9;
-    border-radius: 4px;
-    height: 2rem;
-    margin-bottom: 5px;
-    outline: none;
-    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
     letter-spacing: 0.03em;
     color: #53525d;
+    background: #fafafa;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    height: 2rem;
+    margin-bottom: 3px;
+    outline: none;
+    max-width: 13rem;
 }
 
 /*criando a lupa*/
 .search::placeholder {
     text-align: center;
     color: #aaa9a9;
-    font-size: 14px;
+    font-size: 0.9rem;
     background-image: url("../../public/header/lupa.svg");
     background-repeat: no-repeat;
     background-position: 35px center;
-    background-size: 16px;
+    background-size: 0.8rem;
+    transition-duration: 400ms;
 }
 
-.search:focus::-webkit-input-placeholder {
-    text-align: left;
-    text-indent: 20px;
-    background-position-x: left;
+.search:focus::-webkit-input-placeholder {       
+    text-indent: 20px;       
+    background-position: 5px center;
+    transition:  200ms;
+    color: transparent;
 }
 
 .search[type="text" i] {
-    padding: 0 8%;
+    font-size: 0.9rem;
+    padding-left: 28px;
 }
 
 /*icones header*/
 .header_nav_items ul {
     display: flex;
-    margin-right: 312px;
+    margin-right: 22rem;
     align-items: center;
 }
 
 .header_nav_items li {
     cursor: pointer;
-    margin-right: 1.1rem;
+    margin-right: 1rem;
 }
 
 /* icone home*/
@@ -171,12 +177,12 @@ hr.header-solid {
 
 .triangulo-down-borda-dropdown {
     height: 0;
-    width: 2px;
+    width: 1px;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
     border-bottom: 12px solid #e9e9e9;
     margin-top: -13px;
-    margin-left: 5px;
+    margin-left: 6px;
 
 }
 
@@ -205,34 +211,32 @@ ul.sub li {
 }
 
 ul.sub li a {
-    color: #33323a;
+    color: #53525d;
     text-align: left;
     margin-inline-start: -39px;
-    font-weight: normal;
-    font-size: 12px;
+    font-weight: 400;
+    font-size: 0.71rem;
 }
 
 ul.primary li:hover > a {
-    color: #202025;
     border-radius: 3px;
     background-color: rgb(66 133 244 / 6%);
-    padding: 8px 4px;
     transition: 200ms ease;
     width: 135px;
-    margin-right: 0;
+    padding: 8px 4px;
 }
 
 /*notificacoes*/
 ul.sub li p {
-    color: #33323a;
+    color: #53525d;
     text-align: left;
     margin-inline-start: -39px;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 12px;
+    letter-spacing: 0.04em;
 }
 
 ul.primary li:hover > p {
-    color: #202025;
     border-radius: 3px;
     background-color: rgb(66 133 244 / 6%);
     padding: 8px 4px;
@@ -266,7 +270,7 @@ ul.primary li:hover a {
 .icons {
     width: 16px !important;
     margin-top: 0 !important;
-    margin-right: 15px;
+    margin-right: 10px;
     margin-left: 10px;
     margin-bottom: -3px;
 }

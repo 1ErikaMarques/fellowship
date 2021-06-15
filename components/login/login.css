@@ -25,9 +25,8 @@
     align-items: center;
     border-radius: 4px;
     margin-top: 11rem;
-    width: 330px;
-    padding: 20px;
-    box-shadow: 0px 10px 70px rgb(0 0 0 / 5%);
+    width: 370px;
+    box-shadow: 0 10px 70px rgb(0 0 0 / 5%);
 }
 
 /*Logo*/
@@ -85,29 +84,6 @@
     border: 1px solid #F4F5F7;
 }
 
-.forgot-password {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin-bottom: 60px;
-}
-
-.forgot-password p {
-    font-size: 0.8rem;
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    margin-right: 14px;
-    color: var(--blue);
-    margin-left: 5px;
-    cursor: pointer;
-    
-}
-
-.forgot-password p:hover {
-    text-decoration: underline;
-   
-}
-
 /*call cadastre-se*/
 .call-login {
     display: flex;
@@ -135,6 +111,29 @@
 
 .call-login h4:hover {
     text-decoration: underline;
+}
+
+.forgot-password {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 60px;
+}
+
+.forgot-password p {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    margin-right: 14px;
+    color: var(--blue);
+    margin-left: 5px;
+    cursor: pointer;
+
+}
+
+.forgot-password p:hover {
+    text-decoration: underline;
+
 }
 
 /*Formulario Cadastro*/

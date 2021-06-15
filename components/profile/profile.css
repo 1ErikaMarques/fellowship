@@ -35,7 +35,7 @@
     width: 100%;
     height: 38px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 0.04rem;
     border-radius: 4px;
     background: #F4F5F7;
@@ -110,7 +110,8 @@
     content: 'Qual a sua profissão e onde você trabalha?';
     display: inline-block;
     color: #c8c8c8;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     cursor: text;
 }
 
@@ -118,7 +119,8 @@
     content: 'Qual a sua cidade natal?';
     display: inline-block;
     color: #c8c8c8;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     cursor: text;
 }
 
@@ -126,7 +128,8 @@
     content: 'Qual o seu status de relacionamento?';
     display: inline-block;
     color: #c8c8c8;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     cursor: text;
 }
 
@@ -142,7 +145,8 @@
     content: 'Qual é o seu número de telefone?';
     display: inline-block;
     color: #c8c8c8;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     cursor: text;
 }
 
@@ -150,7 +154,8 @@
     content: 'Quais os seus hobbies?';
     display: inline-block;
     color: #c8c8c8;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     cursor: text;
 }
 
@@ -172,8 +177,9 @@
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     text-align: left;
-    font-weight: bold;
     font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     color: #c8c8c8;
     margin-left: 45px;
     padding: 5px;

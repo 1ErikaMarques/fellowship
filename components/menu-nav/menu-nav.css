@@ -19,12 +19,14 @@
 }
 
 .menu_nav ul li {
-    margin-right: 1.3rem;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.83em;
+    letter-spacing: 0.05em;
     color: #6e6d7a;
-    height:1.6rem;
+    height: 1.6rem;
+    margin-right: 0.8rem;
+    cursor: pointer;
 }
 
 .active_menu_nav {

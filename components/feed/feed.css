@@ -12,8 +12,11 @@
 }
 
 .share-box-entry-div button {
-    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
     text-align: left;
+    letter-spacing: 0.03em;
     width: 100%;
     height: 40px;
     padding: 1px 20px;
@@ -22,7 +25,7 @@
     color: #9e9ea7;
     border: 1px solid #f7f7f8;
     cursor: pointer;
-    margin-right: 26rem;
+    margin-right: 23.3rem;
     margin-left: -16px;
 }
 
@@ -59,7 +62,7 @@ p {
     width: 3rem;
     border-radius: 30px;
     margin-left: 22px;
-    margin-top: 20px;
+    margin-top: 2rem;
     border: 1px solid #e9e9e9;
 }
 
@@ -76,7 +79,7 @@ p {
     font-weight: bold;
     margin-top: 3rem;
     color: #53525d;
-    margin-inline-start: -26px;
+    margin-inline-start: -1.5rem;
     cursor: pointer;
     grid-column-end: 5;
     grid-column-start: 2;
@@ -102,9 +105,10 @@ p {
 
 .dropdown-apagar-post {
     background: #fff;
-    box-shadow: 0 10px 70px rgb(0 0 0 / 12%);
+    box-shadow: 0 10px 70px rgb(0 0 0 / 5%);
     border: 1px solid #e9e9e9;
     padding: 0;
+    width: 8.8rem;
     position: absolute;
     display: none;
 }
@@ -116,15 +120,16 @@ p {
 .apagar-post {
     display: flex;
     align-items: center;
-    margin: 10px 0 15px 0;
-    height:30px;
+    margin: 4px 0 0 0;
+    transition: 200ms ease;
     cursor: pointer;
 }
 
 .apagar-post:hover {
     color: #fff;
-    background-color: rgb(223 56 43 / 50%);
+    background-color: rgb(223 56 43 / 10%);
     transition: 200ms ease;
+    padding: 4px 4px;
 }
 
 .apagar-post img {
@@ -133,10 +138,10 @@ p {
 }
 
 .apagar-post p {
-    color: #202025;
+    color: #DF382B;
     font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 4px 10px 0 0;
+    letter-spacing: 0.03em;
+    font-weight: 500;
 }
 
 .tags {
@@ -151,47 +156,46 @@ p {
     margin-top: -20px;
 }
 
+.tiposImoveis-tag {
+    background-color: #34A853;
+    border-radius: 10px;
+    margin-right: 7px;
+    height: 25px;
+}
+
 .donation-tag {
     background-color: #FA81A2;
     border-radius: 10px;
     margin-right: 10px;
-    height: 24px;
+    height: 25px;
 }
 
 .tag-child {
     margin-top: 0;
     text-align: center;
-    padding: 6px 11px;
+    padding: 5px 11px;
     letter-spacing: 0.05em;
-
 }
 
 .help-tag {
     background-color: #FABB05;
     border-radius: 10px;
     margin-right: 10px;
-    height: 24px;
+    height: 25px;
 }
 
 .opcao-tag {
     background-color: #FA81A2;
     border-radius: 10px;
     margin-right: 10px;
-    height: 24px;
+    height: 25px;
 }
 
 .valor-tag {
     background-color: #FABB05;
     border-radius: 10px;
     margin-right: 10px;
-    height: 24px;
-}
-
-.tiposImoveis-tag {
-    background-color: #34A853;
-    border-radius: 10px;
-    margin-right: 7px;
-    height: 24px;
+    height: 25px;
 }
 
 /*texto do post*/
@@ -242,7 +246,6 @@ p {
     margin: 0;    
     justify-content: space-evenly;
     cursor: pointer;
-   
 }
 
 .interacao-emojis img {
@@ -271,8 +274,8 @@ p {
 }
 
 .call-comentarios {
-    font-weight: bold;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
     letter-spacing: 0.03em;
     color: #62616d;
     cursor: pointer;
@@ -280,7 +283,6 @@ p {
     padding: 0;
     grid-column-start: 13;
     grid-column-end: 9;
-    width: 8rem;
     place-self: center;
 }
 
@@ -309,6 +311,7 @@ p {
 
 .area_comentarios_flex {
     display: flex;
+    margin-top: 1rem;
 }
 
 .area_comentarios_body {
@@ -321,13 +324,13 @@ p {
     background-color: #f4f5f7;
     border: 1px solid #f7f7f8;
     line-height: 1.2rem;
-    display: block;
 }
 
 .area_comentarios span {
     display: block;
     color: #62616d;
     font-size: 15px;
+    letter-spacing: 0.03em;
     margin-top: 10px;
     font-weight: bold;
     cursor: pointer;
@@ -384,9 +387,10 @@ p {
     background-color: #fefefe;
     border: none;
     height: auto;
+    max-width: 547px;
     margin-top: 16px;
-    width: 547px;
     margin-left: 10px;
+    display: block;
     letter-spacing: 0.03em;
 }
 
@@ -408,13 +412,11 @@ p {
 /* Modal Content */
 .modal-generica-conteudo {
     /*display block*/
-    background-color: #fefefe;
+    background-color: #fff;
     padding: 10px;
     width: 561px;
     margin: 6rem auto auto;
     height: auto;
-    box-shadow: 0px 10px 70px rgb(0 0 0 / 35%);
-
 }
 
 /*titulo criar publicacao*/
@@ -724,6 +726,7 @@ hr.solid {
 
 .texto-modal-bairro {
     font-size: 18px;
+    font-weight: 400;
     line-height: 180%;
     letter-spacing: 0.03em;
     word-break: break-word;
@@ -731,13 +734,16 @@ hr.solid {
     color: #6e6d7a;
     padding: 20px;
     margin-top: 0;
+}
 
+.texto-modal-bairro {
+    font-weight: 600;
 }
 
 .texto-modal-bairro a {
     color: var(--blue);
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .texto-modal-bairro a:hover {
@@ -817,6 +823,7 @@ hr.solid {
 
     .usuario_post h3 {
         font-size: 14px;
+        margin-inline-start: 0;
     }
 
     .texto_publicacao {

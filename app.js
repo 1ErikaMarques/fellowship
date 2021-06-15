@@ -23,8 +23,7 @@ async function verificaLogin(form) {
                 alert('Este email não está cadastrado')
             } else if (errorCode === 'auth/wrong-password') {
                 alert('Senha incorreta')
-            }
-            else if(errorCode === 'auth/too-many-requests'){
+            } else if (errorCode === 'auth/too-many-requests') {
                 alert('O acesso a esta conta foi temporariamente desativado devido a muitas tentativas de login falhadas. ' +
                     'Você pode restaurá-lo imediatamente redefinindo sua senha ou pode tentar novamente mais tarde.')
             }
@@ -975,11 +974,13 @@ function espiadinha() {
         apagarPostElement.style.display = 'none'
     }
 
-    const emojis = document.getElementsByClassName('interacao-emojis')
+
     const divEmoji = document.getElementsByClassName('escolher-emoji')[0]
     divEmoji.removeAttribute('onclick');
+    divEmoji.style.cursor = 'not-allowed';
 
-    for(let emoji of emojis){
+    const emojis = document.getElementsByClassName('interacao-emojis')
+    for (let emoji of emojis) {
         emoji.style.cursor = 'not-allowed';
         emoji.removeAttribute('onclick');
     }

@@ -506,6 +506,7 @@ async function publicarPost(tipoModal) {
 
     const secaoInteracaoPost = document.createElement('section')
     secaoInteracaoPost.className = 'interacao-post'
+    secaoInteracaoPost.setAttribute('name','interacao-post')
 
     const btnEscolherEmoji = document.createElement('img')
     btnEscolherEmoji.src = 'public/feed/btn-emoji.svg'
@@ -825,7 +826,7 @@ function addComentario(event) {
         const tipoFeed = divPost.dataset.tipo;
 
         const section = divPost.children.namedItem('comments-section')
-        const contadorDeComentarios = divPost.children.item(3).children.namedItem('contadorDeComentarios');
+        const contadorDeComentarios = divPost.children.namedItem('interacao-post').children.namedItem('contadorDeComentarios');
 
         const divComentarios = document.createElement("div");
         divComentarios.className = "area_comentarios";

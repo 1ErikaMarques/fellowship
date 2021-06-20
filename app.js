@@ -506,7 +506,7 @@ async function publicarPost(tipoModal) {
 
     const secaoInteracaoPost = document.createElement('section')
     secaoInteracaoPost.className = 'interacao-post'
-    secaoInteracaoPost.setAttribute('name','interacao-post')
+    secaoInteracaoPost.setAttribute('name', 'interacao-post')
 
     const btnEscolherEmoji = document.createElement('img')
     btnEscolherEmoji.src = 'public/feed/btn-emoji.svg'
@@ -813,13 +813,15 @@ async function apagarPost(element) {
  * Adiciona comentario ao post
  * @param event A acao que o usuario esta fazendo
  */
-function addComentario(event) {
+async function addComentario(event) {
 
     if (event.key === 'Enter' || event.keyCode === 13) {
 
         const comment = event.target.value;
 
         const divPost = event.target.parentNode.parentNode.parentNode;
+
+        const postOwnerId = divPost.children[0].children.namedItem('user-name').dataset.userid;
 
         const postId = divPost.id;
 
@@ -871,12 +873,16 @@ function addComentario(event) {
 
         event.target.value = null;
 
-        salvarFeeds(tipoFeed, postId, divPost.innerHTML, false);
+        await salvarFeeds(tipoFeed, postId, divPost.innerHTML, false);
+
+        if (postOwnerId !== usuarioLogado.id) {
+            await saveNotifications('comment', postId, postOwnerId);
+        }
     }
 }
 
 /**
- * Salva feed na localstorage
+ * Salva feed no firebase
  * @param tipoFeed exemplo 'feedNoticias'...
  * @param postId
  * @param {InnerHTML} post Post que deve ser salvo
@@ -917,6 +923,47 @@ async function salvarFeeds(tipoFeed, postId, post, novoFeed) {
                 html: post,
             }, {merge: true});
     }
+}
+
+/**
+ *
+ * @param notificationType
+ * @param postId
+ * @param postOwner
+ */
+async function saveNotifications(notificationType, postId, postOwner) {
+
+    let msg;
+    switch (notificationType) {
+        case 'comment':
+            msg = `${usuarioLogado.name} - Comentou na sua publicação`
+            break
+        case 'reaction':
+            msg = `${usuarioLogado.name} - Reagiu a sua publicação`
+            break;
+    }
+
+    await usersRef.doc(postOwner)
+        .collection('notifications')
+        .doc()
+        .set({
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            postId: postId,
+            message: msg
+        })
+}
+
+async function deleteNotification(element) {
+    const elementGrandParent = element.parentNode.parentNode
+    const elementId = element.id
+    const elementParent = element.parentNode
+
+    await db.collection(`/usersCollection/${usuarioLogado.id}/notifications`)
+        .doc(elementId).delete().then(() => {
+            elementGrandParent.removeChild(elementParent)
+        }).catch((erro) => {
+            console.log('Erro ao excluir', erro)
+        })
 }
 
 /*Header*/
@@ -1372,9 +1419,14 @@ function hideEmojis(element) {
     }
 }
 
-function addEmojis(element) {
+async function addEmojis(element) {
 
     const divEmojisAdicionados = element.parentNode.parentNode.parentElement.children.namedItem('interacao-emojis-adicionados')
+    const divPost = element.parentNode.parentNode.parentNode;
+    const postId = divPost.id;
+    const postOwnerId = divPost.children[0].children.namedItem('user-name').dataset.userid;
+
+    const tipoFeed = divPost.dataset.tipo;
 
     const img = document.createElement('img')
     img.src = element.src;
@@ -1426,6 +1478,12 @@ function addEmojis(element) {
     }
 
     hideEmojis(element.parentNode.parentNode.children.item(0))
+
+    await salvarFeeds(tipoFeed, postId, divPost.innerHTML, false);
+
+    if (postOwnerId !== usuarioLogado.id) {
+        await saveNotifications('reaction', postId, postOwnerId);
+    }
 }
 
 // Verifica se a pagina foi recarregada

@@ -30,6 +30,8 @@ async function loadHeader() {
             listaBairrosSearch.appendChild(option);
         }
     })
+
+    await loadNotifications()
 }
 
 /**
@@ -224,7 +226,7 @@ async function loadFeed(menuSelecionado) {
     const apagarPost = document.getElementsByClassName('reticencias');
     for (let apagarPostElement of apagarPost) {
         const postOwner = apagarPostElement.dataset.owner
-        if(postOwner !== usuarioLogado.id){
+        if (postOwner !== usuarioLogado.id) {
             apagarPostElement.style.display = 'none'
         }
     }
@@ -269,7 +271,53 @@ async function loadUserDetails(userId) {
         })
         sessionStorage.setItem('loggedUser', JSON.stringify(usuarioLogado));
     });
+}
 
+async function loadNotifications() {
+    const liNotifications = document.getElementById('notifications')
+
+    await db.collection(`/usersCollection/${usuarioLogado.id}/notifications`)
+        .onSnapshot((doc) => {
+
+            if (doc.docs.length === 0) {
+                let p = document.createElement('p')
+                p.innerText = 'Você não possui novas notificações'
+                let li = document.createElement('li')
+                li.setAttribute('name', 'placeholder')
+                li.append(p)
+                liNotifications.append(li)
+            }
+
+            for (let noti of doc.docs) {
+                db.collection(`/usersCollection/${usuarioLogado.id}/notifications/`)
+                    .doc(noti.id)
+                    .onSnapshot((notification) => {
+                            //if (notification.exist === true) {
+                            let infoNotification = notification.data()
+                            if (infoNotification !== undefined && liNotifications.children.namedItem(noti.id) === null) {
+
+                                let p = document.createElement('p')
+                                p.innerText = infoNotification.message + ` em ${infoNotification.timestamp.toDate().toLocaleDateString('pt-BR')} `
+                                p.setAttribute('id', noti.id)
+                                p.setAttribute('onclick', 'deleteNotification(this)')
+                                let hr = document.createElement('hr')
+                                hr.className = 'header-solid'
+
+                                let li = document.createElement('li')
+                                li.setAttribute('name', noti.id)
+                                li.append(p, hr)
+                                liNotifications.prepend(li)
+                                let placeHolderMessage = liNotifications.children.namedItem('placeholder');
+
+                                if (placeHolderMessage !== null) {
+                                    liNotifications.removeChild(placeHolderMessage);
+                                }
+
+                            }
+                        }
+                    );
+            }
+        })
 }
 
 /**
@@ -282,7 +330,7 @@ async function recuperaFeedsPorTopico(bairro, topico) {
 
     let feeds = new Map();
 
-    const path = `/feedsCollection/${ bairro }/${ topico }`
+    const path = `/feedsCollection/${bairro}/${topico}`
 
     await db.collection(path).get().then((querySnapshot) => {
         if (!querySnapshot.empty) {

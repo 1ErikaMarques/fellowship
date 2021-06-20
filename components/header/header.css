@@ -234,6 +234,8 @@ ul.sub li p {
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 0.04em;
+    height: auto;
+    word-break: break-word;
 }
 
 ul.primary li:hover > p {
@@ -251,6 +253,7 @@ ul.primary li.permahover-notifications ul {
     background: #fff;
     margin-inline-start: -3rem;
     margin-top: 10px;
+    height: auto;
 }
 
 /*conteiner*/

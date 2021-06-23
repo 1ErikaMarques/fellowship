@@ -296,7 +296,8 @@ async function loadNotifications() {
             } else {
                 const iconeNotification = document.getElementsByClassName('icone-notificacao')[0];
                 let iconePath = iconeNotification.children[0];
-                iconePath.classList.replace('icone-notificacao-default','icone-notificacao-with-notification')
+                iconePath.classList.remove('icone-notificacao-default');
+                iconePath.classList.add('icone-notificacao-with-notification')
 
                 if (notificationListSize <= 3) {
                     liNotifications.style.height = '100px';

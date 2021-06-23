@@ -77,8 +77,9 @@
 }
 
 .btn-salvar:hover {
-    background-color: var(--light-blue);
+    background-color:var(--dark-blue);
     color: #fff;
+    transition: 200ms ease;
 }
 
 .header-profile-bottom ul li {

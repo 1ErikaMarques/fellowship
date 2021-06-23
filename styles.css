@@ -14,7 +14,8 @@ body {
 :root {
     --blue: #4285f4;
     --light-blue: #5394fd;
-    --cinza-fofinho: #F4F5F7
+    --cinza-fofinho: #F4F5F7;
+    --dark-blue: #2C66BF;
 }
 
 p {
@@ -48,11 +49,10 @@ p {
 }
 
 .btn:hover {
-    filter: brightness(0.9);
+    background-color: var(--dark-blue);
     border-radius: 0;
     transition: 400ms;
 }
-
 
 h3 {
     font-size: 15px;

@@ -109,6 +109,8 @@
 
 .call-login h4:hover {
     text-decoration: underline;
+    color: var(--dark-blue);
+    transition: 200ms;
 }
 
 .forgot-password {
@@ -126,12 +128,12 @@
     color: var(--blue);
     margin-left: 5px;
     cursor: pointer;
-
 }
 
 .forgot-password p:hover {
     text-decoration: underline;
-
+    color: var(--dark-blue);
+    transition: 200ms ease;
 }
 
 /*Formulario Cadastro*/
@@ -275,8 +277,9 @@ input[type="date" i]:focus {
 }
 
 .btn-cadastro:hover {
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
     color: #fefefe;
+    transition: 200ms ease;
 }
 
 /*Mobile*/

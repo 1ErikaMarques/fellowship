@@ -209,7 +209,8 @@
 }
 
 .campos-settings span:hover {
-    color: var(--light-blue);
+    color: var(--dark-blue);
+    transition: 200ms ease;
 }
 
 /*Mobile*/

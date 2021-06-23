@@ -964,9 +964,9 @@ async function saveNotifications(notificationType, postId, postOwner) {
 }
 
 async function deleteNotification(element) {
-    const elementGrandParent = element.parentNode.parentNode
+    const elementGrandParent = element.parentNode.parentNode.parentNode
     const elementId = element.id
-    const elementParent = element.parentNode
+    const elementParent = element.parentNode.parentNode
 
     await db.collection(`/usersCollection/${usuarioLogado.id}/notifications`)
         .doc(elementId).delete().then(() => {

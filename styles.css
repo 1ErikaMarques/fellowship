@@ -14,6 +14,7 @@ body {
 :root {
     --blue: #4285f4;
     --light-blue: #5394fd;
+    --cinza-fofinho: #F4F5F7
 }
 
 p {
@@ -21,7 +22,7 @@ p {
 }
 
 .border {
-    border: 1px solid #F4F5F7;
+    border: 1px solid var(--cinza-fofinho);
     border-radius: 4px;
 }
 
@@ -48,7 +49,7 @@ p {
 
 .btn:hover {
     filter: brightness(0.9);
-    border-radius: 0px;
+    border-radius: 0;
     transition: 400ms;
 }
 
@@ -74,7 +75,7 @@ h3 {
     .container {
         width: min(90vw, 661px);
         margin: auto;
-        box-shadow: 0px 10px 70px rgb(0 0 0 / 5%);
+        box-shadow: 0 10px 70px rgb(0 0 0 / 5%);
     }
 }
 

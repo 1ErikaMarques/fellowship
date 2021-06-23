@@ -717,7 +717,7 @@ async function publicarPost(tipoModal) {
     //img
     const usuarioComentarioImg = document.createElement("img");
     usuarioComentarioImg.className = "img_comentario";
-    usuarioComentarioImg.src = "public/profile/foto-usuario-perfil.svg"
+    usuarioComentarioImg.src = usuarioLogado.photoUrl
     usuarioComentarioImg.setAttribute('name', 'foto-user')
 
     //div do input
@@ -871,8 +871,8 @@ async function addComentario(event) {
         usuarioComentario.setAttribute('onclick', 'loadProfile(this)');
         usuarioComentario.setAttribute('name', 'user-name')
 
-        divComentariosFlexInput.append(efeitoTrianguloComentario,usuarioComentario, inputComentario );
-        divComentariosFlex.appendChild(usuarioComentarioImg);
+        divComentariosFlexInput.append(efeitoTrianguloComentario,inputComentario );
+        divComentariosFlex.append(usuarioComentarioImg,usuarioComentario);
         divComentarios.appendChild(divComentariosFlex);
         divComentariosFlex.appendChild(divComentariosFlexInput);
         section.prepend(divComentarios);

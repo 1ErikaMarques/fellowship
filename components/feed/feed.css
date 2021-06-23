@@ -332,7 +332,9 @@ p {
 }
 
 .area_comentarios_flex {
-    display: flex;
+    display: grid;
+    grid-template-columns: 5.5rem auto;
+    grid-template-rows: 4rem auto;
     margin-top: 1rem;
 }
 
@@ -346,6 +348,8 @@ p {
     background-color: #f4f5f7;
     border: 0;
     line-height: 160%;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 .btn-apagar-comentario{
     width: 28px;
@@ -376,10 +380,11 @@ p {
     font-size: 0.6rem;
     font-weight: 600;
     letter-spacing: 0.03em;
-    margin-top: -19px;
-    margin-left: -91px;
-    max-width:73px;
     cursor: pointer;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    margin-top: 0.2rem;
+    margin-left: 25px;
 }
 
 .area_comentarios span:hover {

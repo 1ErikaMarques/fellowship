@@ -128,6 +128,7 @@ async function loadSettings() {
     document.getElementById('name-input-settings').value = usuarioLogado.name;
     document.getElementById('cep-input-settings').value = usuarioLogado.postalCode;
     document.getElementById('bairro-input-settings').value = usuarioLogado.neighborhood;
+    document.getElementsByClassName('menu-settings')[0].children[0].src = usuarioLogado.photoUrl
 
 }
 
@@ -317,9 +318,7 @@ async function loadNotifications() {
 
                                 div.append(img)
                                 li.append(p,div, hr)
-                                liNotifications.prepend(li)
-
-
+                                liNotifications.append(li)
 
                                 let placeHolderMessage = liNotifications.children.namedItem('placeholder');
 

@@ -275,6 +275,13 @@ ul.sub li p {
     margin-left: -40px;
 }*/
 
+/*Scroll para as notificacoes*/
+ul#notifications{
+    overflow-y: auto;
+    height: 300px;
+    width: 10%;
+}
+
 ul.primary li.permahover-notifications ul {
     display: block;
     background: #fff;

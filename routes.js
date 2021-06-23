@@ -299,7 +299,7 @@ async function loadNotifications() {
                             if (infoNotification !== undefined && liNotifications.children.namedItem(noti.id) === null) {
 
                                 let p = document.createElement('p')
-                                p.innerText = infoNotification.message + ` em ${infoNotification.timestamp.toDate().toLocaleDateString('pt-BR')} `
+                                p.innerText = infoNotification.message + ` em ${moment(infoNotification.timestamp.toDate()).format('DD/MM/YYYY H:mm')} `
 
 
                                 let hr = document.createElement('hr')
@@ -322,7 +322,7 @@ async function loadNotifications() {
 
                                 div.append(img)
                                 li.append(p,div,divBackground, hr)
-                                liNotifications.append(li)
+                                liNotifications.prepend(li)
 
                                 let placeHolderMessage = liNotifications.children.namedItem('placeholder');
 

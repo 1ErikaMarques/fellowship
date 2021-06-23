@@ -341,8 +341,8 @@ p {
 .area_comentarios_body {
     width: 500px;
     height: auto;
-    border-radius: 12px;
-    margin-top: 21px;
+    border-radius: 10px;
+    margin-top: 16px;
     margin-left: 18px;
     padding: 0 12px;
     background-color: #f4f5f7;
@@ -361,13 +361,13 @@ p {
     cursor: pointer;
 }
 .triangulo-comentarios {
-    margin-left: -25px;
-    margin-top: -3px;
+    margin-left: -26px;
+    margin-top: -5px;
     width: 0;
     height: 0;
-    border-top: 37px solid transparent;
-    border-bottom: 24px solid transparent;
-    border-right: 35px solid #f4f5f7;
+    border-top: 41px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-right: 30px solid #f4f5f7;
     -webkit-transform: rotate(30deg); /* Safari e Chrome */
     -moz-transform: rotate(30deg);   /* Firefox */
     -ms-transform: rotate(30deg);   /* IE 9 */
@@ -400,7 +400,7 @@ p {
     word-break: break-word;
     display: block;
     position: relative;
-    margin-top: -3.5rem;
+    margin-top: -2.5rem;
     cursor: text;
 }
 

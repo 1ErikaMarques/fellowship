@@ -280,6 +280,11 @@ ul#notifications{
     overflow-y: auto;
     height: 300px;
     width: 10%;
+    cursor: text!important;
+}
+
+ul#notifications li {
+    cursor: text !important;
 }
 
 ul.primary li.permahover-notifications ul {

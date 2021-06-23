@@ -280,14 +280,23 @@ async function loadNotifications() {
     await db.collection(`/usersCollection/${usuarioLogado.id}/notifications`)
         .onSnapshot((doc) => {
 
-            if (doc.docs.length === 0) {
+            const notificationListSize = doc.docs.length;
+
+            if (notificationListSize === 0) {
                 let p = document.createElement('p')
                 p.innerText = 'Você não possui novas notificações'
                 let li = document.createElement('li')
 
                 li.setAttribute('name', 'placeholder')
                 li.append(p)
+                liNotifications.style.height = 'auto';
+                liNotifications.style.overflowY = 'hidden';
+                liNotifications.setAttribute('title','')
                 liNotifications.append(li)
+            }
+            else{
+                liNotifications.style.height = '300px';
+
             }
 
             for (let noti of doc.docs) {
@@ -300,7 +309,8 @@ async function loadNotifications() {
 
                                 let p = document.createElement('p')
                                 p.innerText = infoNotification.message + ` em ${moment(infoNotification.timestamp.toDate()).format('DD/MM/YYYY H:mm')} `
-
+                                p.setAttribute('title', '')
+                                p.style.cursor = 'context-menu'
 
                                 let hr = document.createElement('hr')
                                 hr.className = 'header-solid'
@@ -312,7 +322,7 @@ async function loadNotifications() {
                                 img.src = 'public/feed/icone-lixeira.svg'
                                 img.setAttribute('id', noti.id)
                                 img.setAttribute('onclick', 'deleteNotification(this)')
-                                img.setAttribute('title', 'apagar')
+                                img.setAttribute('title', 'Apagar')
 
                                 let divBackground = document.createElement('div')
                                 divBackground.className = 'background-icon'

@@ -86,9 +86,7 @@
 
 /*call cadastre-se*/
 .call-login {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+    margin-top: 2rem;
 }
 
 .call-login p {

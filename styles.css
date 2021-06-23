@@ -9,7 +9,6 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #FBFCFF;
-
 }
 
 :root {
@@ -37,25 +36,27 @@ p {
     margin-top: 2rem;
     margin-bottom: 40px;
     background: var(--blue);
-    color: #fefefe;
-    font-weight: bold;
-    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
     border-radius: 4px;
     border: none;
-    transition: all 0.4s ease;
+    transition: 400ms;
     cursor: pointer;
     letter-spacing: 0.05rem;
 }
 
 .btn:hover {
-    background-color: var(--light-blue);
-    color: #fefefe;
+    filter: brightness(0.9);
+    border-radius: 0px;
+    transition: 400ms;
 }
+
 
 h3 {
     font-size: 15px;
     letter-spacing: 0.03em;
-    font-weight: bold;
+    font-weight: 600;
     color: #53525d;
 }
 

@@ -283,6 +283,7 @@ async function loadNotifications() {
                 let p = document.createElement('p')
                 p.innerText = 'Você não possui novas notificações'
                 let li = document.createElement('li')
+
                 li.setAttribute('name', 'placeholder')
                 li.append(p)
                 liNotifications.append(li)
@@ -298,15 +299,28 @@ async function loadNotifications() {
 
                                 let p = document.createElement('p')
                                 p.innerText = infoNotification.message + ` em ${infoNotification.timestamp.toDate().toLocaleDateString('pt-BR')} `
-                                p.setAttribute('id', noti.id)
-                                p.setAttribute('onclick', 'deleteNotification(this)')
+
+
                                 let hr = document.createElement('hr')
                                 hr.className = 'header-solid'
 
+                                let div = document.createElement('div')
+                                div.className = 'btn-apagar-notification'
+
+                                let img = document.createElement('img')
+                                img.src = 'public/feed/icone-lixeira.svg'
+                                img.setAttribute('id', noti.id)
+                                img.setAttribute('onclick', 'deleteNotification(this)')
+
                                 let li = document.createElement('li')
                                 li.setAttribute('name', noti.id)
-                                li.append(p, hr)
+
+                                div.append(img)
+                                li.append(p,div, hr)
                                 liNotifications.prepend(li)
+
+
+
                                 let placeHolderMessage = liNotifications.children.namedItem('placeholder');
 
                                 if (placeHolderMessage !== null) {

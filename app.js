@@ -472,6 +472,8 @@ async function publicarPost(tipoModal) {
     ulPrincipalApagarPost.classList.add('reticencias')
     ulPrincipalApagarPost.setAttribute('data-owner', usuarioLogado.id)
 
+
+
     const liApagarPost = document.createElement('li')
 
     const btnApagarPost = document.createElement('img')
@@ -479,6 +481,7 @@ async function publicarPost(tipoModal) {
     btnApagarPost.src = "public/feed/icone-reticencias.svg"
     btnApagarPost.setAttribute('onclick', 'modalApagarPost(this)')
     btnApagarPost.setAttribute('data-tipo', 'apagar-post');
+    btnApagarPost.setAttribute('title','Mais')
 
     const ulModalApagarPost = document.createElement('ul')
     ulModalApagarPost.className = "dropdown-apagar-post"
@@ -497,7 +500,7 @@ async function publicarPost(tipoModal) {
     iconeModalApagarPost.src = 'public/feed/icone-lixeira.svg'
 
     const textoModalApagarPost = document.createElement('p')
-    textoModalApagarPost.textContent = 'Apagar post'
+    textoModalApagarPost.textContent = 'Apagar'
 
     //seção emojis e contador de comentarios
     const divEmojisAdicionados = document.createElement('div')
@@ -781,10 +784,13 @@ async function publicarPost(tipoModal) {
  * abrir modal com a opcao apagar post
  * @param element
  */
+
+
 function modalApagarPost(element) {
     const modalApagarPost = element.nextElementSibling
     hideOnClickOutside(element)
     modalApagarPost.classList.toggle("dropdown-apagar-post-ativo");
+    element.classList.toggle("reticencias-ativo")
 }
 
 /**
@@ -796,6 +802,7 @@ async function apagarPost(element) {
     const idDivFather = divFather.id;
     const topico = divFather.dataset.tipo;
     const menuNavAtivo = procurarMenuNavAtivo();
+
 
     const path = `/feedsCollection/${usuarioLogado.neighborhood}/${topico}`//caminho do banco de dados
     await db.collection(path).doc(idDivFather).delete().then(() => { //deletando do banco de dados
@@ -853,6 +860,9 @@ async function addComentario(event) {
         const inputComentario = document.createElement('p');
         inputComentario.innerText = comment;
 
+        const efeitoTrianguloComentario = document.createElement('div');
+        efeitoTrianguloComentario.className = 'triangulo-comentarios';
+
         //Nome do usuario
         const usuarioComentario = document.createElement('span');
         usuarioComentario.innerText = usuarioLogado.name;
@@ -861,7 +871,7 @@ async function addComentario(event) {
         usuarioComentario.setAttribute('onclick', 'loadProfile(this)');
         usuarioComentario.setAttribute('name', 'user-name')
 
-        divComentariosFlexInput.append(usuarioComentario, inputComentario);
+        divComentariosFlexInput.append(efeitoTrianguloComentario,usuarioComentario, inputComentario );
         divComentariosFlex.appendChild(usuarioComentarioImg);
         divComentarios.appendChild(divComentariosFlex);
         divComentariosFlex.appendChild(divComentariosFlexInput);
@@ -1103,6 +1113,7 @@ function hideOnClickOutside(elemento) {
                 elemento.children[0].classList.remove("icone-notificacao-ativo");
             } else if (elemento.dataset.tipo === 'apagar-post') {
                 elemento.nextElementSibling.classList.remove('dropdown-apagar-post-ativo');
+                elemento.classList.remove('reticencias-ativo')
             }
             removeClickListener()
         }

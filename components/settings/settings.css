@@ -177,7 +177,6 @@
     outline: none;
     border: 1px solid var(--blue);
     box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
-    padding-right: 30px;
     margin-top: 12px;
     transition: 400ms ease;
 }

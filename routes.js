@@ -291,13 +291,21 @@ async function loadNotifications() {
                 li.append(p)
                 liNotifications.style.height = 'auto';
                 liNotifications.style.overflowY = 'hidden';
-                liNotifications.setAttribute('title','')
+                liNotifications.setAttribute('title', '')
                 liNotifications.append(li)
-            }
-            else{
-                liNotifications.style.height = '300px';
+            } else {
+                const iconeNotification = document.getElementsByClassName('icone-notificacao')[0];
+                let iconePath = iconeNotification.children[0];
+                iconePath.classList.replace('icone-notificacao-default','icone-notificacao-with-notification')
 
+                if (notificationListSize <= 3) {
+                    liNotifications.style.height = '100px';
+                } else {
+                    liNotifications.style.height = '300px';
+                }
             }
+
+            document.getElementById('notification-counter').innerText = notificationListSize === 0 ? '' : notificationListSize
 
             for (let noti of doc.docs) {
                 db.collection(`/usersCollection/${usuarioLogado.id}/notifications/`)
@@ -331,7 +339,7 @@ async function loadNotifications() {
                                 li.setAttribute('name', noti.id)
 
                                 div.append(img)
-                                li.append(p,div,divBackground, hr)
+                                li.append(p, div, divBackground, hr)
                                 liNotifications.prepend(li)
 
                                 let placeHolderMessage = liNotifications.children.namedItem('placeholder');

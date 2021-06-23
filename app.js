@@ -1080,15 +1080,18 @@ function adicionaPermaHoverClass(elemento) {
         case 'notifications':
             elemento.classList.toggle("permahover-notifications");
             document.getElementById("profile-icon").classList.remove("permahover-profile");
-            elemento.children[0].classList.toggle("icone-notificacao-ativo");
+            elemento.children[1].children[0].classList.remove('icone-notificacao-with-notification','icone-notificacao-default');
+            elemento.children[1].children[0].classList.toggle("icone-notificacao-active");
             hideOnClickOutside(elemento);
             document.getElementById("profile-icon").children[0].classList.remove("icone-perfil-ativo");
             document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");
             break;
         case 'profile':
             elemento.classList.toggle("permahover-profile");
-            document.getElementById("notifications-icon").classList.remove("permahover-notifications");
-            document.getElementById("notifications-icon").children[0].classList.remove("icone-notificacao-ativo");
+            let notificationsIcon = document.getElementById("notifications-icon");
+            notificationsIcon.children[0].children[0].classList.add('icone-notificacao-default');
+            notificationsIcon.classList.remove("permahover-notifications");
+            notificationsIcon.children[0].children[0].classList.remove("icone-notificacao-active");
             document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");
             hideOnClickOutside(elemento);
             elemento.children[0].classList.toggle("icone-perfil-ativo");
@@ -1110,7 +1113,7 @@ function hideOnClickOutside(elemento) {
                 elemento.children[0].classList.remove("icone-perfil-ativo");
             } else if (elemento.dataset.tipo === 'notifications') {
                 elemento.classList.remove("permahover-notifications");
-                elemento.children[0].classList.remove("icone-notificacao-ativo");
+                elemento.children[1].children[0].classList.replace("icone-notificacao-active",'icone-notificacao-default');
             } else if (elemento.dataset.tipo === 'apagar-post') {
                 elemento.nextElementSibling.classList.remove('dropdown-apagar-post-ativo');
                 elemento.classList.remove('reticencias-ativo')

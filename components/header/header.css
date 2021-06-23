@@ -208,7 +208,7 @@ ul.sub li {
     display: flex;
     margin-bottom: -2px;
     margin-top: 10px;
-
+    width: 6.5rem;
 }
 
 ul.sub li a {
@@ -225,6 +225,10 @@ ul.primary li:hover > a {
     transition: 200ms ease;
     width: 135px;
     padding: 8px 4px;
+}
+ul.sub li a text {
+color: orange;
+    background-color: orange;
 }
 
 /*conteiner*/
@@ -250,12 +254,14 @@ ul.sub li p {
     color: #53525d;
     margin-inline-start: -1.8rem;
     font-weight: 500;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     letter-spacing: 0.03em;
     height: auto;
     word-break: keep-all;
     line-height: 150%;
     border-right: 1px solid #f4f5f7;
+    width: 100%;
+    cursor: text;
 
 }
 
@@ -277,40 +283,26 @@ ul.primary li.permahover-notifications ul {
     height: auto;
     width: auto;
 }
+
 .btn-apagar-notification {
-    margin-top: 0.5rem;
-    margin-inline-end: 2.4rem;
-    width: 6rem;
-    height: 2.5rem;
+    margin-top: 1.5rem;
+    margin-inline-end: 1rem;
+    width: 29%;
+    height: 2rem;
     border-radius: 20px;
-    margin-left: 0.8rem;
+    margin-left: 0.5rem;
 }
 .btn-apagar-notification img {
     cursor: pointer;
-    margin-top: 0.5rem;
-    margin-inline-start: 0.3rem;
+    margin-top: 0.2rem;
+    margin-inline-start: 0.2rem;
 }
 
-/*.background-icon {
-    width: 35px;
-    height: 11px;
-    background-color: orange;
-    margin-top: 2rem;
-    margin-inline-end: 2rem;
-}
 
-/*.background-icon:hover {
-    width: 35px;
-    height: 11px;
-    background-color: rgb(223 56 43 / 45%);
-    margin-top: 2rem;
-    margin-inline-end: 2rem;
-}*/
 .btn-apagar-notification:hover {
     background-color: rgb(223 56 43 / 10%);
     transition: 200ms ease;
 }
-
 
 .header_logo {
     cursor: pointer;

@@ -312,12 +312,16 @@ async function loadNotifications() {
                                 img.src = 'public/feed/icone-lixeira.svg'
                                 img.setAttribute('id', noti.id)
                                 img.setAttribute('onclick', 'deleteNotification(this)')
+                                img.setAttribute('title', 'apagar')
+
+                                let divBackground = document.createElement('div')
+                                divBackground.className = 'background-icon'
 
                                 let li = document.createElement('li')
                                 li.setAttribute('name', noti.id)
 
                                 div.append(img)
-                                li.append(p,div, hr)
+                                li.append(p,div,divBackground, hr)
                                 liNotifications.append(li)
 
                                 let placeHolderMessage = liNotifications.children.namedItem('placeholder');

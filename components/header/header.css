@@ -267,14 +267,14 @@ ul.primary li.permahover-profile ul {
 ul.sub li p {
     color: #53525d;
     margin-inline-start: -1.8rem;
-    font-weight: 500;
-    font-size: 0.7rem;
+    font-weight: 400;
+    font-size: 0.8rem;
     letter-spacing: 0.03em;
     height: auto;
     word-break: keep-all;
     line-height: 150%;
     border-right: 1px solid #f4f5f7;
-    margin-top: -2px;
+    margin-top: 0px;
 }
 
 /*ul.primary li:hover > p {
@@ -311,15 +311,16 @@ ul.primary li.permahover-notifications ul {
 .btn-apagar-notification {
     margin-top: 1.5rem;
     margin-inline-end: 1rem;
-    width: 29%;
+    padding: 0.3rem;
     height: 2rem;
     border-radius: 20px;
     margin-left: 0.5rem;
+    padding: 0.3rem;
 }
 .btn-apagar-notification img {
     cursor: pointer;
     margin-top: 0.2rem;
-    margin-inline-start: 0.2rem;
+
 }
 
 

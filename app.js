@@ -63,6 +63,14 @@ async function registro(form) {
         alert('Por favor insira um cep válido')
         return;
     }
+    let anoNasc = moment(birthday,"DD/MM/YYYY").year()
+
+    let anoAtual = moment().year();
+
+    if((anoAtual - anoNasc) < 18) {
+        alert('Voce deve ter pelo menos 18 anos para se cadastrar.')
+        return;
+    }
 
     let userId;
 

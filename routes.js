@@ -327,7 +327,7 @@ async function loadNotifications() {
                                 let p = document.createElement('p')
                                 p.innerText = infoNotification.message + ` em ${moment(infoNotification.timestamp.toDate()).format('DD/MM/YYYY H:mm')} `
                                 p.setAttribute('title', '')
-                                p.style.cursor = 'alias'
+                                p.style.cursor = 'default'
 
                                 let hr = document.createElement('hr')
                                 hr.className = 'header-solid'

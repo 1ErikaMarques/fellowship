@@ -28,6 +28,7 @@ async function verificaLogin(form) {
                     'Você pode restaurá-lo imediatamente redefinindo sua senha ou pode tentar novamente mais tarde.')
             }
         })
+
     if (userId !== undefined) {
         await loadUserDetails(userId);
         reloadPage();
@@ -62,12 +63,22 @@ async function registro(form) {
         alert('Por favor insira um cep válido')
         return;
     }
+    let anoNasc = moment(birthday,"DD/MM/YYYY").year()
+
+    let anoAtual = moment().year();
+
+    if((anoAtual - anoNasc) < 18) {
+        alert('Você deve ter pelo menos 18 anos para se cadastrar.')
+        return;
+    }
+
+    let userId;
 
     await auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             return userCredential.user;
         }).then((registeredUser) => {
-            return usersRef.doc(registeredUser.uid).set(({
+            usersRef.doc(registeredUser.uid).set(({
                 name: name,
                 birthday: birthday,
                 postalCode: postalCode,
@@ -80,9 +91,10 @@ async function registro(form) {
                 photoUrl: '',
                 about: '',
             }))
-        }).then(() => {
+            return registeredUser.uid;
+        }).then((id) => {
             auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            reloadPage();
+            userId = id
         }).then(() => {
             firebase.auth().currentUser.sendEmailVerification().then(function () {
                 console.log('confirmacao de email enviado')
@@ -96,6 +108,11 @@ async function registro(form) {
             console.log('errorCode', errorCode, 'error message ', errorMessage)
             alert(errorMessage)
         })
+
+    if (userId !== undefined) {
+        await loadUserDetails(userId);
+        reloadPage();
+    }
 }
 
 /**

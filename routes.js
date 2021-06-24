@@ -232,6 +232,14 @@ async function loadFeed(menuSelecionado) {
         }
     }
 
+    const apagarComentarios = document.getElementsByClassName('reticencias-comentarios');
+    for (let apagarComentariosElement of apagarComentarios) {
+        const postOwner = apagarComentariosElement.dataset.owner
+        if (postOwner !== usuarioLogado.id) {
+            apagarComentariosElement.style.display = 'none'
+        }
+    }
+
     if (sessionStorage.getItem('espiadinha')) {
         espiadinha()
     }

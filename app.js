@@ -224,9 +224,9 @@ function addImgModal(element) {
     arquivos.forEach(arquivo => { //selecionando cada arquivo e criando elementos e dando estilos
 
         const div = document.createElement("div");
-        div.classList.add("imagens-carregadas-container-itens");//add classe css a div
+        div.classList.add("imagens-carregadas-container-itens");
         const img = document.createElement("img");
-        img.src = URL.createObjectURL(arquivo) // passando a url para o src
+        img.src = URL.createObjectURL(arquivo)
         img.classList.add("imagem-post-modal");
         div.appendChild(img);
         sessaoCarregamento.appendChild(div);
@@ -300,10 +300,8 @@ function addVideoModal(element) {
 function modalCasa() {
     let modal = document.getElementById("modal-casa")
 
-    // Adicionando nome de usuario logado
     document.getElementById('nome-usuario-modal-imoveis').textContent = usuarioLogado.name
 
-    //Adicionando foto do usuario logado
     let fotoUsuario = document.getElementById('foto-usuario-modal-imoveis');
     fotoUsuario.alt = usuarioLogado.name;
     fotoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg";
@@ -350,10 +348,8 @@ function selecionandoTagImoveis(element) {
 function modalDoacoes() {
     let modal = document.getElementById("modal-doacoes")
 
-    // Adicionando nome de usuario logado
     document.getElementById('nome-usuario-modal-doacoes').textContent = usuarioLogado.name
 
-    //Adicionando foto do usuario logado
     let fotoUsuario = document.getElementById('foto-usuario-modal-doacoes');
     fotoUsuario.alt = usuarioLogado.name;
     fotoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg";
@@ -448,17 +444,21 @@ async function publicarPost(tipoModal) {
     criandoDiv.classList.add('post', 'container', 'border')// div que criamos no js herdar o estilo css que criamos na div do html
     criandoDiv.setAttribute('id', uuid());
     criandoDiv.setAttribute('data-tipo', tipoModal.dataset.tipo)
-    // criando a div que amarra nome do usuario e foto
+    //div que amarra nome do usuario e foto
     const divInformacaoDoUsuario = document.createElement("div")// criando div que amarra foto de perfil e nome do post
-    divInformacaoDoUsuario.className = "usuario_post" //estilo da div
+    divInformacaoDoUsuario.className = "usuario_post"
     criandoDiv.setAttribute('id', uuid());
     criandoDiv.setAttribute('data-tipo', tipoModal.dataset.tipo)
 
     // criando a foto do usuario no post
-    const fotoDoUsuario = document.createElement("img") // criando img
-    fotoDoUsuario.className = "img_post" // estilo da img
+    const fotoDoUsuario = document.createElement("img")
+    fotoDoUsuario.className = "img_post"
     fotoDoUsuario.src = usuarioLogado.photoUrl !== '' ? usuarioLogado.photoUrl : "public/profile/foto-usuario-perfil.svg"
     fotoDoUsuario.alt = usuarioLogado.name;
+    fotoDoUsuario.setAttribute("title", usuarioLogado.name);
+    fotoDoUsuario.setAttribute('data-userId', usuarioLogado.id);
+    fotoDoUsuario.setAttribute('onclick', 'loadProfile(this)');
+    fotoDoUsuario.setAttribute('name', 'user-name')
 
     // criando nome do usuario
     const nomeUsuario = document.createElement("h3")
@@ -471,8 +471,6 @@ async function publicarPost(tipoModal) {
     const ulPrincipalApagarPost = document.createElement('ul')
     ulPrincipalApagarPost.classList.add('reticencias')
     ulPrincipalApagarPost.setAttribute('data-owner', usuarioLogado.id)
-
-
 
     const liApagarPost = document.createElement('li')
 
@@ -501,6 +499,7 @@ async function publicarPost(tipoModal) {
 
     const textoModalApagarPost = document.createElement('p')
     textoModalApagarPost.textContent = 'Apagar'
+
 
     //seção emojis e contador de comentarios
     const divEmojisAdicionados = document.createElement('div')
@@ -538,7 +537,6 @@ async function publicarPost(tipoModal) {
     emojiFurious.src = 'public/feed/emoji-furious.svg'
     emojiFurious.setAttribute('onclick', 'addEmojis(this)')
     emojiFurious.setAttribute('data-name', 'angry')
-
 
     //Criando contador de comentarios
     const contadorDeComentarios = document.createElement('p')
@@ -698,15 +696,13 @@ async function publicarPost(tipoModal) {
     imgPostModal.textContent = null;
 
 
-    // criando area de comentarios
+    //  area de comentarios
     const divSessaoComentarios = document.createElement('section')
     divSessaoComentarios.setAttribute('name', 'comments-section');
 
-    //aparador
     const aparador = document.createElement("hr");
     aparador.className = "aparador-post"; //estilo
 
-    //div
     const divComentarios = document.createElement("div");
     divComentarios.className = "area_comentarios"; // estilo
 
@@ -714,24 +710,20 @@ async function publicarPost(tipoModal) {
     const divComentariosFlex = document.createElement("div");
     divComentariosFlex.classList.add("area_comentarios_flex", "comentario-perfil")
 
-    //img
     const usuarioComentarioImg = document.createElement("img");
     usuarioComentarioImg.className = "img_comentario";
     usuarioComentarioImg.src = usuarioLogado.photoUrl
     usuarioComentarioImg.setAttribute('name', 'foto-user')
 
-    //div do input
     const divComentariosFlexInput = document.createElement("div");
     divComentariosFlexInput.classList.add("area_comentarios_flex", "comentario-perfil")
 
-    //input
     const comentarioUsuario = document.createElement("input");
     comentarioUsuario.type = "text";
     comentarioUsuario.placeholder = "Escreva um comentário";
     comentarioUsuario.setAttribute('onkeyup', 'addComentario(event)');
     comentarioUsuario.name = 'input-comentarios'
 
-    //associando pais e filhos
 
     liModalApagarPost.append(iconeModalApagarPost, textoModalApagarPost);
     ulModalApagarPost.append(divTrianguloUp, divTrianguloDown, liModalApagarPost);
@@ -760,7 +752,7 @@ async function publicarPost(tipoModal) {
     criandoDiv.append(aparador);
     criandoDiv.append(divComentarios);
 
-    recuperarSessao.prepend(criandoDiv); // jogando a div que criamos dentro da sessao, para isso associamos a div como filho da sessao
+    recuperarSessao.prepend(criandoDiv);
 
     switch (tipoModal.dataset.name) {
         case 'generica':
@@ -863,6 +855,47 @@ async function addComentario(event) {
         const efeitoTrianguloComentario = document.createElement('div');
         efeitoTrianguloComentario.className = 'triangulo-comentarios';
 
+
+        //criando a modal apagar post
+        const ulPrincipalApagarComentarios = document.createElement('ul')
+        ulPrincipalApagarComentarios.classList.add('reticencias-comentarios')
+        ulPrincipalApagarComentarios.setAttribute('data-owner', usuarioLogado.id)
+
+        const liApagarComentarios = document.createElement('li')
+
+        const btnApagarComentarios = document.createElement('img')
+        btnApagarComentarios.className = "btn-apagar-comentarios"
+        btnApagarComentarios.src = "public/feed/icone-reticencias.svg"
+        btnApagarComentarios.setAttribute('onclick', 'modalApagarPost(this)')
+        btnApagarComentarios.setAttribute('data-tipo', 'apagar-post');
+        btnApagarComentarios.setAttribute('title','Mais')
+
+        const ulModalApagarComentarios = document.createElement('ul')
+        ulModalApagarComentarios.className = "dropdown-apagar-post"
+
+        const divTrianguloUp = document.createElement('div')
+        divTrianguloUp.className = "triangulo-up-borda-dropdown"
+
+        const divTrianguloDown = document.createElement('div')
+        divTrianguloDown.className = "triangulo-down-borda-dropdown"
+
+        const liModalApagarComentarios = document.createElement('li')
+        liModalApagarComentarios.className = "apagar-post"
+        liModalApagarComentarios.setAttribute('onclick', 'apagarComentarios(this)')
+
+        const iconeModalApagarComentarios = document.createElement('img')
+        iconeModalApagarComentarios.src = 'public/feed/icone-lixeira.svg'
+
+        const textoModalApagarComentarios = document.createElement('button')
+        textoModalApagarComentarios.textContent = 'Apagar'
+        textoModalApagarComentarios.className = 'apagar-comentarios-texto'
+
+        liModalApagarComentarios.append(iconeModalApagarComentarios, textoModalApagarComentarios);
+        ulModalApagarComentarios.append(divTrianguloUp, divTrianguloDown, liModalApagarComentarios);
+        liApagarComentarios.append(btnApagarComentarios, ulModalApagarComentarios);
+        ulPrincipalApagarComentarios.append(liApagarComentarios);
+
+
         //Nome do usuario
         const usuarioComentario = document.createElement('span');
         usuarioComentario.innerText = usuarioLogado.name;
@@ -871,7 +904,7 @@ async function addComentario(event) {
         usuarioComentario.setAttribute('onclick', 'loadProfile(this)');
         usuarioComentario.setAttribute('name', 'user-name')
 
-        divComentariosFlexInput.append(efeitoTrianguloComentario,inputComentario );
+        divComentariosFlexInput.append(efeitoTrianguloComentario,inputComentario,ulPrincipalApagarComentarios );
         divComentariosFlex.append(usuarioComentarioImg,usuarioComentario);
         divComentarios.appendChild(divComentariosFlex);
         divComentariosFlex.appendChild(divComentariosFlexInput);
@@ -890,6 +923,22 @@ async function addComentario(event) {
         }
     }
 }
+
+/**
+ * Apaga comentarios
+ */
+
+async function apagarComentarios(element) {
+    const divFather = element.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;//acessando a div que tem o id do post
+    divFather.firstElementChild.remove()
+    const quantidadeDeComentarios = divFather.children.length;
+    let contador = divFather.previousSibling.lastChild;
+    contador.innerText = quantidadeDeComentarios + ' Comentário(s)';
+
+    let divPrincipalDoPost = divFather.parentNode
+    await salvarFeeds(divPrincipalDoPost.dataset.tipo, divPrincipalDoPost.id, divPrincipalDoPost.innerHTML, false);
+}
+
 
 /**
  * Salva feed no firebase

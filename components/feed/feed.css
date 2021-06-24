@@ -64,12 +64,13 @@ p {
     margin-left: 22px;
     margin-top: 2rem;
     border: 1px solid #e9e9e9;
+    cursor: pointer;
 }
 
 .usuario_post {
     max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .usuario_post h3 {
@@ -88,14 +89,13 @@ p {
 
 .usuario_post h3:hover {
     text-decoration-line: underline;
+    filter: brightness(0.9);
 }
 
 .reticencias {
     height: 36px;
     grid-area: 1 / col4-start / last-line / 6;
     justify-self: end;
-
-
     display: flex;
     margin-right: 1.5rem;
     justify-content: center;
@@ -106,6 +106,7 @@ p {
 .reticencias-ativo {
     background: #f4f5f7;
 }
+
 .btn-apagar-post {
     width: 28px;
     height: 28px;
@@ -152,8 +153,8 @@ p {
 }
 
 .apagar-post img {
-    width:20px;
-    padding:10px;
+    width: 20px;
+    padding: 10px;
 }
 
 .apagar-post p {
@@ -226,7 +227,7 @@ p {
     color: #53525d;
     width: 95%;
     padding: 0 0 20px 0;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     margin-top: 2rem;
     margin-left: 25px;
     line-height: 160%;
@@ -249,7 +250,7 @@ p {
     margin-left: 2rem;
     gap: 1rem;
     grid-template-columns: repeat(12, 1fr);
-    height: 30px;    
+    height: 30px;
 }
 
 .escolher-emoji {
@@ -266,7 +267,7 @@ p {
     height: 2.2rem;
     display: flex;
     align-items: center;
-    margin: 0;    
+    margin: 0;
     justify-content: space-evenly;
     cursor: pointer;
 }
@@ -351,7 +352,8 @@ p {
     grid-row-start: 1;
     grid-row-end: 3;
 }
-.btn-apagar-comentario{
+
+.btn-apagar-comentario {
     width: 28px;
     height: 28px;
     margin: 0;
@@ -360,6 +362,7 @@ p {
     transition: 200ms ease;
     cursor: pointer;
 }
+
 .triangulo-comentarios {
     margin-left: -26px;
     margin-top: -5px;
@@ -369,11 +372,12 @@ p {
     border-bottom: 18px solid transparent;
     border-right: 30px solid #f4f5f7;
     -webkit-transform: rotate(30deg); /* Safari e Chrome */
-    -moz-transform: rotate(30deg);   /* Firefox */
-    -ms-transform: rotate(30deg);   /* IE 9 */
-    -o-transform: rotate(30deg);   /* Opera */
+    -moz-transform: rotate(30deg); /* Firefox */
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -o-transform: rotate(30deg); /* Opera */
     transform: rotate(30deg);
 }
+
 .area_comentarios span {
     display: block;
     color: #62616d;
@@ -384,26 +388,61 @@ p {
     grid-row-start: 2;
     grid-row-end: 2;
     margin-top: 0.2rem;
-    margin-left: 25px;
+    margin-left: 0.7rem;
 }
 
 .area_comentarios span:hover {
     text-decoration: underline;
+    filter: brightness(0.9);
 }
 
 .area_comentarios p {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: -2.5rem;
     font-family: 'Roboto', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
-    color: #53525d;
+    color: #53525D;
     line-height: 160%;
     word-break: break-word;
-    display: block;
-    position: relative;
-    margin-top: -2.5rem;
+    position:absolute;
     cursor: text;
 }
 
+.reticencias-comentarios {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -3rem;
+}
+
+.reticencias-comentarios-ativo {
+    background:#f4f5f7;
+    filter: brightness(0.9);
+}
+
+.btn-apagar-comentarios {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: 200ms ease;
+    cursor: pointer;
+}
+.apagar-comentarios-texto  {
+    background: transparent;
+    border: 0;
+    color: #DF382B;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-apagar-comentarios:hover {
+    background: #E9E9E9;
+}
 .area_comentarios input {
     width: 565px;
     height: 60%;
@@ -438,7 +477,7 @@ p {
 }
 
 .comentario-perfil input {
-    background-color: #fefefe;
+    background-color: #FEFEFE;
     border: none;
     height: auto;
     max-width: 547px;
@@ -527,7 +566,7 @@ p {
     -moz-user-select: none;
     -webkit-user-select: none;
     cursor: text;
-    background-color: #fefefe;
+    background-color: #FEFEFE;
     padding: 10px 0 50px 0;
     margin-top: 30px;
     margin-left: 25px;
@@ -583,9 +622,11 @@ p {
     padding: 10px 15px;
     margin-left: 15px;
 }
+
 .image-upload label {
     cursor: pointer;
 }
+
 .image-upload:hover {
     border-radius: 15px;
     background-color: rgb(66 133 244 / 5%);
@@ -610,7 +651,7 @@ p {
 
 /* Solid border */
 hr.solid {
-    border-top: 1px solid #e9e9e9;
+    border-top: 1px solid #E9E9E9;
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
@@ -660,7 +701,7 @@ hr.solid {
     padding: 1px 8px;
     width: 128px;
     height: 28px;
-    border: 1px solid #e9e9e9;
+    border: 1px solid #E9E9E9;
     box-sizing: border-box;
     border-radius: 4px;
     letter-spacing: 0.05em;
@@ -675,14 +716,14 @@ hr.solid {
     font-size: 14px;
     text-align: center;
     padding: 1px 15px;
-    background-color: #fff;
+    background-color: #FFF;
     transition: 200ms ease;
 }
 
 .botoes-modal-casa-input:hover {
     border: 1px solid var(--blue);
     box-shadow: 0 0 0 2px rgb(66 133 244 / 5%);
-    background-color: #fff;
+    background-color: #FFF;
     transition: 200ms ease;
 }
 
@@ -740,7 +781,7 @@ hr.solid {
 
 /*Modal doacoes*/
 .modal-doacoes-tipo {
-    color: #8d8d94;
+    color: #8D8D94;
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -769,7 +810,7 @@ hr.solid {
     border: 1px solid #e9e9e9;
     height: 14px;
     margin-bottom: 50px;
-    background-color: #e9e9e9;
+    background-color: #E9E9E9;
 }
 
 /*modal bairros*/
@@ -820,7 +861,7 @@ hr.solid {
         width: 360px;
         font-size: 12px;
         height: 35px;
-        margin-inline-end: 0px;
+        margin-inline-end: 0;
         margin-right: 10px;
     }
 
@@ -903,10 +944,6 @@ hr.solid {
         width: 2.5rem;
     }
 
-    .call-comentarios {
-        font-size: 12px;
-    }
-
     .modal-generica-conteudo {
         /*display block*/
         width: 82%;
@@ -915,7 +952,7 @@ hr.solid {
     }
 
     .modal-generica-header h4 {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 
     .nome-usuario-modal {

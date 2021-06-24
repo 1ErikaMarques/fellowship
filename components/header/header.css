@@ -274,9 +274,7 @@ ul.sub li p {
     word-break: keep-all;
     line-height: 150%;
     border-right: 1px solid #f4f5f7;
-    width: 100%;
-    cursor: text;
-
+    margin-top: -2px;
 }
 
 /*ul.primary li:hover > p {

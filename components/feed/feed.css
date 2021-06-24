@@ -849,6 +849,32 @@ hr.solid {
     text-decoration: underline;
 }
 
+.imagens-carregadas-container-itens {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.button-apagar-imagens {
+    float: right;
+    margin-right: 17px;
+    margin-top: -10px;
+    height: 1.5rem;
+    font-size: 21px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #b5b5b5;
+    padding: 2px 10px;
+    border-radius: 25px;
+    background-color: #eeeeee;
+    margin-inline-start: 10px
+}
+
+.button-apagar-imagens:hover{
+    color: #666666;
+    transition: color 200ms ease;
+    font-size: 24px;
+}
+
 /*Responsivo Mobile*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {

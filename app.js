@@ -223,15 +223,29 @@ function addImgModal(element) {
 
     arquivos.forEach(arquivo => { //selecionando cada arquivo e criando elementos e dando estilos
 
+        console.log(arquivo.type)
+
         const div = document.createElement("div");
         div.classList.add("imagens-carregadas-container-itens");
         const img = document.createElement("img");
         img.src = URL.createObjectURL(arquivo)
         img.classList.add("imagem-post-modal");
-        div.appendChild(img);
+
+        let deleteImg = document.createElement("span");
+        deleteImg.innerHTML = '&times';
+        deleteImg.classList.add('button-apagar-imagens');
+        deleteImg.setAttribute('onclick', 'apagaMidiaCarregada(this)')
+
+        div.append(img, deleteImg);
         sessaoCarregamento.appendChild(div);
     })
     element.value = null;//limpando o input
+}
+
+function apagaMidiaCarregada(element) {
+    const parent = element.parentNode
+    const grandParent = parent.parentNode
+    grandParent.removeChild(parent)
 }
 
 async function uploadToFirebaseStorage(fileUrl, type) {
@@ -289,7 +303,13 @@ function addVideoModal(element) {
         video.src = URL.createObjectURL(arquivo) // passando a url para o src
         video.classList.add("imagem-post-modal");
         video.setAttribute("controls", "")//add play,volume...
-        div.appendChild(video);
+
+        let deleteImg = document.createElement("span");
+        deleteImg.innerHTML = '&times';
+        deleteImg.classList.add('button-apagar-imagens');
+        deleteImg.setAttribute('onclick', 'apagaMidiaCarregada(this)')
+
+        div.append(video, deleteImg);
         sessaoCarregamento.appendChild(div);
     })
     element.value = null;//limpando o input
@@ -479,7 +499,7 @@ async function publicarPost(tipoModal) {
     btnApagarPost.src = "public/feed/icone-reticencias.svg"
     btnApagarPost.setAttribute('onclick', 'modalApagarPost(this)')
     btnApagarPost.setAttribute('data-tipo', 'apagar-post');
-    btnApagarPost.setAttribute('title','Mais')
+    btnApagarPost.setAttribute('title', 'Mais')
 
     const ulModalApagarPost = document.createElement('ul')
     ulModalApagarPost.className = "dropdown-apagar-post"
@@ -868,7 +888,7 @@ async function addComentario(event) {
         btnApagarComentarios.src = "public/feed/icone-reticencias.svg"
         btnApagarComentarios.setAttribute('onclick', 'modalApagarPost(this)')
         btnApagarComentarios.setAttribute('data-tipo', 'apagar-post');
-        btnApagarComentarios.setAttribute('title','Mais')
+        btnApagarComentarios.setAttribute('title', 'Mais')
 
         const ulModalApagarComentarios = document.createElement('ul')
         ulModalApagarComentarios.className = "dropdown-apagar-post"
@@ -904,8 +924,8 @@ async function addComentario(event) {
         usuarioComentario.setAttribute('onclick', 'loadProfile(this)');
         usuarioComentario.setAttribute('name', 'user-name')
 
-        divComentariosFlexInput.append(efeitoTrianguloComentario,inputComentario,ulPrincipalApagarComentarios );
-        divComentariosFlex.append(usuarioComentarioImg,usuarioComentario);
+        divComentariosFlexInput.append(efeitoTrianguloComentario, inputComentario, ulPrincipalApagarComentarios);
+        divComentariosFlex.append(usuarioComentarioImg, usuarioComentario);
         divComentarios.appendChild(divComentariosFlex);
         divComentariosFlex.appendChild(divComentariosFlexInput);
         section.prepend(divComentarios);
@@ -1129,7 +1149,7 @@ function adicionaPermaHoverClass(elemento) {
         case 'notifications':
             elemento.classList.toggle("permahover-notifications");
             document.getElementById("profile-icon").classList.remove("permahover-profile");
-            elemento.children[1].children[0].classList.remove('icone-notificacao-with-notification','icone-notificacao-default');
+            elemento.children[1].children[0].classList.remove('icone-notificacao-with-notification', 'icone-notificacao-default');
             elemento.children[1].children[0].classList.toggle("icone-notificacao-active");
             hideOnClickOutside(elemento);
             document.getElementById("profile-icon").children[0].classList.remove("icone-perfil-ativo");
@@ -1162,7 +1182,7 @@ function hideOnClickOutside(elemento) {
                 elemento.children[0].classList.remove("icone-perfil-ativo");
             } else if (elemento.dataset.tipo === 'notifications') {
                 elemento.classList.remove("permahover-notifications");
-                elemento.children[1].children[0].classList.replace("icone-notificacao-active",'icone-notificacao-default');
+                elemento.children[1].children[0].classList.replace("icone-notificacao-active", 'icone-notificacao-default');
             } else if (elemento.dataset.tipo === 'apagar-post') {
                 elemento.nextElementSibling.classList.remove('dropdown-apagar-post-ativo');
                 elemento.classList.remove('reticencias-ativo')

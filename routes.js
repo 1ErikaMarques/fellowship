@@ -327,7 +327,7 @@ async function loadNotifications() {
                                 let p = document.createElement('p')
                                 p.innerText = infoNotification.message + ` em ${moment(infoNotification.timestamp.toDate()).format('DD/MM/YYYY H:mm')} `
                                 p.setAttribute('title', '')
-                                p.style.cursor = 'context-menu'
+                                p.style.cursor = 'alias'
 
                                 let hr = document.createElement('hr')
                                 hr.className = 'header-solid'
@@ -374,16 +374,27 @@ async function recuperaFeedsPorTopico(bairro, topico) {
 
     let feeds = new Map();
 
+
     const path = `/feedsCollection/${bairro}/${topico}`
 
-    await db.collection(path).get().then((querySnapshot) => {
+    await db.collection(path).orderBy('timestamp').get().then((querySnapshot) => {
         if (!querySnapshot.empty) {
             querySnapshot.forEach((doc) => {
                 feeds.set(doc.id, doc.data())
             });
+/*            db.collection(path).orderBy('timestamp').onSnapshot((querySnapshot) => {
+                if (!querySnapshot.empty) {
+                    querySnapshot.forEach((doc) => {
+                        if (!feeds.has(doc.id) && procurarMenuNavAtivo().dataset.name === topico && doc.data().owner !== usuarioLogado.id) {
+                            console.log(doc.id, doc.data())
+                        } else if (procurarMenuNavAtivo().dataset.name === topico && doc.data().owner !== usuarioLogado.id && feeds.get(doc.id).timestamp !== doc.data().timestamp) {
+                            console.log('post atualizado')
+                        }
+                    });
+                }
+            });*/
         }
     });
-
     return feeds;
 }
 

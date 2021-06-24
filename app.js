@@ -63,11 +63,11 @@ async function registro(form) {
         alert('Por favor insira um cep válido')
         return;
     }
-    let anoNasc = moment(birthday,"DD/MM/YYYY").year()
+    let anoNasc = moment(birthday, "DD/MM/YYYY").year()
 
     let anoAtual = moment().year();
 
-    if((anoAtual - anoNasc) < 18) {
+    if ((anoAtual - anoNasc) < 18) {
         alert('Você deve ter pelo menos 18 anos para se cadastrar.')
         return;
     }
@@ -876,7 +876,7 @@ async function addComentario(event) {
         //img
         const usuarioComentarioImg = document.createElement("img");
         usuarioComentarioImg.className = "img_comentario";
-        usuarioComentarioImg.src = usuarioLogado.photoUrl
+        usuarioComentarioImg.src = usuarioLogado.photoUrl === '' ? 'public/profile/foto-usuario-perfil.svg' : usuarioLogado.photoUrl
         usuarioComentarioImg.setAttribute("title", usuarioLogado.name);
         usuarioComentarioImg.setAttribute('data-userId', usuarioLogado.id);
         usuarioComentarioImg.setAttribute('onclick', 'loadProfile(this)');
@@ -952,6 +952,16 @@ async function addComentario(event) {
         contadorDeComentarios.innerText = quantidadeDeComentarios + ' Comentário(s)';
 
         event.target.value = null;
+
+        let reticenciasPost = divPost.children[0].children[2]
+        reticenciasPost.removeAttribute('style')
+
+        let sectionComments = divPost.children.item(5)
+
+        for (let child of sectionComments.children) {
+            let ulReticencias = child.lastElementChild.lastElementChild.children[2];
+            reticenciasPost.removeAttribute('style')
+        }
 
         await salvarFeeds(tipoFeed, postId, divPost.innerHTML, false);
 
@@ -1175,9 +1185,9 @@ function adicionaPermaHoverClass(elemento) {
         case 'profile':
             elemento.classList.toggle("permahover-profile");
             let notificationsIcon = document.getElementById("notifications-icon");
-            notificationsIcon.children[0].children[0].classList.add('icone-notificacao-default');
+            notificationsIcon.children[1].children[0].classList.add('icone-notificacao-default');
             notificationsIcon.classList.remove("permahover-notifications");
-            notificationsIcon.children[0].children[0].classList.remove("icone-notificacao-active");
+            notificationsIcon.children[1].children[0].classList.remove("icone-notificacao-active");
             document.getElementById("home-icon").children[0].classList.remove("icone-home-ativo");
             hideOnClickOutside(elemento);
             elemento.children[0].classList.toggle("icone-perfil-ativo");

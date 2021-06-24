@@ -104,7 +104,8 @@ p {
 }
 
 .reticencias-ativo {
-    background: #f4f5f7;
+    background: #f4f5f9;
+
 }
 
 .btn-apagar-post {
@@ -414,11 +415,6 @@ p {
     display: flex;
     justify-content: flex-end;
     margin-top: -3rem;
-}
-
-.reticencias-comentarios-ativo {
-    background:#f4f5f7;
-    filter: brightness(0.9);
 }
 
 .btn-apagar-comentarios {

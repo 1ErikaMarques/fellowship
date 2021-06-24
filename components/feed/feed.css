@@ -105,7 +105,6 @@ p {
 
 .reticencias-ativo {
     background: #f4f5f9;
-
 }
 
 .btn-apagar-post {
@@ -872,7 +871,7 @@ hr.solid {
 .button-apagar-imagens:hover{
     color: #666666;
     transition: color 200ms ease;
-    font-size: 24px;
+
 }
 
 /*Responsivo Mobile*/

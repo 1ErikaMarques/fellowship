@@ -68,7 +68,7 @@ async function registro(form) {
     let anoAtual = moment().year();
 
     if((anoAtual - anoNasc) < 18) {
-        alert('Voce deve ter pelo menos 18 anos para se cadastrar.')
+        alert('Você deve ter pelo menos 18 anos para se cadastrar.')
         return;
     }
 

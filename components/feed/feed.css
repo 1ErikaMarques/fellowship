@@ -372,7 +372,7 @@ p {
     height: 0;
     border-top: 41px solid transparent;
     border-bottom: 18px solid transparent;
-    border-right: 30px solid #f4f5f7;
+    border-right: 42px solid #f4f5f7;
     -webkit-transform: rotate(30deg); /* Safari e Chrome */
     -moz-transform: rotate(30deg); /* Firefox */
     -ms-transform: rotate(30deg); /* IE 9 */

@@ -2,31 +2,41 @@
     display: flex;
     text-align: center;
     margin-top: 4%;
-    justify-content: center;
-}
-
-.child-items {
-    flex-direction: row;
+    justify-content:flex-end;
+    align-items: baseline;
 }
 
 /*ilustracao*/
-.img-login {
-    margin-top: 10%;
-    margin-right: 60px;
-    width: 89%;
-    height: 85%;
-    padding: 0 0 0 0;
+.img-login {     
+    width: 69%;   
+    display: block;
+    margin-top: 2rem;    
+}
+
+.child-item {   
+   margin-right: 12rem;
+}
+
+.content {
+    background: var(--blue);
+    width: 29rem;
+    height:45rem;
+    margin-top: 6rem;   
+    margin-right: 12rem; 
+    border-radius: 8px;
 }
 
 /*Container login*/
-.form-login {
-    height: 20%;
+.form-login {    
     background-color: #fefefe;
     align-items: center;
     border-radius: 4px;
-    margin-top: 11rem;
-    width: 370px;
+    margin-top: 11rem; 
+    margin-right: 26rem;   
+    padding: 1rem 3rem;
+    width: auto;
     box-shadow: 0 10px 70px rgb(0 0 0 / 5%);
+    position:absolute;
 }
 
 /*Logo*/
@@ -39,7 +49,7 @@
 .form-login label {
     display: flex;
     width: auto;
-    margin-left: 60px;
+    margin-left: 9px;
     margin-top: 16px;
     padding: 0 11px;
     position: absolute;
@@ -77,6 +87,28 @@
     outline: none;
     box-shadow: 0 0 0 4px rgb(66 133 244 / 10%);
     border-color: var(--blue);
+}
+
+.btn-login {
+     width: 7.7rem;
+      height: 2.7rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      background-color: var(--white-100);
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      border: 1px solid var(--blue);
+      transition: background 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.05rem;   
+}
+
+.btn-login:hover {
+    transition: 0.25s;
+    box-shadow: inset 8.8em 0 0 0 var(--blue);
+    color: white;      
 }
 
 .aparador-login {

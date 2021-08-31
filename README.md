@@ -18,3 +18,4 @@ Esta aplicação permite:
 # Tecnologias
 * HTM5
 * CSS3
+* JavaScript

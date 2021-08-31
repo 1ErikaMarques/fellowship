@@ -4,7 +4,7 @@ Esta aplicação permite:
 * Cadastro de usuário
 * Login para acesso ao sistema
 * Editar perfil
-* Fazer um post
+* Publicar um post
 * Apagar um post
 * Comentar em posts
 * Apagar comentario

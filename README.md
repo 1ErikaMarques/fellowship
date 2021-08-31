@@ -16,6 +16,6 @@ Esta aplicação permite:
 * Logout
 
 # Tecnologias
-* HTM5
-* CSS3
+* HTML
+* CSS
 * JavaScript

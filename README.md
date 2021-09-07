@@ -1,21 +1,21 @@
 # Fellowship
-# Descrição
-Esta aplicação permite:
-* Cadastro de usuário
-* Login para acesso ao sistema
-* Editar perfil
-* Publicar um post
+# Description
+This application allows:
+* User registration
+* Log in to access the system
+* Edit profile
+* Make a post
 * Apagar um post
-* Comentar em posts
-* Apagar comentario
-* Pesquisar por outros bairros
-* Receber notificações
-* Alterar a senha
-* Alterar email
-* Alterar cep
+* Comment on posts
+* Delete comments
+* Search for other neighbourhoods
+* Receive notifications
+* Change the password
+* Change the email
+* change the postcode(just Brazilian postcode)
 * Logout
 
-# Tecnologias
+# Technologies
 * HTML
 * CSS
 * JavaScript

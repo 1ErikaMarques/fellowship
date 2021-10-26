@@ -5,7 +5,7 @@ This application allows:
 * Log in to access the system
 * Edit profile
 * Make a post
-* Apagar um post
+* Delete a post
 * Comment on posts
 * Delete comments
 * Search for other neighbourhoods
